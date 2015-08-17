@@ -1,8 +1,6 @@
  // app/routes.js
 
 // grab the nerd model we just created
-
-
 module.exports = function(app) {
     var Nerd = app.back.models.nerd;
 
