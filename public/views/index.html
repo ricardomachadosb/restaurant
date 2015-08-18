@@ -21,59 +21,56 @@
     <script src="js/appRoutes.js"></script>
     <script src="js/app.js"></script>
 	</head>
-	<body>
-<div class="navbar navbar-default navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Brand</a>
+	<body ng-app="restaurant">
+    <div class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Restaurant</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/usuarios">Usuários</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown" id="menuLogin">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+                <div class="dropdown-menu" style="padding:17px;">
+                 <form style="width:250px;">
+                    <div class="form-group">
+                        <label for="inputUser">Usuário</label>
+                        <input type="text" class="form-control" id="inputEmail" placeholder="Usuário">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Senha</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Senha">
+                    </div>
+                    <div class="checkbox">
+                        <label><input type="checkbox"> Remember me</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                  </form>
+                </div>
+              </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
     </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" id="menuLogin">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
-            <div class="dropdown-menu" style="padding:17px;">
-             <form style="width:250px;">
-                <div class="form-group">
-                    <label for="inputEmail">Email</label>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox"> Remember me</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Login</button>
-              </form>
-            </div>
-          </li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div>
-</div>
 
-<div class="container">
-  
-  <div class="text-center">
-    <h1>Bootstrap starter template</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-  </div>
-  
-</div><!-- /.container -->
-	<!-- script references -->
-	<script src="libs/jquery/dist/jquery.min.js"></script>
-	<!--	<script src="js/bootstrap.min.js"></script> -->
-  <script src="libs/bootstrap/js/dropdown.js"></script> 
-    <script src="libs/angular-route/angular-route.min.js"></script>
+    <div class="container">
+      
+      <div ng-view></div>
+      
+    </div><!-- /.container -->
+    	<!-- script references -->
+    	<script src="libs/jquery/dist/jquery.min.js"></script>
+    	<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+     <!-- <script src="libs/bootstrap/js/dropdown.js"></script> -->
+      <script src="libs/angular-route/angular-route.min.js"></script>
 	</body>
 </html>

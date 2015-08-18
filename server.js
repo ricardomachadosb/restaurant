@@ -48,6 +48,13 @@ load('./back/models')
 	.then('./back/routes')
 	.into(app);
 
+   
+function redirectUnmatched(req, res) {
+  res.redirect("/");
+}
+
+app.use(redirectUnmatched); 
+
 // start app ===============================================
 // startup our app at http://localhost:8080
 app.listen(port);
