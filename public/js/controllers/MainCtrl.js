@@ -1,4 +1,4 @@
-angular.module('MainCtrl', []).controller('MainController', function($scope, $http, $cookies, $rootScope) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $http, $cookies, $rootScope, $location) {
 
 	var checkAuth = function(){
 		$rootScope.token = $cookies.get('token');
@@ -9,10 +9,12 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 
 	$scope.auth = function(){
 		$http.post('/api/authenticate', $scope.login).success(function(res){
-			$rootScope.token = res.token;
-			$rootScope.authenticated = true;
-			$cookies.put('token', res.token);
-			$cookies.put('authenticated', true);
+			if(res.success){
+				$rootScope.token = res.token;
+				$rootScope.authenticated = true;
+				$cookies.put('token', res.token);
+				$cookies.put('authenticated', true);
+			}
 		}).error(function(res){
 			console.log(res);
 		});
@@ -23,6 +25,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 		$rootScope.authenticated = false;
 		$cookies.put('token', '');
 		$cookies.put('authenticated', false);
+		$location.path( "/");
 	};
 
 });
