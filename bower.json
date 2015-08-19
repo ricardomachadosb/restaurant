@@ -5,7 +5,8 @@
       "bootstrap": "latest",
       "font-awesome": "latest",
       "animate.css": "latest",
-      "angular": "latest",
-      "angular-route": "latest"
+      "angular": "1.4.4",
+      "angular-route": "1.4.4",
+      "angular-cookies": "1.4.4"
   }
 }

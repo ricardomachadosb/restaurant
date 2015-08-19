@@ -1,1 +1,1 @@
-angular.module('restaurant', ['ngRoute', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'UserCtrl']);
+angular.module('restaurant', ['ngRoute', 'ngCookies', 'appRoutes', 'MainCtrl', 'NerdCtrl', 'UserCtrl']);
