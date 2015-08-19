@@ -2,7 +2,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 
 	var checkAuth = function(){
 		$rootScope.token = $cookies.get('token');
-		$rootScope.authenticated = $cookies.get('authenticated');
+		$rootScope.authenticated = ($cookies.get('authenticated') == 'true');
 	};
 
 	checkAuth();
