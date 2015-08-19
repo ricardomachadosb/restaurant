@@ -14,9 +14,9 @@
             controller: 'NerdController'
         })
 
-        .when("/usuarios", {
+        .when('/usuarios', {
             templateUrl: 'views/usuario/list.html',
-            controller: 'UsuarioController'
+            controller: 'UserController'
         });
 
     $locationProvider.html5Mode(true);

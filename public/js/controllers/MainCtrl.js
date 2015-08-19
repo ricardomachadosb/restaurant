@@ -1,9 +1,11 @@
-angular.module('MainCtrl', ['NerdService']).controller('MainController', function($scope, Nerd) {
+angular.module('MainCtrl', []).controller('MainController', function($scope, $http) {
 
-//	var injector = angular.injector(['NerdService']);
-  //  var Nerd = injector.get('Nerd');
-
-	console.log(Nerd.get());
-    $scope.tagline = 'To the moon and back!';
+	$scope.auth = function(){
+		$http.post('/api/authenticate', $scope.login).success(function(res){
+			console.log(res);
+		}).error(function(res){
+			console.log(res);
+		});
+	}
 
 });
