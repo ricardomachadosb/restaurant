@@ -2,9 +2,9 @@
   "name": "starter-node-angular",
   "version": "1.0.0",
   "dependencies": {
-      "bootstrap": "latest",
-      "font-awesome": "latest",
-      "animate.css": "latest",
+      "bootstrap": "3.3.5",
+      "font-awesome": "4.4.0",
+      "animate.css": "3.4.0",
       "angular": "1.4.4",
       "angular-route": "1.4.4",
       "angular-cookies": "1.4.4",
