@@ -4,11 +4,13 @@ module.exports = function(app) {
     var UserController = {
 
        setup: function(req, res) {
+
             // create a sample user
+            console.log(req.body);
             var nick = new User({ 
-              name: 'Ricardo', 
-              password: '123',
-              admin: true 
+              name: req.body.name, 
+              password: req.body.password,
+              admin: true
             });
 
             // save the sample user

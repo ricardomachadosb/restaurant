@@ -9,5 +9,22 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 		});
 	};
 
+	$scope.addUser = function(){
+		console.log($scope.user);
+		$http.post('/api/user/setup', $scope.user).success(
+
+			function(res){
+				//console.log(res);
+				$scope.user = "";
+				$scope.list();
+			}
+		);
+	};
+
+	$scope.delete = function( e ){
+
+		console.log("Deleto tua mae");
+	};
+
 	$scope.list();
 });
