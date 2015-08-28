@@ -8,6 +8,24 @@ module.exports = function(app) {
             // create a sample user
             console.log(req.body);
             var nick = new User({ 
+              name: 'admin', 
+              password: '123',
+              admin: true
+            });
+
+            // save the sample user
+            nick.save(function(err) {
+              if (err) throw err;
+
+              console.log('User saved successfully');
+              res.json({ success: true });
+            });
+        },
+
+        create: function(req, res) {
+            // create a sample user
+            console.log(req.body);
+            var nick = new User({ 
               name: req.body.name, 
               password: req.body.password,
               admin: true
@@ -20,6 +38,12 @@ module.exports = function(app) {
               console.log('User saved successfully');
               res.json({ success: true });
             });
+        },
+
+        remove: function(req, res) {
+          
+          console.log("Finge que apago");
+
         },
 
         list: function(req, res) {
