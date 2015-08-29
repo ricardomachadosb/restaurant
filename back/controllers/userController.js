@@ -41,8 +41,12 @@ module.exports = function(app) {
         },
 
         remove: function(req, res) {
-          
-          console.log("Finge que apago");
+          console.log(req.body);
+          User.remove({_id: req.params.id}, function(err) {
+              if (err) throw err;
+              console.log('User deleted successfully');
+              res.json({ success: true });
+          });
 
         },
 

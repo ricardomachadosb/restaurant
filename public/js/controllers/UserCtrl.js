@@ -11,7 +11,8 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 
 	$scope.addUser = function(){
 		console.log($scope.user);
-		$http.post('/api/user/create', $scope.user).success(
+
+		$http.post('/api/user/create', $scope.user, {headers: $rootScope.tokenHeader}).success(
 
 			function(res){
 				//console.log(res);
@@ -22,7 +23,7 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 	};
 
 	$scope.remove = function( e ){
-		$http.post('/api/user/remove').success(
+		$http.delete('/api/user/remove/' + e, {headers: $rootScope.tokenHeader}).success(
 
 			function(res){
 				$scope.list();
