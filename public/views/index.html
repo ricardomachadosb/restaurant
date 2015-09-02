@@ -53,7 +53,7 @@
                         <label for="inputPassword">Senha</label>
                         <input type="password" class="form-control" id="inputPassword" placeholder="Senha" ng-model="login.password">
                     </div>
-                    <p ng-show="authError">Usuário ou senha inexistente</p>
+                    <p ng-show="authError" class="ng-hide text-danger"><b>Usuário ou senha inexistente</b></p>
                     <div class="checkbox">
                         <label><input type="checkbox"> Remember me</label>
                     </div>

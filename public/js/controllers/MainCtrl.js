@@ -14,8 +14,11 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 				$rootScope.token = res.token;
 				$rootScope.tokenHeader =  {'x-access-token': res.token};
 				$rootScope.authenticated = true;
+				$rootScope.authError = false;
 				$cookies.put('token', res.token);
 				$cookies.put('authenticated', true);
+			}else {
+				$rootScope.authError = true;
 			}
 		}).error(function(res){
 			console.log(res);
