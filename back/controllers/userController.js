@@ -24,7 +24,6 @@ module.exports = function(app) {
 
         create: function(req, res) {
             // create a sample user
-            console.log(req.body);
             var nick = new User({ 
               name: req.body.name, 
               password: req.body.password,
@@ -41,7 +40,6 @@ module.exports = function(app) {
         },
 
         remove: function(req, res) {
-          console.log(req.body);
           User.remove({_id: req.params.id}, function(err) {
               if (err) throw err;
               console.log('User deleted successfully');
