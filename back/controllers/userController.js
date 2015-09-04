@@ -7,10 +7,10 @@ module.exports = function(app) {
 
             // create a sample user
             console.log(req.body);
-            var nick = new User({ 
-              name: 'admin', 
+            var nick = new User({
+              name: 'admin',
               password: '123',
-              admin: true
+              isLoginAble: true
             });
 
             // save the sample user
@@ -24,10 +24,10 @@ module.exports = function(app) {
 
         create: function(req, res) {
             // create a sample user
-            var nick = new User({ 
-              name: req.body.name, 
+            var nick = new User({
+              name: req.body.name,
               password: req.body.password,
-              admin: true
+              isLoginAble: true
             });
 
             // save the sample user
