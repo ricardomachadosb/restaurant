@@ -32,68 +32,37 @@
       </tr>
     </tbody>
   </table>
-
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          <h4 class="modal-title" id="myModalLabel">Cadastro de usuário</h4>
         </div>
         <div class="modal-body">
-          ...<form style="width:250px;" autocomplete="off">
+          <form style="width:250px;" autocomplete="off" name="myForm" novalidate>
           <div class="form-group">
             <label for="inputUser">Usuário</label>
-            <input type="text" class="form-control" id="inputEmail" placeholder="Usuário" ng-model="user.name">
+            <input type="text" name="user" class="form-control" id="inputEmail" placeholder="Usuário" ng-model="user.name" ng-minlength="4" required>
+            <span ng-show="myForm.user.$error.required">Preencha o campo usuário.</span>
+            <span ng-show="myForm.user.$error.user">Usuário inválido.</span>
+            <span ng-show="myForm.user.$error.minlength">Deve conter no minimo 4 caracteres.</span>
           </div>
           <div class="form-group">
             <label for="inputPassword">Senha</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Senha" ng-model="user.password">
+            <input type="password" name="pw" class="form-control" id="inputPassword" placeholder="Senha" ng-model="user.password" ng-minlength="6" required>
+            <span ng-show="myForm.pw.$error.required">Preencha o campo senha.</span>
+            <span ng-show="myForm.pw.$error.user">Senha inválida.</span>
+            <span ng-show="myForm.pw.$error.minlength">Deve conter no minimo 6 caracteres.</span>
           </div>
-          <p ng-show="authError" class="ng-hide text-danger"><b>Usuário ou senha inexistente</b></p>
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button"  ng-click="addUser()" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.user.$pristine || myForm.pw.$dirty && myForm.pw.$invalid || myForm.pw.$pristine" ng-click="addUser()" class="btn btn-primary" data-dismiss="modal">Cadastrar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
         </div>
       </div>
     </div>
   </div>
-
-
-  <div>
-  <script type="text/ng-template" id="myModalContent.html">
-  <div class="modal-header">
-      <h3 class="modal-title">Cadastro de usuário</h3>
-    </div>
-    <div class="modal-body">
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-         <form style="width:250px;" autocomplete="off">
-          <div class="form-group">
-            <label for="inputUser">Usuário</label>
-            <input type="text" class="form-control" id="inputEmail" placeholder="Usuário" ng-model="user.name">
-          </div>
-          <div class="form-group">
-            <label for="inputPassword">Senha</label>
-            <input type="password" class="form-control" id="inputPassword" placeholder="Senha" ng-model="user.password">
-          </div>
-          <p ng-show="authError" class="ng-hide text-danger"><b>Usuário ou senha inexistente</b></p>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal-footer">
-  <button class="btn btn-primary" type="button" ng-click="addUser()">Cadastrar</button>
-  <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
-</div>
-</script>
-</div>
 </div>
