@@ -33,4 +33,6 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 		$location.path( "/");
 	};
 
+	$rootScope.allRoles = [{key: 'Cozinheiro', value: 'ROLE_COOK'}, {key: 'Atendente', value:'ROLE_CASHIER'},
+		{key: 'Garçom', value: 'ROLE_WAITER'}, {key: 'Administrador', value: 'ROLE_ADMIN'}];
 });

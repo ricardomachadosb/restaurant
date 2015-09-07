@@ -1,6 +1,6 @@
 module.exports = function(app){
 	var mongoose = require('mongoose');
-  var RoleSchema = new mongoose.Schema({ code:{type: String, default: '' }}  );
+  var RoleSchema = new mongoose.Schema({ key:{type: String, default: '' },  value:{type: String, default: '' }}  );
 	// set up a mongoose model and pass it using module.exports
 	return mongoose.model('User', {
 	    name: {type : String, default: ''},

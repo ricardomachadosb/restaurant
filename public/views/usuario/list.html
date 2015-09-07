@@ -1,17 +1,22 @@
 <div class="container">
   <h1>Lista de Usuários</h1>
+  <ol class="breadcrumb">
+    <button clas="btn btn-primary" data-toggle="modal" data-target="#myModal"> Novo</button>
+  </ol>
 
   <table class="table">
     <thead>
       <tr>
         <th>Nome</th>
-        <th>Senha</th>
+        <th>Login</th>
+        <th>Habilitado</th>
+        <th>Perfis</th>
         <th>Opções</th>
         <th>&nbsp;</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+     <!-- <tr>
         <td> <input class="form-control" ng-model="user.name"></td>
         <td> <input class="form-control" ng-model="user.password"></td>
         <td>
@@ -21,10 +26,12 @@
           <button class="btn btn-info" ng-click="update()">Update</button>&nbsp; &nbsp;
           <button class="btn btn-info" ng-click="deselect()">Clear</button>
         </td>
-      </tr>
+      </tr> -->
       <tr ng-repeat="user in userList">
         <td>{{user.name}}</td>
-        <td>{{user.password}}</td>
+        <td>{{user.login}}</td>
+        <td>{{user.isLoginAble ?'Sim' : 'Não'}}</td>
+        <td>{{user.roles}}</td>
         <td>
           <button class="btn btn-danger" ng-click="remove(user._id)">Remove</button>&nbsp; &nbsp;
           <button class="btn btn-warning" ng-click="edit(user._id)">Edit</button>
@@ -32,6 +39,7 @@
       </tr>
     </tbody>
   </table>
+</div>
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
@@ -41,12 +49,19 @@
           <h4 class="modal-title" id="myModalLabel">Cadastro de usuário</h4>
         </div>
         <div class="modal-body">
-          <form style="width:250px;" autocomplete="off" name="myForm" novalidate>
+          <form style="width:400px;" autocomplete="off" name="myForm" novalidate>
           <div class="form-group">
-            <label for="inputUser">Usuário</label>
-            <input type="text" name="user" class="form-control" id="inputEmail" placeholder="Usuário" ng-model="user.name" ng-minlength="4" required>
-            <span ng-show="myForm.user.$error.required">Preencha o campo usuário.</span>
-            <span ng-show="myForm.user.$error.user">Usuário inválido.</span>
+            <label for="inputUser">Nome</label>
+            <input type="text" name="user" class="form-control" id="inputName" placeholder="Nome" ng-model="user.name" ng-minlength="4" required>
+            <span ng-show="myForm.user.$error.required">Preencha o campo Nome.</span>
+            <span ng-show="myForm.user.$error.user">Nome inválido.</span>
+            <span ng-show="myForm.user.$error.minlength">Deve conter no minimo 4 caracteres.</span>
+          </div>
+          <div class="form-group">
+            <label for="inputUser">Login</label>
+            <input type="text" name="user" class="form-control" id="inputLogin" placeholder="Login" ng-model="user.login" ng-minlength="4" required>
+            <span ng-show="myForm.user.$error.required">Preencha o campo Login.</span>
+            <span ng-show="myForm.user.$error.user">Login inválido.</span>
             <span ng-show="myForm.user.$error.minlength">Deve conter no minimo 4 caracteres.</span>
           </div>
           <div class="form-group">
@@ -56,6 +71,22 @@
             <span ng-show="myForm.pw.$error.user">Senha inválida.</span>
             <span ng-show="myForm.pw.$error.minlength">Deve conter no minimo 6 caracteres.</span>
           </div>
+           <div class="form-group">
+            <input type="checkbox" name="isLoginAble" id="inputIsLoginAble" ng-model="user.isLoginAble">
+            <label for="inputIsLoginAble">Habilitado</label>
+          </div>
+           <div class="form-group">
+              <label >Perfis</label>
+                <div class="multiSelect"
+            isteven-multi-select
+            input-model="allRoles"
+            output-model="user.roles"
+            button-label="key"
+            item-label="key"
+            tick-property="ticked"
+          >
+           </div>
+
         </form>
         </div>
         <div class="modal-footer">
