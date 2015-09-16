@@ -6,4 +6,5 @@ module.exports = function(app) {
   app.post('/api/user/create', authController.checkAuth, userController.create);
   app.delete('/api/user/remove/:id',authController.checkAuth,  userController.remove);
   app.get('/api/user/list', authController.checkAuth, userController.list);
+  app.get('/api/user/edit/:id', authController.checkAuth, userController.edit);
 };

@@ -30,5 +30,17 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 		);
 	};
 
+	$scope.editUser = function( e ){
+		$http.get('/api/user/edit/' + e, {headers: $rootScope.tokenHeader}).success(function(res){
+			$scope.user = res;
+			/*
+				Calling a modal with jquery.
+				It's temporary.
+			*/
+			$('#myModal').modal('show');
+		});
+
+	};
+	
 	$scope.list();
 });
