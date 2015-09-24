@@ -8,7 +8,7 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 		});
 	};
 
-	$scope.addUser = function(){
+	$scope.add = function(){
 		console.log($scope.user);
 
 		$http.post('/api/user/create', $scope.user, {headers: $rootScope.tokenHeader}).success(
@@ -30,7 +30,7 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 		);
 	};
 
-	$scope.editUser = function( e ){
+	$scope.edit = function( e ){
 		$http.get('/api/user/edit/' + e, {headers: $rootScope.tokenHeader}).success(function(res){
 			$scope.user = res;
 			/*

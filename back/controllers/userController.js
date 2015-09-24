@@ -23,11 +23,12 @@ module.exports = function(app) {
         },
 
         create: function(req, res) {
-            // create a sample user
             var nick = new User({
               name: req.body.name,
               password: req.body.password,
-              isLoginAble: true
+              login: req.body.login,
+              isLoginAble: req.body.isLoginAble,
+              roles: req.body.roles
             });
 
             // save the sample user
