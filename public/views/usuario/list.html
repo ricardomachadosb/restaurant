@@ -4,7 +4,7 @@
     <button class="btn btn-small btn-primary" data-toggle="modal" data-target="#myModal"> Novo</button>
   </ol>
 
-  
+
 
   <table class="table">
     <thead>
@@ -29,17 +29,23 @@
           <button class="btn btn-info" ng-click="deselect()">Clear</button>
         </td>
       </tr> -->
-     
-   <!--   <div class="row">
-        <div class="col-md-3 grid-box" ng-repeat="user in userList">
+
+ <div class="row">
+        <div class="col-md-2 grid-box" ng-repeat="user in userList">
             <div class="grid-item"> <span ><b>Nome:</b> </span>{{user.name}} </div>
             <div class="grid-item"> <span><b>Login:</b> </span>{{user.login}}  </div>
             <div class="grid-item"> <span><b>Habilitado:</b> </span>{{user.isLoginAble ?'Sim' : 'Não'}} </div>
-             <div class="grid-item"> <span><b>Perfis:</b> </span><div class="label label-default label-role" ng-repeat-start="role in user.roles" ng-repeat-end> {{role.key}}</div></div>
+             <div class="grid-item"> <span ><b>Perfis:</b> </span><div class="label label-default label-role" ng-repeat-start="role in user.roles" ng-repeat-end> {{role.key}}</div></div>
+            <p class="grid-buttons">
+              <a href="#" class="btn btn-warning edit-item-grid" role="button">
+                <i class="glyphicon glyphicon-edit"></i>
+              </a>
+              <a href="#" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-trash"></i></a>
+            </p>
         </div>
       </div>
 
-    -->
+
 
       <tr ng-repeat="user in userList">
         <td>{{user.name}}</td>
