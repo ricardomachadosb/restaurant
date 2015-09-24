@@ -20,8 +20,8 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 		);
 	};
 
-	$scope.remove = function( e ){
-		$http.delete('/api/user/remove/' + e, {headers: $rootScope.tokenHeader}).success(
+	$scope.remove = function( id ){
+		$http.delete('/api/user/remove/' + id, {headers: $rootScope.tokenHeader}).success(
 
 			function(res){
 				$scope.list();
