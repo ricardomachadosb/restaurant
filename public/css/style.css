@@ -28,7 +28,7 @@
 
 .grid-buttons{
   bottom: 0px; position:absolute;
-  padding-left: 20%;
+  padding-left: 1%;
 }
 
 .box{
@@ -38,12 +38,17 @@
 }
 
 .label-default {
-  background-color: #777;
+  background-color: #8B5A00;
   display: block;
   max-width: 50%;
   margin: 5px;
+  margin-left: 24%;
 }
 
 .edit-item-grid{
   margin-right: 15px;
+}
+
+.btn-grid{
+    width: 70px;
 }

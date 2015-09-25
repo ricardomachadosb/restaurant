@@ -6,59 +6,22 @@
 
 
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Login</th>
-        <th>Habilitado</th>
-        <th>Perfis</th>
-        <th>Opções</th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
-    <tbody>
-     <!-- <tr>
-        <td> <input class="form-control" ng-model="user.name"></td>
-        <td> <input class="form-control" ng-model="user.password"></td>
-        <td>
-          <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Add Contact
-          </button>&nbsp; &nbsp;
-          <button class="btn btn-info" ng-click="update()">Update</button>&nbsp; &nbsp;
-          <button class="btn btn-info" ng-click="deselect()">Clear</button>
-        </td>
-      </tr> -->
 
- <div class="row">
+      <div class="row">
         <div class="col-md-2 grid-box" ng-repeat="user in userList">
             <div class="grid-item"> <span ><b>Nome:</b> </span>{{user.name}} </div>
             <div class="grid-item"> <span><b>Login:</b> </span>{{user.login}}  </div>
             <div class="grid-item"> <span><b>Habilitado:</b> </span>{{user.isLoginAble ?'Sim' : 'Não'}} </div>
              <div class="grid-item"> <span ><b>Perfis:</b> </span><div class="label label-default label-role" ng-repeat-start="role in user.roles" ng-repeat-end> {{role.key}}</div></div>
             <p class="grid-buttons">
-              <a href="#" class="btn btn-warning edit-item-grid" role="button">
+              <a href="#" class="btn btn-grid btn-warning edit-item-grid" role="button">
                 <i class="glyphicon glyphicon-edit"></i>
               </a>
-              <a href="#" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-trash"></i></a>
+              <a href="#" class="btn btn-grid btn-danger" role="button"><i class="glyphicon glyphicon-trash"></i></a>
             </p>
         </div>
       </div>
 
-
-
-      <tr ng-repeat="user in userList">
-        <td>{{user.name}}</td>
-        <td>{{user.login}}</td>
-        <td>{{user.isLoginAble ?'Sim' : 'Não'}}</td>
-        <td ><div ng-repeat-start="role in user.roles" ng-repeat-end> {{role.key}} </div></td>
-        <td>
-          <button class="btn btn-danger" ng-click="remove(user._id)">Remove</button>&nbsp; &nbsp;
-          <button class="btn btn-warning" ng-click="edit(user._id)">Edit</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
