@@ -41,6 +41,10 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 		});
 
 	};
-	
+
 	$scope.list();
+}).directive('userModalDirective', function() {
+  return {
+    templateUrl: "../../views/usuario/modal.html"
+  };
 });
