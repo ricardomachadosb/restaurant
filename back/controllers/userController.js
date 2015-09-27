@@ -6,7 +6,6 @@ module.exports = function(app) {
        setup: function(req, res) {
 
             // create a sample user
-            console.log(req.body);
             var nick = new User({
               name: 'admin',
               password: '123',
@@ -50,7 +49,6 @@ module.exports = function(app) {
         },
 
         edit: function( req, res ) {
-              console.log(req.params.id);
               User.findOne({_id: req.params.id}, function(err, user){
                 res.json(user);
               });

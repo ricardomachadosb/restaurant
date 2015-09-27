@@ -9,8 +9,6 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 	};
 
 	$scope.add = function(){
-		console.log($scope.user);
-
 		$http.post('/api/user/create', $scope.user, {headers: $rootScope.tokenHeader}).success(
 
 			function(res){

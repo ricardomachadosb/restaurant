@@ -3,10 +3,6 @@
   <ol class="breadcrumb">
     <button class="btn btn-small btn-primary" data-toggle="modal" data-target="#myModal"> Novo</button>
   </ol>
-
-
-
-
       <div class="row">
         <div class="col-md-2 grid-box" ng-repeat="user in userList">
             <div class="grid-item"> <span ><b>Nome:</b> </span>{{user.name}} </div>
@@ -14,13 +10,12 @@
             <div class="grid-item"> <span><b>Habilitado:</b> </span>{{user.isLoginAble ?'Sim' : 'Não'}} </div>
              <div class="grid-item"> <span ><b>Perfis:</b> </span><div class="label label-default label-role" ng-repeat-start="role in user.roles" ng-repeat-end> {{role.key}}</div></div>
             <p class="grid-buttons">
-              <a href="#" class="btn btn-grid btn-warning edit-item-grid" role="button">
+              <a href="#" class="btn btn-grid btn-warning edit-item-grid" ng-click="edit(user._id)" role="button">
                 <i class="glyphicon glyphicon-edit"></i>
               </a>
-              <a href="#" class="btn btn-grid btn-danger" role="button"><i class="glyphicon glyphicon-trash"></i></a>
+              <a href="#" class="btn btn-grid btn-danger" ng-click="remove(user._id)" role="button"><i class="glyphicon glyphicon-trash"></i></a>
             </p>
         </div>
       </div>
-
 </div>
 <user-modal-directive></user-modal-directive>
