@@ -9,6 +9,7 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 	};
 
 	$scope.list = function(){
+		$scope.user = "";
 		$http.get('/api/user/list', {headers: $rootScope.tokenHeader}).success(function(res){
 			$scope.userList = res;
 		}).error(function(res){
@@ -25,6 +26,17 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 			}
 		);
 	};
+
+	$scope.put = function(id){
+		$http.put('/api/user/put/' + id, $scope.user, {headers: $rootScope.tokenHeader}).success(
+
+			function(res){
+				$scope.user = "";
+				$scope.list();
+			}
+
+		);
+	}
 
 	$scope.remove = function( id ){
 		$http.delete('/api/user/remove/' + id, {headers: $rootScope.tokenHeader}).success(

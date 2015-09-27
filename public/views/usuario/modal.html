@@ -9,7 +9,7 @@
           <form style="width:400px;" autocomplete="off" name="myForm" novalidate>
           <div class="form-group">
             <label for="inputUser">Nome</label>
-            <input type="text" name="namemodal" class="form-control" id="inputName" placeholder="Nome" ng-model="user.name" ng-minlength="4" required>
+            <input type="text" name="name" class="form-control" id="inputName" placeholder="Nome" ng-model="user.name" ng-minlength="4" required>
             <span ng-show="myForm.name.$error.required">Preencha o campo Nome.</span>
             <span ng-show="myForm.name.$error.user">Nome inválido.</span>
             <span ng-show="myForm.name.$error.minlength">Deve conter no minimo 4 caracteres.</span>
@@ -47,8 +47,15 @@
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button" ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.user.$pristine || myForm.pw.$dirty && myForm.pw.$invalid || myForm.pw.$pristine" ng-click="add()" class="btn btn-primary" data-dismiss="modal">Cadastrar</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <div  ng-if="!user._id">
+            <button type="button" ng-disabled="myForm.user.$dirty && myForm.user.$invalid || myForm.user.$pristine || myForm.pw.$dirty && myForm.pw.$invalid || myForm.pw.$pristine" ng-click="add()" class="btn btn-primary" data-dismiss="modal">Cadastrar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          </div>
+          <div  ng-if="user._id">
+             <button type="button" ng-disabled="&& myForm.user.$invalid && myForm.pw.$invalid" ng-click="put(user._id)" class="btn btn-primary" data-dismiss="modal">Alterar</button>
+             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          </div>
+
         </div>
       </div>
     </div>

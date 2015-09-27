@@ -48,6 +48,21 @@ module.exports = function(app) {
 
         },
 
+        put: function(req, res) {
+          User.findOne({_id: req.params.id}, function(err, user) {
+              if (err) throw err;
+              user.name = req.body.name,
+              user.password = req.body.password,
+              user.login = req.body.login,
+              user.isLoginAble = req.body.isLoginAble,
+              user.roles = req.body.roles
+
+              user.save();
+              res.json({ success: true });
+          });
+
+        },
+
         edit: function( req, res ) {
               User.findOne({_id: req.params.id}, function(err, user){
                 res.json(user);
