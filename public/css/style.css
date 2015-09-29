@@ -70,6 +70,11 @@
 }
 
 .btn-load-more{
-	width: 130%;
+	width: 136.5%;
+}
+
+.btn-load-more-group{
+  margin-left: 27.33333333% !important;
+  margin-bottom: 25px;
 }
 
