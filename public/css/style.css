@@ -62,6 +62,7 @@
 
   display: flex;
   flex-wrap: wrap;
+  word-wrap: break-word;
 }
 
 .grid-item.last-item{
