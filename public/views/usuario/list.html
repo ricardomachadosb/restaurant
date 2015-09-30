@@ -3,6 +3,7 @@
   <ol class="breadcrumb">
     <button class="btn btn-small btn-primary" data-toggle="modal" data-target="#myModal" ng-click="new()"> Novo</button>
   </ol>
+  <div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
       <div class="row row-grid">
         <div class="col-md-2 grid-box" ng-repeat="user in userList">
             <div class="grid-item"> <span ><b>Nome:</b> </span>{{user.name}} </div>
@@ -23,6 +24,6 @@
                 CARREGAR MAIS
               </a>
        </div> -->
-       
+
 </div>
 <user-modal-directive></user-modal-directive>
