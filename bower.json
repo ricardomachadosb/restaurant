@@ -2,14 +2,14 @@
   "name": "starter-node-angular",
   "version": "1.0.0",
   "dependencies": {
-    "angular": "1.4.4",
-    "angular-animate": "1.4.4",
-    "angular-cookies": "1.4.4",
-    "angular-route": "1.4.4",
-    "animate.css": "3.4.0",
+    "angular": "~1.4.4",
+    "angular-animate": "~1.4.4",
+    "angular-cookies": "~1.4.4",
+    "angular-route": "~1.4.4",
+    "animate.css": "~3.4.0",
     "bootbox.js": "bootbox#~4.4.0",
-    "bootstrap": "3.3.5",
-    "font-awesome": "4.4.0",
-    "isteven-angular-multiselect": "angular-multi-select#4.0.0"
+    "bootstrap": "~3.3.5",
+    "font-awesome": "~4.4.0",
+    "isteven-angular-multiselect": "angular-multi-select#~4.0.0"
   }
 }
