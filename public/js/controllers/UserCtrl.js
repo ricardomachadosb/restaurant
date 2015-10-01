@@ -53,11 +53,16 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 		$http.delete('/api/user/remove/' + id, {headers: $rootScope.tokenHeader}).success(
 
 			function(res){
-				$scope.user = "";
-				$scope.list();
+          if(res.success){
+    				$scope.user = "";
+    				$scope.list();
 
-				$scope.messageClass = 'alert-success';
-				$scope.message = 'Usuário deletado';
+    				$scope.messageClass = 'alert-success';
+    				$scope.message = 'Usuário deletado';
+        }else {
+          $scope.messageClass = 'alert-danger';
+          $scope.message = res.message ? res.message : 'Problemas ao deletar Usuário';
+        }
 			}
 		).error(function(res){
 			$scope.messageClass = 'alert-danger';

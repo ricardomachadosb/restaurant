@@ -40,6 +40,10 @@ module.exports = function(app) {
         },
 
         remove: function(req, res) {
+          if(req.decoded._id == req.params.id){
+              res.json({ success: false, message: 'Não é possível excluir o proprio usuário'});
+              return;
+          }
           User.remove({_id: req.params.id}, function(err) {
               if (err) throw err;
               console.log('User deleted successfully');
