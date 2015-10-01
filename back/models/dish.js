@@ -6,8 +6,12 @@ module.exports = function(app){
 	// define our nerd model
 	// module.exports allows us to pass this to other files when it is called
 	return mongoose.model('Dish', {
-	    name : {type : String, default: ''},
-	    dirName : {type : String, default: ''},
-	    avgTime : {type : Number, default: ''}
+      cod : {type : Number},
+      price : {type : Number},
+      name : {type : String, default: ''},
+      description : {type : String, default: ''},
+	    avgTime : {type : Number},
+	    picture : {type : String, default: ''},
+      isVisible : {type : Boolean, default: true}
 	});
 }
