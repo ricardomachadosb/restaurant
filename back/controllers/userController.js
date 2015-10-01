@@ -70,7 +70,7 @@ module.exports = function(app) {
         },
 
         list: function(req, res) {
-          User.find({}, function(err, users) {
+          User.find().exec(function(err, users) {
             res.json(users);
           });
         }
