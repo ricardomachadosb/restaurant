@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Lista de Usuários</h1>
   <ol class="breadcrumb">
-    <button class="btn btn-small btn-primary" data-toggle="modal" data-target="#myModal" ng-click="new()"> Novo</button>
+    <button class="btn btn-small btn-primary" data-toggle="modal" data-target="#user-modal" ng-click="new()"> Novo</button>
   </ol>
   <div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
       <div class="row row-grid">
@@ -11,7 +11,7 @@
             <div class="grid-item"> <span><b>Habilitado:</b> </span>{{user.isLoginAble ?'Sim' : 'Não'}} </div>
              <div class="grid-item last-item"> <span ><b>Perfis:</b> </span><div class="label label-default label-role" ng-repeat-start="role in user.roles" ng-repeat-end> {{role.key}}</div></div>
             <p class="grid-buttons">
-              <a href="#" class="btn btn-grid btn-warning edit-item-grid" data-toggle="modal" data-target="#myModal" ng-click="edit(user._id)" role="button">
+              <a href="#" class="btn btn-grid btn-warning edit-item-grid" data-toggle="modal" data-target="#user-modal" ng-click="edit(user._id)" role="button">
                 <i class="glyphicon glyphicon-edit"></i>
               </a>
               <a href="#" class="btn btn-grid btn-danger" ng-click="remove(user._id)" confirmation-needed="Confirma exclusão do usuário?"role="button"><i class="glyphicon glyphicon-trash"></i></a>
