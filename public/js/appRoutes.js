@@ -15,8 +15,13 @@
         })
 
         .when('/usuarios', {
-            templateUrl: 'views/usuario/list.html',
+            templateUrl: 'views/user/list.html',
             controller: 'UserController'
+        })
+
+        .when('/pratos', {
+            templateUrl: 'views/dish/list.html',
+            controller: 'DishController'
         });
 
     $locationProvider.html5Mode(true);

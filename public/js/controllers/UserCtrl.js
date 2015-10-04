@@ -82,9 +82,7 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
           }
         }
       }
-      console.log($rootScope.allRoles);
 		});
-
 	};
 
 	$scope.list();
