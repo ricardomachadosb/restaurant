@@ -1,0 +1,68 @@
+<div class="modal fade" id="dish-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Cadastro de prato</h4>
+        </div>
+        <div class="modal-body">
+          <form style="width:400px;" autocomplete="off" name="myForm" novalidate>
+            <div class="form-group">
+              <label for="inputCode">Código</label>
+              <input type="text" name="code" class="form-control" id="inputCode" placeholder="Código" ng-model="dish.code" ng-minlength="2" required>
+              <span ng-show="myForm.code.$error.required">Preencha o campo Código.</span>
+              <span ng-show="myForm.code.$error.dish">Código inválido.</span>
+              <span ng-show="myForm.code.$error.minlength">Deve conter no minimo 2 caracteres.</span>
+            </div>
+            <div class="form-group">
+              <label for="inputName">Nome</label>
+              <input type="text" name="name" class="form-control" id="inputName" placeholder="Nome do Prato" ng-model="dish.prato" ng-minlength="4" required>
+              <span ng-show="myForm.name.$error.required">Preencha o campo Nome.</span>
+              <span ng-show="myForm.name.$error.dish">Nome inválido.</span>
+              <span ng-show="myForm.name.$error.minlength">Deve conter no minimo 4 caracteres.</span>
+            </div>
+            <div class="form-group">
+              <label for="inputDescription">Descrição</label>
+              <input type="text" name="description" class="form-control" id="inputDescription" placeholder="Descrição do Prato" ng-model="dish.description" ng-minlength="10">
+              <span ng-show="myForm.description.$error.required">Preencha o campo Descrição.</span>
+              <span ng-show="myForm.description.$error.dish">Descrição inválida.</span>
+              <span ng-show="myForm.description.$error.minlength">Deve conter no minimo 10 caracteres.</span>
+            </div>
+            <div class="form-group">
+              <label for="inputavgTime">Tempo médio de preparo (Minutos)</label>
+              <input type="text" name="avgTime" class="form-control" id="inputAvgTime" placeholder="Tempo médio" ng-model="dish.avgTime" ng-minlength="1" required ng-pattern="numberOnlyPattern">
+              <span ng-show="myForm.avgTime.$error.required">Preencha o campo Tempo Médio</span>
+              <span ng-show="myForm.avgTime.$error.dish">Tempo médio inválido.</span>
+              <span ng-show="myForm.avgTime.$error.minlength">Deve conter no minimo 1 caracter.</span>
+              <span ng-show="myForm.avgTime.$error.pattern">Tempo médio inválidoo.</span>
+            </div>
+            <div class="form-group">
+              <label for="inputValor">Valor</label>
+              <div class="input-group">
+                <span class="input-group-addon">R$</span>
+                <input type="text" name="valor" class="form-control" id="inputValor" placeholder="valor" ng-model="dish.valor" ng-minlength="1" required ng-pattern="currencyPattern">
+              </div>
+              <span ng-show="myForm.valor.$error.required">Preencha o campo Valor.</span>
+              <span ng-show="myForm.valor.$error.dish">Valor inválido.</span>
+              <span ng-show="myForm.valor.$error.minlength">Deve conter no minimo 1 caracter.</span>
+              <span ng-show="myForm.valor.$error.pattern">Valor inválido.</span>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="isVisible" id="inputIsVisible" ng-model="dish.isVisible">
+              <label for="inputIsVisible">Habilitado</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div  ng-if="!dish._id">
+            <button type="button" ng-disabled="myForm.$invalid" ng-click="add()" class="btn btn-primary" data-dismiss="modal">Cadastrar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          </div>
+          <div  ng-if="dish._id">
+             <button type="button" ng-disabled="myForm.$invalid" ng-click="put(dish._id)" class="btn btn-primary" data-dismiss="modal">Alterar</button>
+             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
