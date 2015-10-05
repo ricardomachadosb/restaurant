@@ -22,6 +22,11 @@
         .when('/pratos', {
             templateUrl: 'views/dish/list.html',
             controller: 'DishController'
+        })
+
+        .when('/bebidas', {
+            templateUrl: 'views/drink/list.html',
+            controller: 'DrinkController'
         });
 
     $locationProvider.html5Mode(true);

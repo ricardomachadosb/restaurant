@@ -1,0 +1,61 @@
+<div class="modal fade" id="drink-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Cadastro de prato</h4>
+        </div>
+        <div class="modal-body">
+          <form style="width:400px;" autocomplete="off" name="myForm" novalidate>
+            <div class="form-group">
+              <label for="inputCode">Código</label>
+              <input type="text" name="code" class="form-control" id="inputCode" placeholder="Código" ng-model="drink.code" ng-minlength="2" ng-pattern="numberOnlyPattern" required>
+              <span ng-show="myForm.code.$error.required">Preencha o campo Código.</span>
+              <span ng-show="myForm.code.$error.drink">Código inválido.</span>
+              <span ng-show="myForm.code.$error.minlength">Deve conter no minimo 2 caracteres.</span>
+              <span ng-show="myForm.valor.$error.pattern">Valor inválido.</span>
+            </div>
+            <div class="form-group">
+              <label for="inputName">Nome</label>
+              <input type="text" name="name" class="form-control" id="inputName" placeholder="Nome da bebida" ng-model="drink.bebida" ng-minlength="4" required>
+              <span ng-show="myForm.name.$error.required">Preencha o campo Nome.</span>
+              <span ng-show="myForm.name.$error.drink">Nome inválido.</span>
+              <span ng-show="myForm.name.$error.minlength">Deve conter no minimo 4 caracteres.</span>
+            </div>
+            <div class="form-group">
+              <label for="inputDescription">Descrição</label>
+              <input type="text" name="description" class="form-control" id="inputDescription" placeholder="Descrição da bebida" ng-model="drink.description" ng-minlength="10">
+              <span ng-show="myForm.description.$error.required">Preencha o campo Descrição.</span>
+              <span ng-show="myForm.description.$error.drink">Descrição inválida.</span>
+              <span ng-show="myForm.description.$error.minlength">Deve conter no minimo 10 caracteres.</span>
+            </div>
+            <div class="form-group">
+              <label for="inputValor">Valor</label>
+              <div class="input-group">
+                <span class="input-group-addon">R$</span>
+                <input type="text" name="valor" class="form-control" id="inputValor" placeholder="valor" ng-model="drink.valor" ng-minlength="1" required ng-pattern="currencyPattern">
+              </div>
+              <span ng-show="myForm.valor.$error.required">Preencha o campo Valor.</span>
+              <span ng-show="myForm.valor.$error.drink">Valor inválido.</span>
+              <span ng-show="myForm.valor.$error.minlength">Deve conter no minimo 1 caracter.</span>
+              <span ng-show="myForm.valor.$error.pattern">Valor inválido.</span>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="isVisible" id="inputIsVisible" ng-model="drink.isVisible">
+              <label for="inputIsVisible">Habilitado</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div  ng-if="!drink._id">
+            <button type="button" ng-disabled="myForm.$invalid" ng-click="add()" class="btn btn-primary" data-dismiss="modal">Cadastrar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          </div>
+          <div  ng-if="drink._id">
+             <button type="button" ng-disabled="myForm.$invalid" ng-click="put(drink._id)" class="btn btn-primary" data-dismiss="modal">Alterar</button>
+             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
