@@ -9,14 +9,15 @@
           <form style="width:400px;" autocomplete="off" name="myForm" novalidate>
             <div class="form-group">
               <label for="inputCode">Código</label>
-              <input type="text" name="code" class="form-control" id="inputCode" placeholder="Código" ng-model="dish.code" ng-minlength="2" required>
+              <input type="text" name="code" class="form-control" id="inputCode" placeholder="Código" ng-model="dish.code" ng-minlength="2" required ng-pattern="numberOnlyPattern">
               <span ng-show="myForm.code.$error.required">Preencha o campo Código.</span>
               <span ng-show="myForm.code.$error.dish">Código inválido.</span>
               <span ng-show="myForm.code.$error.minlength">Deve conter no minimo 2 caracteres.</span>
+              <span ng-show="myForm.code.$error.pattern">Código inválido.</span>
             </div>
             <div class="form-group">
               <label for="inputName">Nome</label>
-              <input type="text" name="name" class="form-control" id="inputName" placeholder="Nome do Prato" ng-model="dish.prato" ng-minlength="4" required>
+              <input type="text" name="name" class="form-control" id="inputName" placeholder="Nome do Prato" ng-model="dish.name" ng-minlength="4" required>
               <span ng-show="myForm.name.$error.required">Preencha o campo Nome.</span>
               <span ng-show="myForm.name.$error.dish">Nome inválido.</span>
               <span ng-show="myForm.name.$error.minlength">Deve conter no minimo 4 caracteres.</span>
@@ -40,12 +41,12 @@
               <label for="inputValor">Valor</label>
               <div class="input-group">
                 <span class="input-group-addon">R$</span>
-                <input type="text" name="valor" class="form-control" id="inputValor" placeholder="valor" ng-model="dish.valor" ng-minlength="1" required ng-pattern="currencyPattern">
+                <input type="text" name="price" class="form-control" id="inputValor" placeholder="Valor" ng-model="dish.price" ng-minlength="1" required ng-pattern="currencyPattern">
               </div>
-              <span ng-show="myForm.valor.$error.required">Preencha o campo Valor.</span>
-              <span ng-show="myForm.valor.$error.dish">Valor inválido.</span>
-              <span ng-show="myForm.valor.$error.minlength">Deve conter no minimo 1 caracter.</span>
-              <span ng-show="myForm.valor.$error.pattern">Valor inválido.</span>
+              <span ng-show="myForm.price.$error.required">Preencha o campo Valor.</span>
+              <span ng-show="myForm.price.$error.dish">Valor inválido.</span>
+              <span ng-show="myForm.price.$error.minlength">Deve conter no minimo 1 caracter.</span>
+              <span ng-show="myForm.price.$error.pattern">Valor inválido.</span>
             </div>
             <div class="form-group">
               <input type="checkbox" name="isVisible" id="inputIsVisible" ng-model="dish.isVisible">

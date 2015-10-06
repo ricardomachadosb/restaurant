@@ -4,5 +4,21 @@
 	    <button class="btn btn-small btn-primary" data-toggle="modal" data-target="#dish-modal" ng-click="new()"> Novo</button>
 	 </ol>
 	 <div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
+   <div class="row row-grid">
+    <div class="col-md-2 grid-box" ng-repeat="dish in dishList">
+        <div class="grid-item"> <span ><b>Código:</b> </span>{{dish.code}} </div>
+        <div class="grid-item"> <span><b>Nome:</b> </span>{{dish.name}}  </div>
+        <div class="grid-item"> <span><b>Descrição:</b> </span>{{dish.description}}  </div>
+        <div class="grid-item"> <span><b>Tempo Médio:</b> </span>{{dish.avgTime}}  </div>
+        <div class="grid-item"> <span><b>Valor:</b> </span>{{dish.price}}  </div>
+        <div class="grid-item last-item"> <span><b>Habilitado:</b> </span>{{dish.isVisible ?'Sim' : 'Não'}} </div>
+        <p class="grid-buttons">
+          <a href="#" class="btn btn-grid btn-warning edit-item-grid" data-toggle="modal" data-target="#dish-modal" ng-click="edit(dish._id)" role="button">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a href="#" class="btn btn-grid btn-danger" ng-click="remove(dish._id)" confirmation-needed="Confirma exclusão do prato?"role="button"><i class="glyphicon glyphicon-trash"></i></a>
+        </p>
+    </div>
+   </div>
 </div>
 <dish-modal-directive></dish-modal-directive>
