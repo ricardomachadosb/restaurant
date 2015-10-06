@@ -30,5 +30,26 @@ angular.module('DishCtrl', []).controller('DishController', function($scope, $ht
     });
   };
 
+  $scope.remove = function( id ){
+    $http.delete('/api/dish/remove/' + id, {headers: $rootScope.tokenHeader}).success(
+
+      function(res){
+          if(res.success){
+            $scope.dish = "";
+            $scope.list();
+
+            $scope.messageClass = 'alert-success';
+            $scope.message = 'Prato deletado';
+        }else {
+          $scope.messageClass = 'alert-danger';
+          $scope.message = res.message ? res.message : 'Problemas ao deletar Prato';
+        }
+      }
+    ).error(function(res){
+      $scope.messageClass = 'alert-danger';
+      $scope.message = 'Problemas ao deletar Prato';
+    });
+  };
+
   $scope.list();
 });

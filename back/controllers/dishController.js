@@ -11,23 +11,32 @@ module.exports = function(app) {
       },
 
       create: function(req, res) {
-            var dish = new Dish({
-              code: req.body.code,
-              price: req.body.price,
-              name: req.body.name,
-              description: req.body.description,
-              avgTime: req.body.avgTime,
-              picture: req.body.picture,
-              isVisible: req.body.isVisible,
-            });
+        var dish = new Dish({
+          code: req.body.code,
+          price: req.body.price,
+          name: req.body.name,
+          description: req.body.description,
+          avgTime: req.body.avgTime,
+          picture: req.body.picture,
+          isVisible: req.body.isVisible,
+        });
 
-            dish.save(function(err) {
-              if (err) throw err;
+        dish.save(function(err) {
+          if (err) throw err;
 
-              console.log('Dish saved successfully');
-              res.json({ success: true });
-            });
-        }
+          console.log('Dish saved successfully');
+          res.json({ success: true });
+        });
+      },
+
+      remove: function(req, res) {
+        Dish.remove({_id: req.params.id}, function(err) {
+            if (err) throw err;
+            console.log('Prato deleted successfully');
+            res.json({ success: true });
+        });
+
+      }
     }
 
     return DishController;
