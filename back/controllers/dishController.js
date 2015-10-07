@@ -35,7 +35,12 @@ module.exports = function(app) {
             console.log('Prato deleted successfully');
             res.json({ success: true });
         });
+      },
 
+      edit: function(req, res ) {
+        Dish.findOne({_id: req.params.id}, function(err, dish){
+          res.json(dish);
+        });
       }
     }
 

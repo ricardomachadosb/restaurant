@@ -51,5 +51,11 @@ angular.module('DishCtrl', []).controller('DishController', function($scope, $ht
     });
   };
 
+  $scope.edit = function( e ){
+    $http.get('/api/dish/edit/' + e, {headers: $rootScope.tokenHeader}).success(function(res){
+      $scope.dish = res;
+    });
+  };
+
   $scope.list();
 });
