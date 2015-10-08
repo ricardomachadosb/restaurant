@@ -6,5 +6,5 @@ module.exports = function(app) {
   app.delete('/api/dish/remove/:id',authController.checkAuth,  dishController.remove);
   app.get('/api/dish/list', authController.checkAuth, dishController.list);
   app.get('/api/dish/edit/:id', authController.checkAuth, dishController.edit);
-  //app.put('/api/dish/put/:id', authController.checkAuth, dishController.put);
+  app.put('/api/dish/put/:id', authController.checkAuth, dishController.put);
 };

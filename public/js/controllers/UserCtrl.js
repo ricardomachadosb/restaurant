@@ -45,9 +45,9 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
 			}
 		).error(function(res){
 			$scope.messageClass = 'alert-danger';
-			$scope.message = 'Problemas ao cadastrar usuário';
+			$scope.message = 'Problemas ao editar usuário';
 		});
-	}
+	};
 
 	$scope.remove = function( id ){
 		$http.delete('/api/user/remove/' + id, {headers: $rootScope.tokenHeader}).success(

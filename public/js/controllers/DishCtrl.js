@@ -51,9 +51,25 @@ angular.module('DishCtrl', []).controller('DishController', function($scope, $ht
     });
   };
 
-  $scope.edit = function( e ){
+  $scope.edit = function(e){
     $http.get('/api/dish/edit/' + e, {headers: $rootScope.tokenHeader}).success(function(res){
       $scope.dish = res;
+    });
+  };
+
+  $scope.put = function(id){
+    $http.put('/api/dish/put/' + id, $scope.dish, {headers: $rootScope.tokenHeader}).success(
+
+      function(res){
+        $scope.dish = "";
+        $scope.list();
+
+        $scope.messageClass = 'alert-success';
+        $scope.message = 'Prato alterado';
+      }
+    ).error(function(res){
+      $scope.messageClass = 'alert-danger';
+      $scope.message = 'Problemas ao editar prato';
     });
   };
 

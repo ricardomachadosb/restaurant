@@ -18,7 +18,7 @@ module.exports = function(app) {
           description: req.body.description,
           avgTime: req.body.avgTime,
           picture: req.body.picture,
-          isVisible: req.body.isVisible,
+          isVisible: req.body.isVisible
         });
 
         dish.save(function(err) {
@@ -40,6 +40,22 @@ module.exports = function(app) {
       edit: function(req, res ) {
         Dish.findOne({_id: req.params.id}, function(err, dish){
           res.json(dish);
+        });
+      },
+
+      put: function(req, res) {
+        Dish.findOne({_id: req.params.id}, function(err, dish) {
+            if (err) throw err;
+            dish.code = req.body.code;
+            dish.price = req.body.price;
+            dish.name = req.body.name;
+            dish.description = req.body.description;
+            dish.avgTime = req.body.avgTime;
+            dish.picture = req.body.picture;
+            dish.isVisible = req.body.isVisible;
+
+            dish.save();
+            res.json({ success: true });
         });
       }
     }
