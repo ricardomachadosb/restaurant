@@ -7,6 +7,6 @@ module.exports = function(app){
       name : {type : String, default: ''},
       description : {type : String, default: ''},
 	  picture : {type : String, default: ''},
-      isVisible : {type : Boolean, default: true}
+      isVisible : {type : Boolean, default: false}
 	});
 }

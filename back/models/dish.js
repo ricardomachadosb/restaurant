@@ -12,6 +12,6 @@ module.exports = function(app){
       description : {type : String, default: ''},
 	    avgTime : {type : Number},
 	    picture : {type : String, default: ''},
-      isVisible : {type : Boolean, default: true}
+      isVisible : {type : Boolean, default: false}
 	});
 }

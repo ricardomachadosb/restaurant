@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
               <label for="inputName">Nome</label>
-              <input type="text" name="name" class="form-control" id="inputName" placeholder="Nome da bebida" ng-model="drink.bebida" ng-minlength="4" required>
+              <input type="text" name="name" class="form-control" id="inputName" placeholder="Nome da bebida" ng-model="drink.name" ng-minlength="4" required>
               <span ng-show="myForm.name.$error.required">Preencha o campo Nome.</span>
               <span ng-show="myForm.name.$error.drink">Nome inválido.</span>
               <span ng-show="myForm.name.$error.minlength">Deve conter no minimo 4 caracteres.</span>
@@ -33,7 +33,7 @@
               <label for="inputValor">Valor</label>
               <div class="input-group">
                 <span class="input-group-addon">R$</span>
-                <input type="text" name="valor" class="form-control" id="inputValor" placeholder="valor" ng-model="drink.valor" ng-minlength="1" required ng-pattern="currencyPattern">
+                <input type="text" name="valor" class="form-control" id="inputValor" placeholder="valor" ng-model="drink.price" ng-minlength="1" required ng-pattern="currencyPattern">
               </div>
               <span ng-show="myForm.valor.$error.required">Preencha o campo Valor.</span>
               <span ng-show="myForm.valor.$error.drink">Valor inválido.</span>

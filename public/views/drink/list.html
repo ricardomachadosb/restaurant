@@ -3,20 +3,21 @@
 	 <ol class="breadcrumb">
 	    <button class="btn btn-small btn-primary" data-toggle="modal" data-target="#drink-modal" ng-click="new()"> Novo</button>
 	 </ol>
-	 <div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
-	       <div class="row row-grid">
-        <div class="col-md-2 grid-box" ng-repeat="drink in drinkList">
-            <div class="grid-item"> <span ><b>Nome:</b> </span>{{user.name}} </div>
-            <div class="grid-item"> <span><b>Login:</b> </span>{{user.login}}  </div>
-            <div class="grid-item"> <span><b>Habilitado:</b> </span>{{user.isLoginAble ?'Sim' : 'Não'}} </div>
-             <div class="grid-item last-item"> <span ><b>Perfis:</b> </span><div class="label label-default label-role" ng-repeat-start="role in user.roles" ng-repeat-end> {{role.key}}</div></div>
-            <p class="grid-buttons">
-              <a href="#" class="btn btn-grid btn-warning edit-item-grid" data-toggle="modal" data-target="#user-modal" ng-click="edit(user._id)" role="button">
-                <i class="glyphicon glyphicon-edit"></i>
-              </a>
-              <a href="#" class="btn btn-grid btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
-            </p>
-        </div>
-      </div>
+   <div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
+   <div class="row row-grid">
+    <div class="col-md-2 grid-box" ng-repeat="drink in drinkList">
+        <div class="grid-item"> <span ><b>Código:</b> </span>{{drink.code}} </div>
+        <div class="grid-item"> <span><b>Nome:</b> </span>{{drink.name}}  </div>
+        <div class="grid-item"> <span><b>Descrição:</b> </span>{{drink.description}}  </div>
+        <div class="grid-item"> <span><b>Valor:</b> </span>{{drink.price}}  </div>
+        <div class="grid-item last-item"> <span><b>Habilitado:</b> </span>{{drink.isVisible ?'Sim' : 'Não'}}  </div>
+        <p class="grid-buttons">
+          <a href="#" class="btn btn-grid btn-warning edit-item-grid" data-toggle="modal" data-target="#drink-modal" ng-click="edit(drink._id)" role="button">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a href="#" class="btn btn-grid btn-danger" ng-click="remove(drink._id)" confirmation-needed-drink="Confirma exclusão do prato?"role="button"><i class="glyphicon glyphicon-trash"></i></a>
+        </p>
+    </div>
+   </div>
 </div>
 <drink-modal-directive></drink-modal-directive>
