@@ -9,6 +9,7 @@
         <div class="grid-item"> <span ><b>Código:</b> </span>{{drink.code}} </div>
         <div class="grid-item"> <span><b>Nome:</b> </span>{{drink.name}}  </div>
         <div class="grid-item"> <span><b>Descrição:</b> </span>{{drink.description}}  </div>
+        <div class="grid-item"> <span><b>Descrição:</b> </span><img  ng-src="{{drink.picture[0]}}" />  </div>
         <div class="grid-item"> <span><b>Valor:</b> </span>{{drink.price}}  </div>
         <div class="grid-item last-item"> <span><b>Habilitado:</b> </span>{{drink.isVisible ?'Sim' : 'Não'}}  </div>
         <p class="grid-buttons">
