@@ -6,13 +6,14 @@
           <h4 class="modal-title" id="myModalLabel">Cadastro de prato</h4>
         </div>
         <div class="modal-body">
-          <form style="width:400px;" autocomplete="off" name="myForm" novalidate>
+          <form style="width:400px;" autocomplete="off" name="myForm" id="myForm" novalidate>
             <div class="form-group">
               <label for="inputCode">Código</label>
-              <input type="text" name="code" class="form-control" id="inputCode" placeholder="Código" ng-model="drink.code" ng-minlength="2" ng-pattern="numberOnlyPattern" required>
+              <input type="text" name="code" class="form-control" id="inputCode" placeholder="Código" ng-model="drink.code" ng-minlength="2" ng-maxlength="3" ng-pattern="numberOnlyPattern" required>
               <span ng-show="myForm.code.$error.required">Preencha o campo Código.</span>
               <span ng-show="myForm.code.$error.drink">Código inválido.</span>
               <span ng-show="myForm.code.$error.minlength">Deve conter no minimo 2 caracteres.</span>
+              <span ng-show="myForm.code.$error.maxlength">Deve conter no máximo 3 caracteres.</span>
               <span ng-show="myForm.valor.$error.pattern">Valor inválido.</span>
             </div>
             <div class="form-group">
@@ -33,11 +34,12 @@
               <label for="inputValor">Valor</label>
               <div class="input-group">
                 <span class="input-group-addon">R$</span>
-                <input type="text" name="valor" class="form-control" id="inputValor" placeholder="valor" ng-model="drink.price" ng-minlength="1" required ng-pattern="currencyPattern">
+                <input type="text" name="valor" class="form-control" id="inputValor" placeholder="valor" ng-model="drink.price" ng-minlength="1" ng-maxlength="5" required ng-pattern="currencyPattern">
               </div>
               <span ng-show="myForm.valor.$error.required">Preencha o campo Valor.</span>
               <span ng-show="myForm.valor.$error.drink">Valor inválido.</span>
               <span ng-show="myForm.valor.$error.minlength">Deve conter no minimo 1 caracter.</span>
+              <span ng-show="myForm.valor.$error.maxlength">Deve conter no máximo 5 caracteres</span>
               <span ng-show="myForm.valor.$error.pattern">Valor inválido.</span>
             </div>
             <div class="form-group">
@@ -46,7 +48,7 @@
             </div>
             <div class="form-group">
               <label for="picture">Imagem</label><br />
-              <img class="imageConfigs" ng-src="{{imageSrc}}" /><br />
+              <img class="imageConfigs" ng-src="{{drink.picture[0]}}" /><br />
               <input type="file" name="picture" ng-model='drink.picture' ng-file-select="onFileSelect($files)" >
             </div>
           </form>

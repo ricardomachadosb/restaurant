@@ -40,6 +40,26 @@ module.exports = function(app) {
         });
       },
 
+      edit: function(req, res ) {
+        Drink.findOne({_id: req.params.id}, function(err, drink){
+          res.json(drink);
+        });
+      },
+
+      put: function(req, res) {
+        Drink.findOne({_id: req.params.id}, function(err, drink) {
+            if (err) throw err;
+            drink.code = req.body.code;
+            drink.price = req.body.price;
+            drink.name = req.body.name;
+            drink.description = req.body.description;
+            drink.picture = req.body.picture;
+            drink.isVisible = req.body.isVisible;
+            drink.save();
+            res.json({ success: true });
+        });
+      }
+
     }
 
     return DrinkController;
