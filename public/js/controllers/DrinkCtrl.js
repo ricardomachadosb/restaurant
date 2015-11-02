@@ -1,10 +1,10 @@
 
 angular.module('DrinkCtrl', ['ImageService']).controller('DrinkController', function($scope, $http, $rootScope, fileReader){
-
+  $scope.currentPage = 0;
   $scope.list = function(){
     $scope.drink = {};
-    $http.get('/api/drink/list', {headers: $rootScope.tokenHeader}).success(function(res){
-      $scope.drinkList = res;
+    $http.get('/api/drink/list/' + $scope.currentPage, {headers: $rootScope.tokenHeader}).success(function(res){
+      $scope.currentPage === 0 ? $scope.drinkList = res : $scope.drinkList = $scope.drinkList.concat(res);
     }).error(function(res){
       console.log(res);
     });
@@ -18,6 +18,7 @@ angular.module('DrinkCtrl', ['ImageService']).controller('DrinkController', func
     $http.post('/api/drink/create', $scope.drink, {headers: $rootScope.tokenHeader}).success(
       function(res){
         $scope.drink = "";
+        $scope.currentPage = 0;
         $scope.list();
 
         $scope.messageClass = 'alert-success';
@@ -31,10 +32,10 @@ angular.module('DrinkCtrl', ['ImageService']).controller('DrinkController', func
 
   $scope.remove = function( id ){
     $http.delete('/api/drink/remove/' + id, {headers: $rootScope.tokenHeader}).success(
-
       function(res){
         if(res.success){
           $scope.drink = "";
+          $scope.currentPage = 0;
           $scope.list();
 
           $scope.messageClass = 'alert-success';
@@ -53,7 +54,6 @@ angular.module('DrinkCtrl', ['ImageService']).controller('DrinkController', func
   $scope.edit = function(e){
     console.log("veio ate aqui" + e);
     $http.get('/api/drink/edit/' + e, {headers: $rootScope.tokenHeader}).success(function(res){
-      console.log(res);
       $scope.drink = res;
     });
   };
@@ -84,6 +84,11 @@ angular.module('DrinkCtrl', ['ImageService']).controller('DrinkController', func
   $scope.$on("fileProgress", function(e, progress) {
     $scope.progress = progress.loaded / progress.total;
   });
+
+  $scope.loadMore = function() {
+    $scope.currentPage += 1;
+    $scope.list();
+  };
 
   $scope.list();
 
