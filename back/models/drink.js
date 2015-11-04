@@ -12,7 +12,7 @@ module.exports = function(app){
 //new mongoose.Schema({ _user: Mixed })
 	
 	return mongoose.model('Drink', {
-      code : {type : Number},
+      code : {type : String},
       price : {type : Number},
       name : {type : String, default: ''},
       description : {type : String, default: ''},
