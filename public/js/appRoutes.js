@@ -27,6 +27,11 @@
         .when('/bebidas', {
             templateUrl: 'views/drink/list.html',
             controller: 'DrinkController'
+        })
+
+        .when('/mesas', {
+            templateUrl: 'views/table/list.html',
+            controller: 'TableController'
         });
 
     $locationProvider.html5Mode(true);

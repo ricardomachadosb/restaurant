@@ -85,3 +85,14 @@
 .imageConfigs {
   max-width: 100%;
 }
+
+.lol {
+  background-image: url("../img/table.jpg");
+  background-size: 100% 100%;
+  height: 160px;
+}
+
+.lol2 {
+  padding-top: 55px;
+  padding-left: 60px;
+}

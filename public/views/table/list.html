@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Lista de Usuários</h1>
+  <ol class="breadcrumb">
+    <button class="btn btn-small btn-primary" data-toggle="modal" data-target="#table-modal" ng-click="new()"> Novo</button>
+  </ol>
+  <div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
+  <div class="row row-grid">
+    <div class="col-md-2 grid-box lol" ng-repeat="table in tableList">
+         <div class="grid-item last-item lol2"> <span><b>Código:</b> </span>{{table.code}}  </div>
+        <p class="grid-buttons">
+          <a href="#" class="btn btn-grid btn-warning edit-item-grid" data-toggle="modal" data-target="#table-modal" ng-click="edit(table._id)" role="button">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a href="#" class="btn btn-grid btn-danger" ng-click="remove(table._id)" confirmation-needed-table="Confirma exclusão da mesa?"role="button"><i class="glyphicon glyphicon-trash"></i></a>
+        </p>
+    </div>
+  </div>
+</div>
+<table-modal-directive></table-modal-directive>

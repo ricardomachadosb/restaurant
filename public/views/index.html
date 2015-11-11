@@ -25,14 +25,17 @@
     <script src="js/controllers/UserCtrl.js"></script>
     <script src="js/controllers/DishCtrl.js"></script>
     <script src="js/controllers/DrinkCtrl.js"></script>
+    <script src="js/controllers/TableCtrl.js"></script>
     <script src="js/services/ImageService.js"></script>
     <script src="js/appRoutes.js"></script>
     <script src="js/directives/user/modal.js"></script>
     <script src="js/directives/dish/modal.js"></script>
     <script src="js/directives/drink/modal.js"></script>
+    <script src="js/directives/table/modal.js"></script>
     <script src="js/directives/user/confirmationNeeded.js"></script>
     <script src="js/directives/dish/confirmationNeeded.js"></script>
     <script src="js/directives/drink/confirmationNeeded.js"></script>
+    <script src="js/directives/table/confirmationNeeded.js"></script>
     <script src="js/directives/util/Image.js"></script>
     <script src="js/app.js"></script>
 
@@ -53,6 +56,7 @@
             <li ng-show="authenticated" class="slow-effect ng-hide"><a href="/usuarios">Usuários</a></li>
             <li ng-show="authenticated" class="slow-effect ng-hide"><a href="/pratos">Pratos</a></li>
             <li ng-show="authenticated" class="slow-effect ng-hide"><a href="/bebidas">Bebidas</a></li>
+            <li ng-show="authenticated" class="slow-effect ng-hide"><a href="/mesas">Mesas</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li ng-show="!authenticated" class="dropdown slow-effect" id="menuLogin">

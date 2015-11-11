@@ -1,0 +1,37 @@
+<div class="modal fade" id="table-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Cadastro de mesa</h4>
+        </div>
+        <div class="modal-body">
+          <form style="width:400px;" autocomplete="off" name="myForm" id="myForm" novalidate>
+            <div class="form-group">
+              <label for="inputCode">Código</label>
+              <input type="text" name="code" class="form-control" id="inputCode" placeholder="Código" ng-model="table.code" ng-minlength="2" ng-maxlength="3" ng-pattern="numberOnlyPattern" required>
+              <span ng-show="myForm.code.$error.required">Preencha o campo Código.</span>
+              <span ng-show="myForm.code.$error.table">Código inválido.</span>
+              <span ng-show="myForm.code.$error.minlength">Deve conter no minimo 2 caracteres.</span>
+              <span ng-show="myForm.code.$error.maxlength">Deve conter no máximo 3 caracteres.</span>
+              <span ng-show="myForm.valor.$error.pattern">Valor inválido.</span>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" name="isVisible" id="inputIsVisible" ng-model="table.isVisible">
+              <label for="inputIsVisible">Habilitado</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div  ng-if="!table._id">
+            <button type="button" ng-disabled="myForm.$invalid" ng-click="add()" class="btn btn-primary" data-dismiss="modal">Cadastrar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          </div>
+          <div  ng-if="table._id">
+             <button type="button" ng-disabled="myForm.$invalid" ng-click="put(table._id)" class="btn btn-primary" data-dismiss="modal">Alterar</button>
+             <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
