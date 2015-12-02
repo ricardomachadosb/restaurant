@@ -1,4 +1,4 @@
-angular.module('DrinkCtrl').directive('ngFileSelect', function () {
+var fileFunctions = function () {
   return {
     link: function(scope, element){
         element.bind("change", function(e){
@@ -9,4 +9,8 @@ angular.module('DrinkCtrl').directive('ngFileSelect', function () {
     }
 
   }
-});
+};
+
+angular.module('DishCtrl').directive('ngFileSelect', fileFunctions);
+angular.module('DrinkCtrl').directive('ngFileSelect', fileFunctions);
+

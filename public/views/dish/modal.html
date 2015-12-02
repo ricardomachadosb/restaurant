@@ -6,7 +6,7 @@
           <h4 class="modal-title" id="myModalLabel">Cadastro de prato</h4>
         </div>
         <div class="modal-body">
-          <form style="width:400px;" autocomplete="off" name="myForm" novalidate>
+          <form style="width:400px;" autocomplete="off" name="myForm" id="myForm" novalidate>
             <div class="form-group">
               <label for="inputCode">Código</label>
               <input type="text" name="code" class="form-control" id="inputCode" placeholder="Código" ng-model="dish.code" ng-minlength="2" required ng-pattern="numberOnlyPattern">
