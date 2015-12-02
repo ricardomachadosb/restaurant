@@ -11,7 +11,7 @@ angular.module('DishCtrl', ['ImageService']).controller('DishController', functi
   };
 
   $scope.new = function(){
-    $scope.dish = "";
+    $scope.dish = {};
   };
 
   $scope.add = function(){
