@@ -52,6 +52,11 @@
               <input type="checkbox" name="isVisible" id="inputIsVisible" ng-model="dish.isVisible">
               <label for="inputIsVisible">Habilitado</label>
             </div>
+            <div class="form-group">
+              <label for="picture">Imagem</label><br/> 
+              <img class="imageConfigs" ng-src="{{dish.picture[0]}}" /><br />
+              <input type="file" name="picture" ng-model='dish.picture' ng-file-select="onFileSelect($files)" >
+            </div>
           </form>
         </div>
         <div class="modal-footer">

@@ -24,7 +24,6 @@ module.exports = function(app) {
   },
 
   create: function(req, res) {
-    console.log(req.body.picture);
     //var buffer = new Buffer(req.body.picture[0], 'base64');
     //  fs.writeFile("arghhhh.jpg", buffer, function(err) {console.log(err);});
     var drink = new Drink({

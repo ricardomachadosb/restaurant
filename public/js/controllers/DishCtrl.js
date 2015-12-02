@@ -1,5 +1,5 @@
 
-angular.module('DishCtrl', []).controller('DishController', function($scope, $http, $rootScope){
+angular.module('DishCtrl', ['ImageService']).controller('DishController', function($scope, $http, $rootScope, fileReader){
 
   $scope.list = function(){
     $scope.dish = "";
@@ -16,7 +16,7 @@ angular.module('DishCtrl', []).controller('DishController', function($scope, $ht
 
   $scope.add = function(){
     $http.post('/api/dish/create', $scope.dish, {headers: $rootScope.tokenHeader}).success(
-
+ 
       function(res){
         $scope.dish = "";
         $scope.list();
@@ -72,6 +72,18 @@ angular.module('DishCtrl', []).controller('DishController', function($scope, $ht
       $scope.message = 'Problemas ao editar prato';
     });
   };
+
+  $scope.getFile = function () {
+    $scope.progress = 0;
+    fileReader.readAsDataUrl($scope.file, $scope)
+    .then(function(result) {
+      $scope.dish.picture = [result];
+    });
+  };
+
+  $scope.$on("fileProgress", function(e, progress) {
+    $scope.progress = progress.loaded / progress.total;
+  });
 
   $scope.list();
 });

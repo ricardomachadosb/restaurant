@@ -10,8 +10,8 @@ module.exports = function(app){
       price : {type : Number},
       name : {type : String, default: ''},
       description : {type : String, default: ''},
-	    avgTime : {type : Number},
-	    picture : {type : String, default: ''},
+	  avgTime : {type : Number},
+	  picture : [],
       isVisible : {type : Boolean, default: false}
 	});
 }
