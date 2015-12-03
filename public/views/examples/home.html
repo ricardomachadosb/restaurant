@@ -1,5 +1,27 @@
-<div class="jumbotron text-center">
-    <h1>Home Page 4 Life</h1>
 
-    <p>{{ tagline }}</p>
-</div>
+<ul class="nav navbar-nav navbar-center">
+	<li ng-show="!authenticated" class="dropdown slow-effect" id="menuLogin">
+    <!--<a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Login</a>
+    <div class="dropdown-menu" style="padding:17px;">-->
+     <form style="width:250px;">
+        <div class="form-group">
+            <div class="inner-addon left-addon">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <input type="text" class="form-control" id="inputEmail" placeholder="Usuário" ng-model="login.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="inner-addon left-addon">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                <input type="password" class="form-control" id="inputPassword" placeholder="Senha" ng-model="login.password">
+            </div>
+        </div>
+        <p ng-show="authError" class="ng-hide text-danger"><b>Usuário ou senha inexistente</b></p>
+        <div class="checkbox">
+            <label style="font-weight:bold"><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit" class="btn btn-warning" ng-click="auth()">Login</button>
+      </form>
+    </div>
+  </li>
+</ul>

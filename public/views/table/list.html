@@ -1,19 +1,38 @@
 <div class="container">
-  <h1>Lista de Usuários</h1>
-  <ol class="breadcrumb">
-    <button class="btn btn-small btn-primary" data-toggle="modal" data-target="#table-modal" ng-click="new()"> Novo</button>
-  </ol>
+  <h1>Listagem de Mesas</h1>
+    
+  <button class="btn btn-small btn-success" data-toggle="modal" data-target="#table-modal" ng-click="new()">
+      Adicionar mesa
+  </button>
+
   <div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
-  <div class="row row-grid">
-    <div class="col-md-2 grid-box lol" ng-repeat="table in tableList">
-         <div class="grid-item last-item lol2"> <span><b>Código:</b> </span>{{table.code}}  </div>
-        <p class="grid-buttons">
-          <a href="#" class="btn btn-grid btn-warning edit-item-grid" data-toggle="modal" data-target="#table-modal" ng-click="edit(table._id)" role="button">
-            <i class="glyphicon glyphicon-edit"></i>
-          </a>
-          <a href="#" class="btn btn-grid btn-danger" ng-click="remove(table._id)" confirmation-needed-table="Confirma exclusão da mesa?"role="button"><i class="glyphicon glyphicon-trash"></i></a>
-        </p>
+    <div class="row row-grid">
+      <div class="col-md-2 grid-box lol" ng-repeat="table in tableList" style="border: 0 none;">
+
+        <br />
+        <div class="grid-item-buttom">
+         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="border: 0 none; background:transparent;">
+         <span class="glyphicon glyphicon-align-justify"></span>
+          <span class="caret"></span>
+        </button>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li>
+              <a href="#" class="btn btn-grid edit-item-grid" data-toggle="modal" data-target="#table-modal" ng-click="edit(table._id)" role="button">Editar</a>
+            </li>
+            <li>
+              <a href="#" class="btn btn-grid" ng-click="remove(table._id)" confirmation-needed-table="Confirma exclusão da mesa?"role="button">Excluir</a>
+            </li>
+          </ul>
+        </div>       
+        <div class="grid-item last-item lol2"> <span><b> Mesa {{table.code}}</b></span> </div>
     </div>
   </div>
+
+
+  <div class="col-md-3 col-md-offset-5">
+    <button type="button" class="btn btn-large btn-default btn-block" ng-click="loadMore()">Ver mais</button>
+  </div>
+
 </div>
 <table-modal-directive></table-modal-directive>

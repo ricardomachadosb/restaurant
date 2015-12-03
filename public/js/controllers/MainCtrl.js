@@ -2,6 +2,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 
 	$rootScope.currencyPattern= "^([0-9]{1,3}|100)([.][0-9]{1,2})?$";
   $rootScope.numberOnlyPattern= "^[0-9]{1,3}$";
+  $rootScope.bodyClass = "body-not-authenticated";
 
 	var checkAuth = function(){
 		$rootScope.token = $cookies.get('token');
@@ -14,12 +15,15 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 	$scope.auth = function(){
 		$http.post('/api/authenticate', $scope.login).success(function(res){
 			if(res.success){
+				$rootScope.bodyClass = "body-authenticated";
 				$rootScope.token = res.token;
 				$rootScope.tokenHeader =  {'x-access-token': res.token};
 				$rootScope.authenticated = true;
 				$rootScope.authError = false;
 				$cookies.put('token', res.token);
 				$cookies.put('authenticated', true);
+				$scope.login.password="";
+				$scope.login.name="";
 			}else {
 				$rootScope.authError = true;
 			}
@@ -33,6 +37,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 		$rootScope.authenticated = false;
 		$cookies.put('token', '');
 		$cookies.put('authenticated', false);
+		$rootScope.bodyClass = "body-not-authenticated";
 		$location.path( "/");
 	};
 

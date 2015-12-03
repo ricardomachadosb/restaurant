@@ -1,11 +1,5 @@
 module.exports = function(app){
 	var mongoose = require('mongoose');
-	var PictureSchema = new mongoose.Schema({
-	 base64:{type: String, default: '' },  
-	 fileName:{type: String, default: '' },
-	 fileSize:{type: Number},
-	 fileType:{type: String, default: ''}
-	});
 
 //	var picture =
 //	var Mixed = mongoose.Schema.Types.Mixed;

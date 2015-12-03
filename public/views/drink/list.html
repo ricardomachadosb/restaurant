@@ -1,27 +1,33 @@
 <div class="container">
-	<h1>Lista de Bebidas</h1>
-	<ol class="breadcrumb">
-		<button class="btn btn-small btn-primary" data-toggle="modal" data-target="#drink-modal" ng-click="new()"> Novo</button>
-	</ol>
+	<h1>Listagem de Bebidas</h1>
+	<button class="btn btn-small btn-success" data-toggle="modal" data-target="#drink-modal" ng-click="new()"> Adicionar bebida</button>
+
 	<div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
+	</div>
 	<div class="row row-grid">
-		<div class="col-md-2 grid-box" ng-repeat="drink in drinkList">
-			<div class="grid-item"> <span ><b>Código:</b> </span>{{drink.code}} </div>
-			<div class="grid-item"> <span><b>Nome:</b> </span>{{drink.name}}  </div>
-			<div class="grid-item"> <span><b>Descrição:</b> </span>{{drink.description}}  </div>
-			<div class="grid-item"> <span><b>Imagem:</b> </span><img  ng-src="{{drink.picture[0]}}" />  </div>
-			<div class="grid-item"> <span><b>Valor:</b> </span> {{drink.price | currency:"R$ "}}  </div>
-			<div class="grid-item last-item"> <span><b>Habilitado:</b> </span>{{drink.isVisible ?'Sim' : 'Não'}}  </div>
-			<p class="grid-buttons">
-				<a href="#" class="btn btn-grid btn-warning edit-item-grid" data-toggle="modal" data-target="#drink-modal" ng-click="edit(drink._id)" role="button">
-					<i class="glyphicon glyphicon-edit"></i>
-				</a>
-				<a href="#" class="btn btn-grid btn-danger" ng-click="remove(drink._id)" confirmation-needed-drink="Confirma exclusão do prato?"role="button"><i class="glyphicon glyphicon-trash"></i></a>
-			</p>
+		<div class="col-md-2 grid-box" ng-repeat="drink in drinkList" style="border: 0 none;">
+			<div class="grid-item"><img class="img-card" ng-src="{{drink.picture[0]}}" />  </div>
+			<br />
+			<div class="grid-item-buttom">
+  					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="border: 0 none; background:transparent;"><span class="glyphicon glyphicon-align-justify"></span>
+    				<span class="caret"></span>
+  					</button>
+					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+						<li>
+							<a href="#" class="btn btn-grid edit-item-grid" data-toggle="modal" data-target="#drink-modal" ng-click="edit(drink._id)" role="button">Editar</a>
+						</li>
+						<li>
+							<a href="#" class="btn btn-grid " ng-click="remove(drink._id)" confirmation-needed-drink="Confirma exclusão do prato?"role="button">Excluir</a>
+						</li>
+					</ul>
+			</div>
+			<div class="grid-item"> <span><b>{{drink.name}}</b></span>  </div>
+			<div class="grid-item"> {{drink.description}}  </div>
+			<div class="grid-item"> {{drink.price | currency:"R$ "}}  </div>
 		</div>
 	</div>
-	<div class="col-md-6 col-md-offset-3">
-		<button type="button" class="btn btn-large btn-primary btn-block" ng-click="loadMore()">Carregar mais</button>
+  <div class="col-md-3 col-md-offset-5">
+		<button type="button" class="btn btn-large btn-default btn-block" ng-click="loadMore()">Ver mais</button>
 	</div>
 </div>
 <drink-modal-directive/>
