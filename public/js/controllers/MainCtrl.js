@@ -23,7 +23,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 				$cookies.put('token', res.token);
 				$cookies.put('authenticated', true);
 				$scope.login.password="";
-				$scope.login.name="";
+				$scope.login.name=""; 
 			}else {
 				$rootScope.authError = true;
 			}
