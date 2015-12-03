@@ -83,6 +83,10 @@
     width: 60px;
 }
 
+.btn-add{
+  margin-bottom: 10px;
+}
+
 .col-md-2 {
   width: 20% !important;
 }

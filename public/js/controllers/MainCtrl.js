@@ -2,12 +2,16 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 
 	$rootScope.currencyPattern= "^([0-9]{1,3}|100)([.][0-9]{1,2})?$";
   $rootScope.numberOnlyPattern= "^[0-9]{1,3}$";
-  $rootScope.bodyClass = "body-not-authenticated";
 
 	var checkAuth = function(){
 		$rootScope.token = $cookies.get('token');
 		$rootScope.authenticated = ($cookies.get('authenticated') == 'true');
 		$rootScope.tokenHeader =  {'x-access-token': $rootScope.token};
+		if($rootScope.authenticated){
+			$rootScope.bodyClass = "body-authenticated";
+		}else {
+			$rootScope.bodyClass = "body-not-authenticated";
+		}
 	};
 
 	checkAuth();
