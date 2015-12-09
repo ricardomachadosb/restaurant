@@ -50,7 +50,7 @@ angular.module('TableCtrl', []).controller('TableController', function($scope, $
     };
 
     $scope.edit = function(e){
-      $http.get('/api/table/edit/' + e, {headers: $rootScope.tokenHeader}).success(function(res){
+      $http.get('/api/table/get/' + e, {headers: $rootScope.tokenHeader}).success(function(res){
         $scope.table = res;
       });
     };

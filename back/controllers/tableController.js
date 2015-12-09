@@ -32,7 +32,7 @@ module.exports = function(app) {
       });
     },
 
-    edit: function(req, res ) {
+    get: function(req, res ) {
       Table.findOne({_id: req.params.id}, function(err, table){
         res.json(table);
       });

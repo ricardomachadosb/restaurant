@@ -1,9 +1,9 @@
 module.exports = function(app){
 	var mongoose = require('mongoose');
 
-	return mongoose.model('Table', {
+	return mongoose.model('Order', {
       code : {type : String},
       status: {type: Boolean, default: false},
-      order: {type : mongoose.Schema.ObjectId, ref : 'Order'}
+      tables: [ {type : mongoose.Schema.ObjectId, ref : 'Table'} ]
 	});
 }

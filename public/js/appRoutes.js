@@ -32,7 +32,13 @@
         .when('/mesas', {
             templateUrl: 'views/table/list.html',
             controller: 'TableController'
+        })
+
+       .when('/pedidos', {
+            templateUrl: 'views/order/list.html',
+            controller: 'OrderController'
         });
+
 
     $locationProvider.html5Mode(true);
 
