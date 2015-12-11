@@ -12,6 +12,13 @@ module.exports = function(app) {
       });
     },
 
+    remove: function(req, res) {
+      Order.remove({_id: req.params.id}, function(err) {
+        if (err) throw err;
+        console.log('Table deleted successfully');
+        res.json({ success: true });
+      });
+    },
 
      setup: function(req, res) {
 
