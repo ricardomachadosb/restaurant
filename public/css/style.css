@@ -131,6 +131,41 @@
   padding-left: 65px;
 }
 
+
+.order {
+  height: 45px;
+}
+
+.order-list{
+  margin-top: -23px;
+}
+
+.listagem{
+  width: 100%;
+  height: 30px;
+}
+
+.order-list-head{
+    width: 45px;
+    height: 30px;
+}
+
+.order-list-head1{
+    width: 65px;
+    height: 10px;
+    height: 30px;
+}
+
+.order-list-head2{
+    width: 30px;
+    height: 30px;
+}
+
+.order-list-head3{
+    width: 10px;
+    height: 30px;
+}
+
 .navbar-center{
   text-align: center;
   margin-top:15%;
