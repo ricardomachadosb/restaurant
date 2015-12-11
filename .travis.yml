@@ -8,8 +8,7 @@ notifications:
   email:
     recipients:
       - ricardomachado.sb@gmail.com
-      - florescmichele@gmail.com 
-      - felipeghiggi92@gmail.com 
-      - mtsaeu@gmail.com 
+      - florescmichele@gmail.com
+      - felipeghiggi92@gmail.com
     on_success: always # default: change
     on_failure: always # default: always
