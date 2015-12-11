@@ -47,7 +47,7 @@ module.exports = function(app) {
         table.save();
         res.json({ success: true });
       });
-    }      
+    }
   }
 
   return tableController;

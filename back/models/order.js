@@ -4,6 +4,6 @@ module.exports = function(app){
 	return mongoose.model('Order', {
       code : {type : String},
       status: {type: Boolean, default: false},
-      tables: [ {type : mongoose.Schema.ObjectId, ref : 'Table'} ]
+      tables: [{type : mongoose.Schema.ObjectId, ref : 'Table'}]
 	});
 }
