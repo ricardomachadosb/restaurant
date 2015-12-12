@@ -11,7 +11,7 @@ module.exports = function(app) {
     },
 
     listAvaliableTables: function(req, res) {
-      Table.find({'status': false}).exec(function(err, tablees) {
+      Table.find( { $or:[{'status':null}, {'status': false}]}).exec(function(err, tablees) {
         res.json(tablees);
       });
     },
