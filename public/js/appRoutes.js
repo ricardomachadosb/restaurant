@@ -37,6 +37,11 @@
        .when('/pedidos', {
             templateUrl: 'views/order/list.html',
             controller: 'OrderController'
+        })
+
+       .when('/pedidos/mesas', {
+            templateUrl: 'views/order/list-seleciona-mesas.html',
+            controller: 'OrderSelectTableController'
         });
 
 

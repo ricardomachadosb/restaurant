@@ -7,4 +7,5 @@ module.exports = function(app) {
   app.get('/api/table/list/:id', authController.checkAuth, tableController.list);
   app.get('/api/table/get/:id', authController.checkAuth, tableController.get);
   app.put('/api/table/put/:id', authController.checkAuth, tableController.put);
+  app.get('/api/table/listAvaliableTables', authController.checkAuth, tableController.listAvaliableTables);
 };
