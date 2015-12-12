@@ -42,8 +42,22 @@
        .when('/pedidos/mesas', {
             templateUrl: 'views/order/list-seleciona-mesas.html',
             controller: 'OrderSelectTableController'
-        });
+        })
 
+       .when('/pedidos/pratos', {
+            templateUrl: 'views/order/list-seleciona-prato.html',
+            controller: 'OrderController'
+        })
+
+       .when('/pedidos/bebidas', {
+            templateUrl: 'views/order/list-seleciona-bebida.html',
+            controller: 'OrderController'
+        })
+
+       .when('/pedidos/final', {
+            templateUrl: 'views/order/list-finaliza-pedido.html',
+            controller: 'OrderController'
+        });               
 
     $locationProvider.html5Mode(true);
 

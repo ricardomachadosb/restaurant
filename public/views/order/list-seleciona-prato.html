@@ -10,8 +10,8 @@
                     <td>
                       <input type="checkbox" aria-label="">
                     </td>
-                    <td>CÓDIGO DO PRATO</td> <!-- CÓDIGO DO PRATO -->
-                    <td>NOME DO PRATO</td> <!-- NOME DO PRATO -->
+                    <td>01</td> <!-- CÓDIGO DO PRATO -->
+                    <td>Massa - Molho Branco</td> <!-- NOME DO PRATO -->
                   </tr> 
                 </tbody>
               </table>
@@ -21,12 +21,13 @@
   </div>
 
   <br />
-  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal" ng-click="new()">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Anterior
-  </button>  
-  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal" ng-click="new()">
-      Próximo <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+
+  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
+     <a href="/pedidos/mesas"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Anterior</a>
   </button>
+  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
+     <a href="/pedidos/bebidas">Próximo<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+  </button>  
 
 </div>
 <order-modal-directive></order-modal-directive>
