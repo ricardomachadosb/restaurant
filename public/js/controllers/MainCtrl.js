@@ -6,7 +6,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 	var checkAuth = function(){
 		$rootScope.token = $cookies.get('token');
 		$rootScope.authenticated = ($cookies.get('authenticated') == 'true');
-		$rootScope.tokenHeader =  {'x-access-token': $rootScope.token};
+		$rootScope.tokenHeader =  {'x-access-token': $rootScope.token, 'content-type': 'application/json'};
 		if($rootScope.authenticated){
 			$rootScope.bodyClass = "body-authenticated";
 		}else {
@@ -27,7 +27,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 				$cookies.put('token', res.token);
 				$cookies.put('authenticated', true);
 				$scope.login.password="";
-				$scope.login.name=""; 
+				$scope.login.name="";
 			}else {
 				$rootScope.authError = true;
 			}

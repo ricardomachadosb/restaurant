@@ -10,6 +10,12 @@ module.exports = function(app) {
       });
     },
 
+    listAvaliableTables: function(req, res) {
+      Table.find({'status': false}).exec(function(err, tablees) {
+        res.json(tablees);
+      });
+    },
+
     create: function(req, res) {
       var table = new Table({
         code: req.body.code,

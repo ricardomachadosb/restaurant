@@ -1,6 +1,4 @@
-
-
-angular.module('OrderCtrl', []).controller('OrderController', function($scope, $http, $rootScope, fileReader){
+angular.module('OrderCtrl', ['OrderService']).controller('OrderController', function($scope, $http, $rootScope, $location, orderService){
 
   $scope.order = {};
 
@@ -14,25 +12,10 @@ angular.module('OrderCtrl', []).controller('OrderController', function($scope, $
     });
   };
 
-  $scope.firstStep = function(){
-    $scope.table = {};
-    $http.get('/api/table/list/' + $scope.currentPage, {headers: $rootScope.tokenHeader}).success(function(res){
-      console.log(res);
-      $scope.tableList = res;
-    }).error(function(res){
-      console.log(res);
-    });
+  $scope.generateOrder = function(){
+    orderService.generateOrder();
+    $location.path("/pedidos/mesas");
   };
-
-  $scope.addTableToOrder = function(id){
-     $http.get('/api/table/get/' + e, {headers: $rootScope.tokenHeader}).success(function(res){
-
-        if(res.order != null){
-
-        }
-
-     });
-  },
 
   $scope.remove = function( id ){
     $http.delete('/api/order/remove/' + id, {headers: $rootScope.tokenHeader}).success(

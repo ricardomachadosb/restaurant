@@ -2,9 +2,10 @@ module.exports = function(app) {
   var orderController = app.back.controllers.orderController;
   var authController = app.back.controllers.authController;
 
- // app.post('/api/order/create', authController.checkAuth, orderController.create);
+ app.post('/api/order/generateOrder', authController.checkAuth, orderController.generateOrder);
  app.delete('/api/order/remove/:id',authController.checkAuth,  orderController.remove);
  app.get('/api/order/list', authController.checkAuth, orderController.list);
+ app.get('/api/order/count', authController.checkAuth, orderController.count);
  app.get('/api/order/setup', orderController.setup);
  //app.get('/api/order/edit/:id', authController.checkAuth, orderController.edit);
  //app.put('/api/order/put/:id', authController.checkAuth, orderController.put);
