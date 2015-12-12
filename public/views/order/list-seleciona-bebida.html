@@ -10,8 +10,8 @@
                     <td>
                       <input type="checkbox" aria-label="">
                     </td>
-                    <td>CÓDIGO DA BEBIDA</td> <!-- CÓDIGO DA BEBIDA -->
-                    <td>NOME DA BEBIDA</td> <!-- NOME DA BEBIDA -->
+                    <td>01</td> <!-- CÓDIGO DA BEBIDA -->
+                    <td>Coca-Cola</td> <!-- NOME DA BEBIDA -->
                     <td>
                       <input type="radio" aria-label=""> Gelo
                     </td>
@@ -30,12 +30,12 @@
   </div>
 
   <br />
-   <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal" ng-click="new()">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Anterior
+  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
+     <a href="/pedidos/pratos"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Anterior</a>
   </button>
-  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal" ng-click="new()">
-      Próximo <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-  </button>
+  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
+     <a href="/pedidos/final">Próximo<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+  </button>  
 
 </div>
 <order-modal-directive></order-modal-directive>
