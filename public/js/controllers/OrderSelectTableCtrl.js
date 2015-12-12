@@ -1,7 +1,7 @@
 angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelectTableController', function($scope, $http, $rootScope, orderService){
 
   var currentOrder = orderService.getCurrentOrder();
-  var $scope.tables = {};
+  $scope.tables = {};
 
   $scope.listAvaliableTables = function(){
     $http.get('/api/table/listAvaliableTables', {headers: $rootScope.tokenHeader}).success(function(res){
