@@ -6,6 +6,7 @@ module.exports = function(app) {
  app.delete('/api/order/remove/:id',authController.checkAuth,  orderController.remove);
  app.get('/api/order/list', authController.checkAuth, orderController.list);
  app.get('/api/order/count', authController.checkAuth, orderController.count);
+ app.put('/api/order/put/:id', authController.checkAuth, orderController.put);
  app.get('/api/order/setup', orderController.setup);
  //app.get('/api/order/edit/:id', authController.checkAuth, orderController.edit);
  //app.put('/api/order/put/:id', authController.checkAuth, orderController.put);

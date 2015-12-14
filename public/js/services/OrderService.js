@@ -16,16 +16,19 @@ angular.module('OrderService', []).factory('orderService', function($rootScope, 
   var orderService = {
 
     generateOrder: function(){
-
-    $http.post('/api/order/generateOrder', {}, {headers: $rootScope.tokenHeader}).success(function(res){
-        return res;
-      }).error(function(res){
-        console.log(res);
+      $http.post('/api/order/generateOrder', {}, {headers: $rootScope.tokenHeader}).success(function(res){
+          currentOrder = res;
+        }).error(function(res){
+          console.log(res);
       });
     },
 
     getCurrentOrder: function(){
       return currentOrder;
+    },
+
+    clearCurrentOrder: function(){
+      currentOrder = {};
     }
 
   }

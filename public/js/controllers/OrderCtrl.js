@@ -13,6 +13,7 @@ angular.module('OrderCtrl', ['OrderService']).controller('OrderController', func
   };
 
   $scope.generateOrder = function(){
+    orderService.clearCurrentOrder();
     orderService.generateOrder();
     $location.path("/pedidos/mesas");
   };

@@ -50,7 +50,7 @@ module.exports = function(app) {
 
    var setup = function(req, res) {
 
-      Table.findOne({_id: '566b34acef8aa58817000002'}, function(err, table){
+      Table.findOne({_id: '566efcbcf5caf5cc26000003'}, function(err, table){
         var order = new Order({
           code : '01',
           tables: [table]
@@ -66,11 +66,43 @@ module.exports = function(app) {
       });
     };
 
+    var put = function(req, res) {
+      Order.findOne({_id: req.params.id}, function(err, order) {
+        if (err) throw err;
+        order.code = req.body.code;
+        order.status = req.body.status;
+        order.save();
+        var tables = [];
+
+        if(req.body.tables && req.body.tables.length && req.body.tables.length > 0){
+          for (var i = 0; i < req.body.tables.length; i++) {
+              console.log("uma");
+              Table.findOne({_id: req.body.tables[i]._id}, function(err, table){
+                if(err){
+                  throw err;
+                }
+                tables.push(table);
+               
+               
+                order.tables = tables;
+                console.log(order.tables);
+
+                order.save();
+              });
+          }
+        } 
+        
+        res.json({ success: true });
+        
+      });
+    };
+
     return{
       list: list,
       remove: remove,
       setup: setup,
       count: count,
-      generateOrder: generateOrder
+      generateOrder: generateOrder,
+      put: put
     }
 }
