@@ -1,5 +1,5 @@
 //angular.module('NerdCtrl', []).controller('NerdController', function($scope) {
-angular.module('UserCtrl', []).controller('UserController', function($scope, $http, $rootScope){
+angular.module('UserCtrl', ['ImageService']).controller('UserController', function($scope, $http, $rootScope, fileReader){
 
 	$scope.new = function(){
 		$scope.user = "";
@@ -83,6 +83,19 @@ angular.module('UserCtrl', []).controller('UserController', function($scope, $ht
         }
       }
 		});
+
+	$scope.getFile = function () {
+    $scope.progress = 0;
+    fileReader.readAsDataUrl($scope.file, $scope)
+    .then(function(result) {
+      $scope.user.picture = [result];
+    });
+  };
+
+  $scope.$on("fileProgress", function(e, progress) {
+    $scope.progress = progress.loaded / progress.total;
+  });
+
 	};
 
 	$scope.list();

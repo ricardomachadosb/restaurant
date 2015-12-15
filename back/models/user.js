@@ -7,6 +7,7 @@ module.exports = function(app){
       login: {type : String, default: ''},
 	    password: {type : String, default: ''},
 	    isLoginAble:  {type : Boolean, default: false},
+	    picture : [],
       roles: [RoleSchema]
 	});
 }

@@ -27,6 +27,7 @@ module.exports = function(app) {
               password: req.body.password,
               login: req.body.login,
               isLoginAble: req.body.isLoginAble,
+              picture: req.body.picture,
               roles: req.body.roles
             });
 
@@ -59,6 +60,7 @@ module.exports = function(app) {
               user.password = req.body.password,
               user.login = req.body.login,
               user.isLoginAble = req.body.isLoginAble,
+              user.picture = req.body.picture;
               user.roles = req.body.roles
 
               user.save();

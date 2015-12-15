@@ -32,7 +32,12 @@
             <input type="checkbox" name="isLoginAble" id="inputIsLoginAble" ng-model="user.isLoginAble">
             <label for="inputIsLoginAble">Habilitado</label>
           </div>
-           <div class="form-group">
+          <div class="form-group">
+              <label for="picture">Imagem</label>
+              <img class="imageConfigs" ng-src="{{user.picture[0]}}" /><br />
+              <input type="file" name="picture" ng-model='user.picture' ng-file-select="onFileSelect($files)" >
+          </div>          
+          <div class="form-group">
               <label >Perfis</label>
                 <div class="multiSelect"
             isteven-multi-select
