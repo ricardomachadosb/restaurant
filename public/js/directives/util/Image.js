@@ -13,4 +13,5 @@ var fileFunctions = function () {
 
 angular.module('DishCtrl').directive('ngFileSelect', fileFunctions);
 angular.module('DrinkCtrl').directive('ngFileSelect', fileFunctions);
+angular.module('UserCtrl').directive('ngFileSelect', fileFunctions);
 
