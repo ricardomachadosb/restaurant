@@ -5,7 +5,6 @@ angular.module('OrderCtrl', ['OrderService']).controller('OrderController', func
   $scope.list = function(){
     $scope.order = {};
     $http.get('/api/order/list', {headers: $rootScope.tokenHeader}).success(function(res){
-      console.log(res);
       $scope.orderList = res;
     }).error(function(res){
       console.log(res);
@@ -16,6 +15,24 @@ angular.module('OrderCtrl', ['OrderService']).controller('OrderController', func
     orderService.clearCurrentOrder();
     orderService.generateOrder();
     $location.path("/pedidos/mesas");
+  };
+
+  $scope.formatTablesText = function(order){
+    var formatedText = "";
+    if(order && order.tables && order.tables.length > 0){
+      if(order.tables.length > 1){
+        for(var i = 0; i <= order.tables.length - 1; i++){
+            if(i == order.tables.length - 1){
+              formatedText += order.tables[i].code;
+            }else {
+              formatedText += (order.tables[i].code + ", ")
+            }
+        }
+      }else {
+        formatedText = order.tables[0].code;
+      }
+    }
+    return formatedText;
   };
 
   $scope.remove = function( id ){
