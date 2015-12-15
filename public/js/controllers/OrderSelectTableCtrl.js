@@ -19,7 +19,7 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
   $scope.listAvaliableTables();
 
   $scope.changeSelection = function(id){
-  
+     currentOrder = orderService.getCurrentOrder();
      angular.forEach($scope.tableList, function(table){
 
          if(table._id == id){
@@ -50,7 +50,6 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
 
             $http.put('/api/order/put/' + currentOrder._id, currentOrder, {headers: $rootScope.tokenHeader}).success(function(res){}
             ).error(function(res){
-                  console.log(res);
                   $scope.messageClass = 'alert-danger';
                   $scope.message = 'Problemas ao atualizar pedido';
             });
