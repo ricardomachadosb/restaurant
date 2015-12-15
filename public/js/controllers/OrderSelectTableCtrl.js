@@ -27,19 +27,19 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
               table.status = false;
               table.order = null;
 
-              for(var i = currentOrder.order.tables.length - 1; i >= 0; i--){
-                  if(currentOrder.order.tables[i]._id == id){
+              for(var i = currentOrder.tables.length - 1; i >= 0; i--){
+                  if(currentOrder.tables[i]._id == id){
                       $scope.items.splice(i,1);
                   }
               }
 
             }else {
               table.status = true;
-              table.order = currentOrder.order._id;
-              if(typeof currentOrder.order.tables === "undefined"){
-                currentOrder.order.tables = [];
+              table.order = currentOrder._id;
+              if(typeof currentOrder.tables === "undefined"){
+                currentOrder.tables = [];
               }
-              currentOrder.order.tables.push(table);
+              currentOrder.tables.push(table);
             }
 
             $http.put('/api/table/put/' + table._id, table, {headers: $rootScope.tokenHeader}).success(function(res){}
@@ -48,7 +48,7 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
                   $scope.message = 'Problemas ao atualizar mesas';
             });
 
-            $http.put('/api/order/put/' + currentOrder.order._id, currentOrder.order, {headers: $rootScope.tokenHeader}).success(function(res){}
+            $http.put('/api/order/put/' + currentOrder._id, currentOrder, {headers: $rootScope.tokenHeader}).success(function(res){}
             ).error(function(res){
                   console.log(res);
                   $scope.messageClass = 'alert-danger';

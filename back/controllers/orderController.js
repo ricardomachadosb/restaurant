@@ -43,7 +43,7 @@ module.exports = function(app) {
         if (err) throw err;
 
         console.log('order saved successfully');
-        res.json({ order: order });
+        res.json(order);
       });
 
     };
