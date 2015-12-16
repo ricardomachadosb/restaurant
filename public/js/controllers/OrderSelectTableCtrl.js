@@ -5,10 +5,11 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
 
   $scope.listAvaliableTables = function(){
     $http.get('/api/table/listAvaliableTables', {headers: $rootScope.tokenHeader}).success(function(res){
+      currentOrder = orderService.getCurrentOrder();
       $scope.tableList = res;
 
-      if(currentOrder.tables && currentOrder.tables.lenght > 0){
-         $scope.tableList.concat(currentOrder.tables);
+      if(currentOrder.tables && currentOrder.tables.length > 0){
+        $scope.tableList = $scope.tableList.concat(currentOrder.tables);
       }
 
     }).error(function(res){
