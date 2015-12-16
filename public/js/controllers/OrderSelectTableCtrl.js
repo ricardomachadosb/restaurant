@@ -18,6 +18,20 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
 
   $scope.listAvaliableTables();
 
+  var changeSelecionCallBack = function(table, order){
+    $http.put('/api/table/put/' + table._id, table, {headers: $rootScope.tokenHeader}).success(function(res){}
+        ).error(function(res){
+              $scope.messageClass = 'alert-danger';
+              $scope.message = 'Problemas ao atualizar mesas';
+        });
+
+        $http.put('/api/order/put/' + order._id, order, {headers: $rootScope.tokenHeader}).success(function(res){}
+        ).error(function(res){
+              $scope.messageClass = 'alert-danger';
+              $scope.message = 'Problemas ao atualizar pedido';
+    });
+  }
+
   $scope.changeSelection = function(id){
      currentOrder = orderService.getCurrentOrder();
      angular.forEach($scope.tableList, function(table){
@@ -27,9 +41,10 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
               table.status = false;
               table.order = null;
 
-              for(var i = 0; i >=  currentOrder.tables.length - 1; i++){
+              for(var i = 0; i <=  currentOrder.tables.length - 1; i++){                
                   if(currentOrder.tables[i]._id == id){
                       currentOrder.tables.splice(i,1);
+                      changeSelecionCallBack(table, currentOrder);
                       break;
                   }
               }
@@ -41,19 +56,9 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
                 currentOrder.tables = [];
               }
               currentOrder.tables.push(table);
+
+              changeSelecionCallBack(table, currentOrder);
             }
-
-            $http.put('/api/table/put/' + table._id, table, {headers: $rootScope.tokenHeader}).success(function(res){}
-            ).error(function(res){
-                  $scope.messageClass = 'alert-danger';
-                  $scope.message = 'Problemas ao atualizar mesas';
-            });
-
-            $http.put('/api/order/put/' + currentOrder._id, currentOrder, {headers: $rootScope.tokenHeader}).success(function(res){}
-            ).error(function(res){
-                  $scope.messageClass = 'alert-danger';
-                  $scope.message = 'Problemas ao atualizar pedido';
-            });
           };   
 
      })

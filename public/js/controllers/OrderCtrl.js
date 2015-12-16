@@ -62,7 +62,7 @@ angular.module('OrderCtrl', ['OrderService']).controller('OrderController', func
         }).error(function(res){
           console.log(res);
      });
-  }
+  };
 
   $scope.remove = function( id ){
 

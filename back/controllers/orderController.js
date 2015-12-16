@@ -85,15 +85,14 @@ module.exports = function(app) {
                 throw err;
               }
               tables.push(table);
-
               order.tables = tables;
-              console.log(order.tables);
-
+              
               order.save();
             });
         }
       }else {
         order.tables = tables;
+        order.save();
       } 
       
       res.json({ success: true });
