@@ -76,20 +76,20 @@ module.exports = function(app) {
 
         if(req.body.tables && req.body.tables.length && req.body.tables.length > 0){
           for (var i = 0; i < req.body.tables.length; i++) {
-              console.log("uma");
               Table.findOne({_id: req.body.tables[i]._id}, function(err, table){
                 if(err){
                   throw err;
                 }
                 tables.push(table);
-               
-               
+                    
                 order.tables = tables;
                 console.log(order.tables);
 
                 order.save();
               });
           }
+        }else {
+          order.tables = tables;
         } 
         
         res.json({ success: true });

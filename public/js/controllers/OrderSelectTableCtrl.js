@@ -27,9 +27,10 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
               table.status = false;
               table.order = null;
 
-              for(var i = currentOrder.tables.length - 1; i >= 0; i--){
+              for(var i = 0; i >=  currentOrder.tables.length - 1; i++){
                   if(currentOrder.tables[i]._id == id){
-                      $scope.items.splice(i,1);
+                      currentOrder.tables.splice(i,1);
+                      break;
                   }
               }
 
