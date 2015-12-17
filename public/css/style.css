@@ -6,6 +6,7 @@
   background-position: center;
   background-repeat: no-repeat;
   background-color: #F0F0D8;
+  font-size: 15px;
 }
 
 .body-not-authenticated{
@@ -229,4 +230,26 @@ background-color: #D8D8A8;
 .glyphicon-usd{
   margin-top: 10px;
 }
+
+.quantity-stepper {
+  margin-top: -5px;
+  text-align: center;
+  width: 60px;
+  background-color: transparent;
+  box-shadow: 5px 3px 3px #BBC1DA;
+}
   
+.order-form {
+  margin-top: -5px;
+  box-shadow: 5px 3px 3px #BBC1DA;
+  background-color: transparent;
+  width: 200px;
+}
+
+input[type=checkbox]
+{
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+}
