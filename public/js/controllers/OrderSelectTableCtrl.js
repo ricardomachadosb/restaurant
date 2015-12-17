@@ -6,10 +6,11 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
   $scope.listAvaliableTables = function(){
     $http.get('/api/table/listAvaliableTables', {headers: $rootScope.tokenHeader}).success(function(res){
       currentOrder = orderService.getCurrentOrder();
-      $scope.tableList = res;
 
       if(currentOrder.tables && currentOrder.tables.length > 0){
-        $scope.tableList = $scope.tableList.concat(currentOrder.tables);
+        $scope.tableList = res.concat(currentOrder.tables);
+      }else {
+        $scope.tableList = res;
       }
 
     }).error(function(res){
@@ -38,9 +39,8 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
      angular.forEach($scope.tableList, function(table){
 
          if(table._id == id){
-            if(table.status){
-              table.status = false;
-              table.order = null;
+            if(!table.status){
+              table.orderId = null;
 
               for(var i = 0; i <=  currentOrder.tables.length - 1; i++){                
                   if(currentOrder.tables[i]._id == id){
@@ -49,16 +49,17 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
                       break;
                   }
               }
+              return;
 
-            }else {
-              table.status = true;
-              table.order = currentOrder._id;
+            }else if(table.status){
+              table.orderId = currentOrder._id;
               if(typeof currentOrder.tables === "undefined"){
                 currentOrder.tables = [];
               }
               currentOrder.tables.push(table);
 
               changeSelecionCallBack(table, currentOrder);
+              return;
             }
           };   
 

@@ -47,7 +47,7 @@ angular.module('OrderCtrl', ['OrderService']).controller('OrderController', func
            
             for(var i = 0; i <=  res.tables.length - 1; i++){
               res.tables[i].status = false;
-              res.tables[i].order = null;
+              res.tables[i].orderId = null;
               
                $http.put('/api/table/put/' + res.tables[i]._id, res.tables[i], {headers: $rootScope.tokenHeader}).success(function(res){}
                   ).error(function(res){
