@@ -33,21 +33,40 @@ module.exports = function(app) {
 
   var generateOrder = function(req, res){
 
-    var countString = "" + count();
-    var pad = "0000"
-    var code = pad.substring(0, pad.length - countString.length) + countString;
-
-    var order = new Order({
-      code: code,
-      status: false,
-      tables: []
-    });
-
-    order.save(function(err) {
+    Order.findOne().sort({code: "desc"}).exec(function(err, order) {
       if (err) throw err;
+        if(order){
+          var codeString = "" + (parseInt(order.code)  + 1);
+          var pad = "0000"
+          var code = pad.substring(0, pad.length - codeString.length) + codeString;
 
-      console.log('order saved successfully');
-      res.json(order);
+          var order = new Order({
+            code: code,
+            status: false,
+            tables: []
+          });
+
+          order.save(function(err) {
+            if (err) throw err;
+
+            console.log('order saved successfully');
+            res.json(order);
+          });
+      
+        }else {
+          var order = new Order({
+            code: "0001",
+            status: false,
+            tables: []
+          });
+
+          order.save(function(err) {
+            if (err) throw err;
+
+            console.log('order saved successfully');
+            res.json(order);
+          });
+        }
     });
 
   };
