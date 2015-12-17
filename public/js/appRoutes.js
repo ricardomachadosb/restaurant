@@ -46,7 +46,7 @@
 
        .when('/pedidos/pratos', {
             templateUrl: 'views/order/list-seleciona-prato.html',
-            controller: 'OrderController'
+            controller: 'OrderSelectDishController'
         })
 
        .when('/pedidos/bebidas', {
@@ -57,7 +57,7 @@
        .when('/pedidos/final', {
             templateUrl: 'views/order/list-finaliza-pedido.html',
             controller: 'OrderController'
-        });               
+        });
 
     $locationProvider.html5Mode(true);
 
