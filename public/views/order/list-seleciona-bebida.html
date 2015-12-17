@@ -30,12 +30,16 @@
   </div>
 
   <br />
-  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
-     <a href="/pedidos/pratos"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Anterior</a>
-  </button>
-  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
-     <a href="/pedidos/final">Próximo<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-  </button>  
+  <a href="/pedidos/pratos">
+    <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Anterior
+    </button>
+  </a>
+  <a href="/pedidos/final">
+    <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
+      Próximo<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </button>  
+  </a>
 
 </div>
 <order-modal-directive></order-modal-directive>

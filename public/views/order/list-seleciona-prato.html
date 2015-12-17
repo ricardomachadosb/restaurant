@@ -21,13 +21,16 @@
   </div>
 
   <br />
-
-  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
-     <a href="/pedidos/mesas"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Anterior</a>
-  </button>
-  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
-     <a href="/pedidos/bebidas">Próximo<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-  </button>  
+  <a href="/pedidos/mesas">
+    <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
+       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Anterior
+    </button>
+  </a>
+  <a href="/pedidos/bebidas">
+    <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
+       Próximo<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    </button>  
+  </a>
 
 </div>
 <order-modal-directive></order-modal-directive>

@@ -86,12 +86,16 @@
     <span class="txt">Valor do pedido:</span>
   </div>  
 
-  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal" ng-click="new()">
-    <a href="/pedidos/bebidas"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Anterior</a>
-  </button>  
-  <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal" ng-click="new()">
-    <a href="/pedidos">Finalizar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
-  </button>
+  <a href="/pedidos/bebidas">
+    <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal" ng-click="new()">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Anterior
+    </button>  
+  </a>
+  <a href="/pedidos">
+    <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal" ng-click="new()">
+     Finalizar <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+    </button>
+  </a>
 
 </div>
 <order-modal-directive></order-modal-directive>
