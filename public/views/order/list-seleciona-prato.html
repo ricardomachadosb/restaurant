@@ -2,27 +2,27 @@
   <h1>Seleção de pratos:</h1>
   <div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
     <div class="order-list">
-      <div class="order" ng-repeat="table in orderList" style="border: 0 none;">
+      <div class="order" ng-repeat="dish in dishList" style="border: 0 none;">
         <div class="bs-example" data-example-id="panel-without-body-with-table">
               <table class="table">
                 <tbody>
-                  <tr class="col-md-6">
+                  <tr class="col-md-12">
                     <td>
                       <input type="checkbox" aria-label="">
                     </td>
-                    <td>01</td> <!-- CÓDIGO DO PRATO -->
-                    <td>Massa - Molho Branco</td> <!-- NOME DO PRATO -->
+                    <td>{{dish.code}}</td> <!-- CÓDIGO DO PRATO -->
+                    <td>{{dish.name}}</td> <!-- NOME DO PRATO -->
                     <td>
                       <input type="number"class="form-control quantity-stepper" id="" name="" value="1">
                     </td>
                     <td>
                       <input type="text" class="form-control order-form" placeholder="Observações/Alterações" aria-describedby="basic-addon2">
                     </td>
-                  </tr> 
+                  </tr>
                 </tbody>
               </table>
             </div>
-          </div>        
+          </div>
     </div>
   </div>
 
@@ -35,8 +35,7 @@
   <a href="/pedidos/bebidas">
     <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal">
        Próximo<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    </button>  
+    </button>
   </a>
 
 </div>
-<order-modal-directive></order-modal-directive>
