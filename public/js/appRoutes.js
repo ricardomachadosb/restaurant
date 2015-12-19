@@ -57,6 +57,11 @@
        .when('/pedidos/final', {
             templateUrl: 'views/order/list-finaliza-pedido.html',
             controller: 'OrderController'
+        })
+
+       .when('/telas', {
+            templateUrl: 'views/orderProgress/listProgress.html',
+            controller: 'OrderController'
         });
 
     $locationProvider.html5Mode(true);
