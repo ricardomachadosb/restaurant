@@ -257,9 +257,11 @@ input[type=checkbox]
 .qnt{
   margin-top: -5px;
   width: 50px;
+  text-align: center;
 }
 
 .btn-qnt{
   margin-top: -5px;
   width: 50px; 
+  background-color: transparent;
 }
