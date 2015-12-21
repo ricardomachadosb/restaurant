@@ -1,14 +1,48 @@
 
 angular.module('OrderSelectDishCtrl', ['OrderService']).controller('OrderSelectDishController', function($scope, $http, $rootScope, orderService){
 
-  $scope.listDish = function(){
+  $scope.listOrderDish = function(){
     $http.get('/api/dish/list', {headers: $rootScope.tokenHeader}).success(function(res){
-      $scope.dishList = res;
+      
+      currentOrder = orderService.getCurrentOrder();
+
+      if(!currentOrder.dishes){
+      	currentOrder.dishes = [];
+      }
+
+      res = removeAssignedDishesFromList(res, currentOrder);
+
+      var orderDishes = [];
+
+      for(var i = 0; i < res.length; i++){
+      	orderDishes.push({ 
+      		dish:res[i],
+    		quantity:0, 
+    		observation: ""
+    	});
+      }
+
+      currentOrder.dishes = currentOrder.dishes.concat(orderDishes);
+
+      $scope.currentOrder = currentOrder;
+      
     }).error(function(res){
       console.log(res);
     });
   };
 
-  $scope.listDish();
+  var removeAssignedDishesFromList = function(dishList, order){
+  	for(var i =0; i < order.dishes.length; i++){
+      	for(var ii =0; ii < dishList.length; ii++){
+      		if(dishList[ii]._id == order.dishes[i].dish._id){
+      			dishList.splice(ii,1);
+      			break;
+      		}
+      	}
+      }
+      return dishList;
+  };
+
+  $scope.listOrderDish();
 
 });
