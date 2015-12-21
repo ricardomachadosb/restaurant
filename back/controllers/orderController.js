@@ -95,29 +95,9 @@ module.exports = function(app) {
       order.code = req.body.code;
       order.status = req.body.status;
       order.dishes =  req.body.dishes;
+      order.tables =  req.body.tables;
       order.save();
       var tables = [];
-
-      if(req.body.tables && req.body.tables.length && req.body.tables.length > 0){
-        var tasksTogo = req.body.tables.length;
-        for (var i = 0; i < req.body.tables.length; i++) {
-            Table.findOne({_id: req.body.tables[i]._id}, function(err, table){
-              if(err){
-                throw err;
-              }
-              tables.push(table);
-
-              if(--tasksTogo === 0){
-                order.tables = tables;
-                order.save();
-              }
-              
-            });
-        }
-      }else {
-        order.tables = tables;
-        order.save();
-      } 
       
       res.json({ success: true });
       
