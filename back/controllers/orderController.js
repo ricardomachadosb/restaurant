@@ -4,7 +4,7 @@ module.exports = function(app) {
   var Order = app.back.models.order;
 
   var get = function(req, res ) {
-    Order.findOne({_id: req.params.id}).populate("tables").exec(function(err, order){
+    Order.findOne({_id: req.params.id}).populate("tables").populate("dishes.dish").exec(function(err, order){
       res.json(order);
     });
   };
@@ -94,6 +94,7 @@ module.exports = function(app) {
       if (err) throw err;
       order.code = req.body.code;
       order.status = req.body.status;
+      order.dishes =  req.body.dishes;
       order.save();
       var tables = [];
 

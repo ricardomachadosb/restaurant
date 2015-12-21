@@ -1,6 +1,8 @@
 
 angular.module('OrderSelectDishCtrl', ['OrderService']).controller('OrderSelectDishController', function($scope, $http, $rootScope, orderService){
 
+  var currentOrder;
+
   $scope.listOrderDish = function(){
     $http.get('/api/dish/list', {headers: $rootScope.tokenHeader}).success(function(res){
       
@@ -25,7 +27,7 @@ angular.module('OrderSelectDishCtrl', ['OrderService']).controller('OrderSelectD
       currentOrder.dishes = currentOrder.dishes.concat(orderDishes);
 
       $scope.currentOrder = currentOrder;
-      
+
     }).error(function(res){
       console.log(res);
     });
@@ -41,6 +43,29 @@ angular.module('OrderSelectDishCtrl', ['OrderService']).controller('OrderSelectD
       	}
       }
       return dishList;
+  };
+
+  $scope.increaseQuantity = function(orderDish){
+  	orderDish.quantity += 1;
+
+  	saveOrder(currentOrder);
+  };
+
+  $scope.decreaseQuantity = function(orderDish){
+  	if(orderDish.quantity == 0){
+  		return;
+  	}
+  	orderDish.quantity -= 1;
+
+  	saveOrder(currentOrder);
+  };
+
+  var saveOrder = function(order){
+  	$http.put('/api/order/put/' + order._id, order, {headers: $rootScope.tokenHeader}).success(function(res){}
+        ).error(function(res){
+              $scope.messageClass = 'alert-danger';
+              $scope.message = 'Problemas ao atualizar pedido';
+  	});
   };
 
   $scope.listOrderDish();
