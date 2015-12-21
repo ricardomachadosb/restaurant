@@ -97,7 +97,6 @@ module.exports = function(app) {
       order.dishes =  req.body.dishes;
       order.tables =  req.body.tables;
       order.save();
-      var tables = [];
       
       res.json({ success: true });
       
