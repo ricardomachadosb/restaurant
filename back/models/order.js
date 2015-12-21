@@ -2,7 +2,7 @@ module.exports = function(app){
 	var mongoose = require('mongoose');
 
   var OrderDishSchema = new mongoose.Schema({ dish:{type: mongoose.Schema.ObjectId, ref: 'Dish' },
-    quantity:{type: Number, default: 0 }, observation: {Type: String}
+    quantity:{type: Number, default: 0 }, observation: {type: String}
   });
 
 

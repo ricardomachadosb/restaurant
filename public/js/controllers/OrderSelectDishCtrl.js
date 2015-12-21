@@ -12,6 +12,8 @@ angular.module('OrderSelectDishCtrl', ['OrderService']).controller('OrderSelectD
       	currentOrder.dishes = [];
       }
 
+      console.log(currentOrder.dishes);
+
       res = removeAssignedDishesFromList(res, currentOrder);
 
       var orderDishes = [];
@@ -57,6 +59,10 @@ angular.module('OrderSelectDishCtrl', ['OrderService']).controller('OrderSelectD
   	}
   	orderDish.quantity -= 1;
 
+  	saveOrder(currentOrder);
+  };
+
+  $scope.changeObservation = function(){
   	saveOrder(currentOrder);
   };
 

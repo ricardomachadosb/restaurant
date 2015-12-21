@@ -5,6 +5,11 @@ module.exports = function(app) {
 
   var get = function(req, res ) {
     Order.findOne({_id: req.params.id}).populate("tables").populate("dishes.dish").exec(function(err, order){
+
+      for(var i =0; i < order.dishes.length; i++){
+        order.dishes[i].dish.picture = [];
+      }
+
       res.json(order);
     });
   };
