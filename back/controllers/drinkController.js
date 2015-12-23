@@ -12,9 +12,15 @@ module.exports = function(app) {
         RECEBE A PAGINA ATUAL, MULTIPLICA O VALOR DELA PELO LIMITE PARA SABER
         QUNTOS ITENS PRECISAM SER PULADOS.
       */
-      Drink.find().sort({ _id: 'desc'}).skip(req.params.id * limitItems).limit(limitItems).exec(function(err, drinks) {
-        res.json(drinks);
-      });
+      if(req.params.id ){
+        Drink.find().sort({ _id: 'desc'}).skip(req.params.id * limitItems).limit(limitItems).exec(function(err, drinks) {
+          res.json(drinks);
+        });
+      }else {
+        Drink.find().exec(function(err, drinks) {
+          res.json(drinks);
+        });
+      }
       /*
       FORMA ANTIGA DE FAZER A CONSULTA DAS BEBIDAS
       Drink.find().exec(function(err, drinks) {

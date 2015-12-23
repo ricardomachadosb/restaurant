@@ -51,7 +51,7 @@
 
        .when('/pedidos/bebidas', {
             templateUrl: 'views/order/list-seleciona-bebida.html',
-            controller: 'OrderController'
+            controller: 'OrderSelectDrinkController'
         })
 
        .when('/pedidos/final', {

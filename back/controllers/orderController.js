@@ -4,7 +4,7 @@ module.exports = function(app) {
   var Order = app.back.models.order;
 
   var get = function(req, res ) {
-    Order.findOne({_id: req.params.id}).populate("tables").populate("dishes.dish").exec(function(err, order){
+    Order.findOne({_id: req.params.id}).populate("tables").populate("dishes.dish").populate("drinks.drink").exec(function(err, order){
 
       for(var i =0; i < order.dishes.length; i++){
         order.dishes[i].dish.picture = [];
@@ -100,6 +100,7 @@ module.exports = function(app) {
       order.code = req.body.code;
       order.status = req.body.status;
       order.dishes =  req.body.dishes;
+      order.drinks =  req.body.drinks;
       order.tables =  req.body.tables;
       order.save();
       

@@ -5,11 +5,16 @@ module.exports = function(app){
     quantity:{type: Number, default: 0 }, observation: {type: String}
   });
 
+  var OrderDrinkSchema = new mongoose.Schema({ drink:{type: mongoose.Schema.ObjectId, ref: 'Drink' },
+    quantity:{type: Number, default: 0 }, observation: {type: String}
+  });
+
 
 	return mongoose.model('Order', {
       code : {type : String},
       status: {type: Boolean, default: false},
       tables: [{type : mongoose.Schema.ObjectId, ref : 'Table'}],
-      dishes: [OrderDishSchema]
+      dishes: [OrderDishSchema],
+      drinks: [OrderDrinkSchema]
 	});
 }

@@ -5,14 +5,12 @@ angular.module('OrderSelectDishCtrl', ['OrderService']).controller('OrderSelectD
 
   $scope.listOrderDish = function(){
     $http.get('/api/dish/list', {headers: $rootScope.tokenHeader}).success(function(res){
-      
+
       currentOrder = orderService.getCurrentOrder();
 
       if(!currentOrder.dishes){
       	currentOrder.dishes = [];
       }
-
-      console.log(currentOrder.dishes);
 
       res = removeAssignedDishesFromList(res, currentOrder);
 
@@ -20,10 +18,10 @@ angular.module('OrderSelectDishCtrl', ['OrderService']).controller('OrderSelectD
 
       for(var i = 0; i < res.length; i++){
       	orderDishes.push({ 
-      		dish:res[i],
-    		quantity:0, 
-    		observation: ""
-    	});
+        	dish:res[i],
+      		quantity:0, 
+      		observation: ""
+    	 });
       }
 
       currentOrder.dishes = currentOrder.dishes.concat(orderDishes);
