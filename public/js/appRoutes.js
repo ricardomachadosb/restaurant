@@ -56,7 +56,7 @@
 
        .when('/pedidos/final', {
             templateUrl: 'views/order/list-finaliza-pedido.html',
-            controller: 'OrderController'
+            controller: 'OrderFinishController'
         })
 
        .when('/telas', {
