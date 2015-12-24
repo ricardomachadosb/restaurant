@@ -6,23 +6,25 @@ angular.module('OrderFinishCtrl', ['OrderService']).controller('OrderFinishContr
 		$scope.currentOrder = currentOrder;
 
 		$scope.total = 0;
+		$scope.avgTime = 0;
 
-		sumDishesToTotal(currentOrder);
-		sumDrinkToTotal(currentOrder);
+		sumDishes(currentOrder);
+		sumDrink(currentOrder);
 		
 	};
 
-	var sumDishesToTotal = function(order){
+	var sumDishes = function(order){
 		if(order.dishes){
 			var dishes = order.dishes;
 
 			 for(var i =0; i < dishes.length; i++){
 	      		$scope.total += dishes[i].dish.price;
-	      	}
+	      		$scope.avgTime +=  dishes[i].dish.avgTime;
+	      	} 
 		}
 	};
 
-	var sumDrinkToTotal = function(order){
+	var sumDrink = function(order){
 		if(order.drinks){
 			var drinks = order.drinks;
 
