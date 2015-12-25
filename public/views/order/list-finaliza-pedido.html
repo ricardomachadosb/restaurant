@@ -8,27 +8,31 @@
   <table class="table">
     <thead class="listagem">
       <tr>
-        <th class="order-list-head">Pedido: 1025 | Mesa: 05</th>                    
-      </tr>     
+        <th class="order-list-head">Pedido: {{currentOrder.code}} | Mesa: 05</th>
+      </tr>
     </thead>
   </table>
   <div class="order-list">
-    <div class="order" ng-repeat="dishData in currentOrder.dishes" style="border: 0 none;">
-      <div class="bs-example" data-example-id="panel-without-body-with-table">
-        <table class="table">
-          <tbody>
-            <tr class="">
-              <td scope="row">
-                <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> {{dishData.dish.name}}
-              </td>
-              <td scope="row">
-                {{dishData.dish.price | currency:"R$ "}}
-              <td scope="row">
-                {{dishData.observation}}
-              </td>                             
-            </tr>
-          </tbody>
-        </table>
+    <div class="order" style="border: 0 none;">
+      <div ng-repeat="dishData in currentOrder.dishes" >
+        <div ng-if="dishData.quantity > 0">
+          <div class="bs-example" data-example-id="panel-without-body-with-table">
+            <table class="table">
+              <tbody>
+                <tr class="">
+                  <td scope="row">
+                    <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> {{dishData.dish.name}}
+                  </td>
+                  <td scope="row">
+                    {{dishData.dish.price | currency:"R$ "}}
+                  <td scope="row">
+                    {{dishData.observation}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -48,7 +52,7 @@
               </td>
               <td scope="row">
                 {{drinkData.observation}}
-              </td>                             
+              </td>
             </tr>
           </tbody>
         </table>
@@ -70,12 +74,12 @@
   <div class="order-price">
     <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
     <span class="txt">Valor do pedido: {{total | currency:"R$ "}}</span>
-  </div>  
+  </div>
 
   <a href="/pedidos/bebidas">
     <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal" ng-click="new()">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Anterior
-    </button>  
+    </button>
   </a>
   <a href="/pedidos">
     <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal" ng-click="new()">
