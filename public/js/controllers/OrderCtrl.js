@@ -23,7 +23,7 @@ angular.module('OrderCtrl', ['OrderService']).controller('OrderController', func
     $location.path("/pedidos/mesas");
   };
 
-  $scope.formatTablesText = function(order){
+  $rootScope.formatTablesText = function(order){
     var formatedText = "";
     if(order && order.tables && order.tables.length > 0){
       if(order.tables.length > 1){
@@ -44,11 +44,11 @@ angular.module('OrderCtrl', ['OrderService']).controller('OrderController', func
   var clearTables = function(orderId){
       $http.get('/api/order/get/' + orderId, {headers: $rootScope.tokenHeader}).success(function(res){
           if(res && res.tables && res.tables.length > 0){
-           
+
             for(var i = 0; i <=  res.tables.length - 1; i++){
               res.tables[i].status = false;
               res.tables[i].orderId = null;
-              
+
                $http.put('/api/table/put/' + res.tables[i]._id, res.tables[i], {headers: $rootScope.tokenHeader}).success(function(res){}
                   ).error(function(res){
                     $scope.messageClass = 'alert-danger';

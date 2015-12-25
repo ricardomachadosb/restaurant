@@ -8,7 +8,7 @@
   <table class="table">
     <thead class="listagem">
       <tr>
-        <th class="order-list-head">Pedido: {{currentOrder.code}} | Mesa: 05</th>
+        <th class="order-list-head">Pedido: {{currentOrder.code}} | {{(currentOrder.tables.length > 1) ?"Mesas": "Mesa"}}: {{formatTablesText(currentOrder)}}</th>
       </tr>
     </thead>
   </table>
