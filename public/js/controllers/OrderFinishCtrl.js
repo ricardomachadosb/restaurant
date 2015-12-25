@@ -35,8 +35,11 @@ angular.module('OrderFinishCtrl', ['OrderService']).controller('OrderFinishContr
 			var drinks = order.drinks;
 
 			 for(var i =0; i < drinks.length; i++){
-	      		$scope.total += drinks[i].drink.price;
-	      	}
+				 	if(drinks[i].quantity > 0){
+		      		$scope.total += drinks[i].drink.price;
+		      }
+	     }
+
 		}
 	};
 

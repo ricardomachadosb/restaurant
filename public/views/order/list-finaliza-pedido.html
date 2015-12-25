@@ -40,22 +40,27 @@
 
 
  <div class="order-list2">
-    <div class="order" ng-repeat="drinkData in currentOrder.drinks" style="border: 0 none;">
-      <div class="bs-example" data-example-id="panel-without-body-with-table">
-        <table class="table">
-          <tbody>
-            <tr class="">
-              <td scope="row">
-                <span class="glyphicon glyphicon-glass" aria-hidden="true"></span> {{drinkData.drink.name}}
-              <td scope="row">
-                {{drinkData.drink.price | currency:"R$ "}}
-              </td>
-              <td scope="row">
-                {{drinkData.observation}}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="order" style="border: 0 none;">
+      <div ng-repeat="drinkData in currentOrder.drinks">
+        <div ng-if="drinkData.quantity > 0">
+          <div class="bs-example" data-example-id="panel-without-body-with-table">
+            <table class="table">
+              <tbody>
+                <tr class="">
+                  <td scope="row">
+                    <span class="glyphicon glyphicon-glass" aria-hidden="true"></span> {{drinkData.drink.name}}
+                  </td>
+                  <td scope="row">
+                    {{drinkData.drink.price | currency:"R$ "}}
+                  </td>
+                  <td scope="row">
+                    {{drinkData.observation}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
