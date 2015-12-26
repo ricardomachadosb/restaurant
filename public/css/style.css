@@ -265,3 +265,38 @@ input[type=checkbox]
   width: 50px; 
   background-color: transparent;
 }
+
+.container-progress{
+  width: 100%;
+  height: 60px;
+  box-shadow: 3px 2px 2px #BBC1DA;
+}
+
+.table-number{
+  width: 100px;
+  height: 60px;
+  text-align: center;
+  float: left;
+}
+
+.number-txt{
+  margin-top: 11%;
+}
+
+.glyphicon-time{
+  font-size:18px;
+}
+
+.number-table-prog{
+  font-size: 25px;
+  font-weight: bold;
+}
+.progress-screen{
+  width: 950px;
+  height: 60px;
+  float: left;
+}
+
+.progress{
+  margin-top:20px;
+}
