@@ -266,9 +266,11 @@ input[type=checkbox]
   background-color: transparent;
 }
 
+
 .container-progress{
   width: 100%;
   height: 60px;
+  margin-bottom: 10px;
   box-shadow: 3px 2px 2px #BBC1DA;
 }
 
@@ -283,8 +285,38 @@ input[type=checkbox]
   margin-top: 11%;
 }
 
-.glyphicon-time{
+.container-progress-k{
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+  box-shadow: 3px 2px 2px #BBC1DA;
+}
+
+.table-number-k{
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  float: left;
+}
+
+.number-txt-k{
+  margin-top: 30px;
+}
+
+.glyphicon-time
+{
   font-size:18px;
+}
+
+.glyphicon-warning-sign
+{
+  font-size: 20px;
+  color: #FFFF00;
+}
+
+.glyphicon-ok{
+  font-size: 20px;
+  color: #008000;
 }
 
 .number-table-prog{
@@ -299,4 +331,9 @@ input[type=checkbox]
 
 .progress{
   margin-top:20px;
+}
+
+.text-list-progress{
+  font-size: 16px;
+  font-weight: bold;
 }
