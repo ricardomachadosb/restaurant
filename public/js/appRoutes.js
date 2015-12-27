@@ -59,6 +59,11 @@
             controller: 'OrderFinishController'
         })
 
+       .when('/pedidos/resumo', {
+            templateUrl: 'views/order/list-finaliza-pedido.html',
+            controller: 'OrderFinishController'
+        })       
+
        .when('/telas', {
             templateUrl: 'views/orderProgress/listProgress.html',
             controller: 'OrderController'
