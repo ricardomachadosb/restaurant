@@ -246,7 +246,7 @@ background-color: #D8D8A8;
   width: 200px;
 }
 
-input[type=checkbox]
+.check-order
 {
   -ms-transform: scale(1.5); /* IE */
   -moz-transform: scale(1.5); /* FF */
@@ -266,6 +266,16 @@ input[type=checkbox]
   background-color: transparent;
 }
 
+.order-code-item{
+  width: 35px;
+}
+
+.order-name-item{
+  width: 200px;
+  max-width: 200px;
+  table-layout:fixed;
+  word-wrap:break-word;
+}
 
 .container-progress{
   width: 100%;
@@ -314,7 +324,7 @@ input[type=checkbox]
   color: #FFFF00;
 }
 
-.glyphicon-ok{
+.ok-size{
   font-size: 20px;
   color: #008000;
 }
