@@ -12,9 +12,9 @@
                       <td><input type="text" class="form-control qnt" id="" disabled="disabled" name="" ng-model="orderDrink.quantity"></td>
                       <td><button class="btn btn-small btn-qnt" ng-click="increaseQuantity(orderDrink)"><span class="glyphicon glyphicon-plus"></span></button></td>
                     </td>
-                    <td>{{orderDrink.drink.code}}</td> <!-- CÓDIGO DO PRATO -->
+                    <td class="order-code-item">{{orderDrink.drink.code}}</td> <!-- CÓDIGO DO PRATO -->
                     <td> - </td>
-                    <td>{{orderDrink.drink.name}}</td> <!-- NOME DO PRATO -->
+                    <td class="order-name-item">{{orderDrink.drink.name}}</td> <!-- NOME DO PRATO -->
                     <td>
                       <input type="text" class="form-control order-form" placeholder="Observações" aria-describedby="basic-addon2">
                     </td>                    
