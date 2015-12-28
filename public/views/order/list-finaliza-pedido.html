@@ -20,12 +20,12 @@
             <table class="table">
               <tbody>
                 <tr class="">
-                  <td scope="row">
+                  <td scope="row" class="order-resum-item">
                     <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> {{dishData.dish.name}}
                   </td>
                   <td scope="row">
                     {{dishData.dish.price | currency:"R$ "}}
-                  <td scope="row">
+                  <td scope="row" class="order-obs-item">
                     {{dishData.observation}}
                   </td>
                 </tr>
@@ -47,13 +47,13 @@
             <table class="table">
               <tbody>
                 <tr class="">
-                  <td scope="row">
+                  <td scope="row" class="order-resum-item">
                     <span class="glyphicon glyphicon-glass" aria-hidden="true"></span> {{drinkData.drink.name}}
                   </td>
                   <td scope="row">
                     {{drinkData.drink.price | currency:"R$ "}}
                   </td>
-                  <td scope="row">
+                  <td scope="row" class="order-obs-item">
                     {{drinkData.observation}}
                   </td>
                 </tr>
