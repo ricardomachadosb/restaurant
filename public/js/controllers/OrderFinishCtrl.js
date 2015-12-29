@@ -19,13 +19,14 @@ angular.module('OrderFinishCtrl', ['OrderService']).controller('OrderFinishContr
 			var dishes = order.dishes;
 
 			 for(var i =0; i < dishes.length; i++){
-				 	if(dishes[i].quantity > 0){
-		      	$scope.total += dishes[i].dish.price;
+			 	for(var ii =0; ii < dishes[i].quantity; ii++){
+			 		$scope.total += dishes[i].dish.price;
+			 	}
+			 	
 
 		      	if(dishes[i].dish.avgTime > $scope.avgTime){
 		      		$scope.avgTime = dishes[i].dish.avgTime;
 		      	}
-		      }
 	      }
 		}
 	};
