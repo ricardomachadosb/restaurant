@@ -7,7 +7,8 @@ module.exports = function(app) {
 
             // create a sample user
             var nick = new User({
-              name: 'admin',
+              name: 'admin1',
+              login: 'admin1',
               password: '123',
               isLoginAble: true
             });
