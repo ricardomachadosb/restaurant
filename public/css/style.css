@@ -178,6 +178,9 @@ background-color: #D8D8A8;
   margin-left: 40%;
 }
 
+.glyphicon-log-out{
+  font-size: 17px;
+}
 .inner-addon { 
     position: relative; 
 }
