@@ -16,7 +16,7 @@
                     <td> - </td>
                     <td class="order-name-item">{{orderDrink.drink.name}}</td> <!-- NOME DO PRATO -->
                     <td>
-                      <input type="text" class="form-control order-form" placeholder="Observações" aria-describedby="basic-addon2">
+                      <input type="text" class="form-control order-form" placeholder="Observações" aria-describedby="basic-addon2"  ng-model="orderDrink.observation" ng-blur="changeObservation()">
                     </td>                    
                   </tr> 
                 </tbody>

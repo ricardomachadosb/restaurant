@@ -6,7 +6,6 @@ module.exports = function(app) {
     var AuthController = {
 
         authenticate: function(req, res) {
-          console.log( req.body.login);
           User.findOne({
             login: req.body.login
           }, function(err, user) {
