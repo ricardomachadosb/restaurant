@@ -1,7 +1,12 @@
 angular.module('MainCtrl', []).controller('MainController', function($scope, $http, $cookies, $rootScope, $location) {
 
 	$rootScope.currencyPattern= "^([0-9]{1,3}|100)([.][0-9]{1,2})?$";
-  $rootScope.numberOnlyPattern= "^[0-9]{1,3}$";
+  	$rootScope.orderStatusCodeNew= 1;
+  	$rootScope.orderStatusCodeInProgress= 2;
+  	$rootScope.orderStatusCodeClosed= 3;
+  	$rootScope.orderStatusCodePayed= 4;
+
+  	$rootScope.numberOnlyPattern= "^[0-9]{1,3}$";
 
 	var checkAuth = function(){
 		$rootScope.token = $cookies.get('token');

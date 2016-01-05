@@ -2,6 +2,7 @@ module.exports = function(app) {
 
   var Table = app.back.models.table;
   var Order = app.back.models.order;
+  var Constants = app.back.utils.constants;
 
   var get = function(req, res ) {
     Order.findOne({_id: req.params.id}).populate("tables").populate("dishes.dish").populate("drinks.drink").exec(function(err, order){
@@ -47,7 +48,7 @@ module.exports = function(app) {
 
           var order = new Order({
             code: code,
-            status: false,
+            status: Constants.orderStatusCodeNew,
             tables: []
           });
 
@@ -61,7 +62,7 @@ module.exports = function(app) {
         }else {
           var order = new Order({
             code: "0001",
-            status: false,
+            status: Constants.orderStatusCodeNew,
             tables: []
           });
 

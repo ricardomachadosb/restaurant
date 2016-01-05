@@ -17,6 +17,23 @@ angular.module('OrderCtrl', ['OrderService']).controller('OrderController', func
     $location.path("/pedidos/mesas");
   };
 
+  $scope.getOrderStatusText = function(statusCode){
+    switch(statusCode){
+      case $rootScope.orderStatusCodeNew:
+        return "Novo";
+        break;
+      case $rootScope.orderStatusCodeInProgress:
+        return "Em Andamento";
+        break;
+      case $rootScope.orderStatusCodeClosed:
+        return "Fechado";
+        break;
+      case $rootScope.orderStatusCodePayed:
+        return "Pago";
+        break;
+    }
+  }
+
   $scope.edit = function(id){
     orderService.clearCurrentOrder();
     orderService.setCurrentOrder(id);

@@ -46,6 +46,7 @@ app.use(express.static(__dirname + '/public'));
 // routes ==================================================
 //require('./app/routes/nerd')(app); // configure our routes
 load('./back/models')
+	.then('./back/utils')
 	.then('./back/controllers')
 	.then('./back/routes')
 	.into(app);
