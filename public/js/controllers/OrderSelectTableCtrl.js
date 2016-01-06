@@ -4,8 +4,9 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
   $scope.tables = [];
 
   $scope.listAvaliableTables = function(){
+    currentOrder = orderService.getCurrentOrder();
     $http.get('/api/table/listAvaliableTables', {headers: $rootScope.tokenHeader}).success(function(res){
-      currentOrder = orderService.getCurrentOrder();
+
 
       if(currentOrder.tables && currentOrder.tables.length > 0){
         $scope.tableList = res.concat(currentOrder.tables);
@@ -42,7 +43,7 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
             if(!table.status){
               table.orderId = null;
 
-              for(var i = 0; i <=  currentOrder.tables.length - 1; i++){                
+              for(var i = 0; i <=  currentOrder.tables.length - 1; i++){
                   if(currentOrder.tables[i]._id == id){
                       currentOrder.tables.splice(i,1);
                       changeSelecionCallBack(table, currentOrder);
@@ -61,7 +62,7 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
               changeSelecionCallBack(table, currentOrder);
               return;
             }
-          };   
+          };
 
      })
 

@@ -5,7 +5,7 @@ angular.module('OrderProgressCtrl', []).controller('OrderProgressController', fu
   };
 
   var getOrdersInProgress = function(){
-    
+
     $http.get('/api/order/listOrderInProgress', {headers: $rootScope.tokenHeader}).success(function(res){
        $scope.orderList = res;
        populatePercentComplete();
@@ -19,9 +19,12 @@ angular.module('OrderProgressCtrl', []).controller('OrderProgressController', fu
     for(var i = 0; i < $scope.orderList.length; i++){
       var start = new Date($scope.orderList[i].lastModified);
       var today = new Date();
-      var end = new Date(today.getTime() + ($scope.orderList[i].avgTime * 60000));
-      console.log(100-(((end) - start) * 100 ) / today);
-      $scope.orderList[i].percentComplete =  Math.round(100-(((end) - start) * 100 ) / today)
+      var end = start.getTime() + ($scope.orderList[i].avgTime * 60000);
+      var diffMs = end - start;
+
+      var timeDiff = today.getTime() - start.getTime();
+      var percentComplete = (timeDiff / ($scope.orderList[i].avgTime * 60000)) * 100;
+      $scope.orderList[i].percentComplete =  percentComplete;
     }
   }
 
