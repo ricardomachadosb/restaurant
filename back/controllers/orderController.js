@@ -55,7 +55,8 @@ module.exports = function(app) {
           var order = new Order({
             code: code,
             status: Constants.orderStatusCodeNew,
-            tables: []
+            tables: [],
+            lastModified: new Date()
           });
 
           order.save(function(err) {
@@ -110,6 +111,7 @@ module.exports = function(app) {
       order.drinks =  req.body.drinks;
       order.tables =  req.body.tables;
       order.avgTime = req.body.avgTime;
+      order.lastModified = new Date();
       order.save();
       
       res.json({ success: true });
