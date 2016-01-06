@@ -71,9 +71,7 @@ angular.module('OrderCtrl', ['OrderService']).controller('OrderController', func
                     $scope.messageClass = 'alert-danger';
                     $scope.message = 'Problemas ao atualizar mesas';
                 });
-
             }
-
           }
 
         }).error(function(res){
