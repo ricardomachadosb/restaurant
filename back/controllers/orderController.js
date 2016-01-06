@@ -103,6 +103,7 @@ module.exports = function(app) {
       order.dishes =  req.body.dishes;
       order.drinks =  req.body.drinks;
       order.tables =  req.body.tables;
+      order.avgTime = req.body.avgTime;
       order.save();
       
       res.json({ success: true });

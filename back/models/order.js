@@ -13,6 +13,7 @@ module.exports = function(app){
 	return mongoose.model('Order', {
       code : {type : String},
       status: {type: Number},
+      avgTime : {type : Number},
       tables: [{type : mongoose.Schema.ObjectId, ref : 'Table'}],
       dishes: [OrderDishSchema],
       drinks: [OrderDrinkSchema]

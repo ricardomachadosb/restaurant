@@ -8,9 +8,12 @@ angular.module('OrderFinishCtrl', ['OrderService']).controller('OrderFinishContr
 		$scope.total = 0;
 		$scope.avgTime = 0;
 
-		sumDishes(currentOrder);
-		sumDrink(currentOrder);
+		if(!currentOrder.avgTime){
+			sumDishes(currentOrder);
+			sumDrink(currentOrder);
 
+			currentOrder.avgTime = $scope.avgTime;
+		}
 	};
 
 	$scope.finish = function(){
