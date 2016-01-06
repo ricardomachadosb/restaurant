@@ -66,7 +66,7 @@
 
        .when('/telas', {
             templateUrl: 'views/orderProgress/listProgress.html',
-            controller: 'OrderController'
+            controller: 'OrderProgressController'
         });
 
     $locationProvider.html5Mode(true);

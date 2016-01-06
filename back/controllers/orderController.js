@@ -15,6 +15,12 @@ module.exports = function(app) {
     });
   };
 
+  var listOrderInProgress = function(req, res){
+     Order.find({status: Constants.orderStatusCodeInProgress}).populate("tables").exec(function(err, orders) {
+      res.json(orders);
+    });
+  };
+
   var list = function(req, res) {
     Order.find().populate("tables").exec(function(err, orders) {
       res.json(orders);
@@ -113,6 +119,7 @@ module.exports = function(app) {
 
   return{
     list: list,
+    listOrderInProgress: listOrderInProgress,
     remove: remove,
     setup: setup,
     count: count,
