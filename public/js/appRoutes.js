@@ -64,10 +64,15 @@
             controller: 'OrderFinishController'
         })       
 
-       .when('/telas', {
+       .when('/cliente', {
             templateUrl: 'views/orderProgress/listProgress.html',
             controller: 'OrderProgressController'
-        });
+        })
+
+       .when('/cozinha', {
+            templateUrl: 'views/orderProgress/listProgressKitchen.html',
+            controller: 'OrderProgressController'
+        });       
 
     $locationProvider.html5Mode(true);
 

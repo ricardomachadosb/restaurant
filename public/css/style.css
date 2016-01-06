@@ -152,6 +152,11 @@ background-color: #D8D8A8;
 }
 
 .order-list-head{
+    width: 400px;
+    height: 30px;
+}
+
+.order-list-head0{
     width: 45px;
     height: 30px;
 }
@@ -312,7 +317,7 @@ background-color: #D8D8A8;
 
 .container-progress-k{
   width: 100%;
-  height: 100px;
+  height: 120px;
   margin-bottom: 10px;
   box-shadow: 3px 2px 2px #BBC1DA;
 }
@@ -361,4 +366,34 @@ background-color: #D8D8A8;
 .text-list-progress{
   font-size: 16px;
   font-weight: bold;
+}
+
+.cabecalho-dois{
+  width: 800px;
+  height: 30px;
+  max-width: 800px;
+  table-layout:fixed;
+}
+
+.order-resum-mich{
+  width: 100px;
+  height: 30px;
+  max-width: 40px;
+  table-layout:fixed;
+  margin-left: 30px;
+}
+
+.order-resum-price{
+  width: 150px;
+  height: 30px;
+  max-width: 100px;
+  table-layout:fixed;
+
+}
+
+.order-resum-qnt{
+  width: 100px;
+  height: 30px;
+  max-width: 100px;
+  table-layout:fixed;
 }

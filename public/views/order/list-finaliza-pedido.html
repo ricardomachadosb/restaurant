@@ -7,21 +7,34 @@
 
   <table class="table">
     <thead class="listagem">
-      <tr>
+      <tr class="cabecalho-um">
         <th class="order-list-head">Pedido: {{currentOrder.code}} | {{(currentOrder.tables.length > 1) ?"Mesas": "Mesa"}}: {{formatTablesText(currentOrder)}}</th>
-      </tr>
+      </tr>    
     </thead>
+
   </table>
   <div class="order-list">
     <div style="border: 0 none;">
       <table class="table">
+    <thead>
+      <tr class="cabecalho-dois">
+        <th scope="row" class="order-resum-mich">ITEM</th>
+        <th scope="row" class="order-resum-price">VALOR UNT</th>
+        <th scope="row" class="order-resum-qnt">QNT</th>
+        <th scope="row" class="order-obs-item">OBS</th>
+      </tr>  
+    </thead>        
         <tbody > 
           <tr class="" ng-repeat="dishData in currentOrder.dishes" ng-if="dishData.quantity > 0">
             <td scope="row" class="order-resum-item">
-              <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span> {{dishData.dish.name}}
+              <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>{{dishData.dish.name}}
             </td>
             <td scope="row">
               {{dishData.dish.price | currency:"R$ "}}
+            </td>
+            <td scope="row">
+              {{dishData.quantity}}
+            </td>            
             <td scope="row" class="order-obs-item">
               {{dishData.observation}}
             </td>
@@ -33,6 +46,9 @@
               </td>
               <td scope="row">
                 {{drinkData.drink.price | currency:"R$ "}}
+              </td>
+              <td scope="row">
+                {{drinkData.quantity}}
               </td>
               <td scope="row" class="order-obs-item">
                 {{drinkData.observation}}

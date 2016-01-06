@@ -8,7 +8,9 @@ module.exports = function(app) {
     Order.findOne({_id: req.params.id}).populate("tables").populate("dishes.dish").populate("drinks.drink").exec(function(err, order){
 
       for(var i =0; i < order.dishes.length; i++){
-        order.dishes[i].dish.picture = [];
+        if (order.dishes[i].dish) {
+          order.dishes[i].dish.picture = [];
+        };
       }
 
       res.json(order);
