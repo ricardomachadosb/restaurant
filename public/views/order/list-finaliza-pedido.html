@@ -27,7 +27,7 @@
         <tbody > 
           <tr class="" ng-repeat="dishData in currentOrder.dishes" ng-if="dishData.quantity > 0">
             <td scope="row" class="order-resum-item">
-              <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>{{dishData.dish.name}}
+              <span class="glyphicon glyphicon-cutlery" aria-hidden="true"> </span>  {{dishData.dish.name}}
             </td>
             <td scope="row">
               {{dishData.dish.price | currency:"R$ "}}
@@ -42,7 +42,7 @@
           <tr><td></td><td></td><td></td></tr>
           <tr ng-repeat="drinkData in currentOrder.drinks" class="" ng-if="drinkData.quantity > 0">
               <td scope="row" class="order-resum-item">
-                <span class="glyphicon glyphicon-glass" aria-hidden="true"></span> {{drinkData.drink.name}}
+                <span class="glyphicon glyphicon-glass" aria-hidden="true"> </span> {{drinkData.drink.name}}
               </td>
               <td scope="row">
                 {{drinkData.drink.price | currency:"R$ "}}
