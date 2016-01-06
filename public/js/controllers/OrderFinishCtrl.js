@@ -1,4 +1,4 @@
-angular.module('OrderFinishCtrl', ['OrderService']).controller('OrderFinishController', function($scope, $http, $rootScope, orderService){
+angular.module('OrderFinishCtrl', ['OrderService']).controller('OrderFinishController', function($scope, $http, $rootScope, $location, orderService){
 	var currentOrder;
 
 	$scope.initialize = function(){
@@ -11,6 +11,14 @@ angular.module('OrderFinishCtrl', ['OrderService']).controller('OrderFinishContr
 		sumDishes(currentOrder);
 		sumDrink(currentOrder);
 
+	};
+
+	$scope.finish = function(){
+	    currentOrder = orderService.getCurrentOrder();
+	    currentOrder.status = $rootScope.orderStatusCodeInProgress;
+	    saveOrder(currentOrder);
+
+	    $location.path("/pedidos");
 	};
 
 	var sumDishes = function(order){
@@ -43,6 +51,14 @@ angular.module('OrderFinishCtrl', ['OrderService']).controller('OrderFinishContr
 
 		}
 	};
+
+	var saveOrder = function(order){
+	  	$http.put('/api/order/put/' + order._id, order, {headers: $rootScope.tokenHeader}).success(function(res){}
+	        ).error(function(res){
+	              $scope.messageClass = 'alert-danger';
+	              $scope.message = 'Problemas ao atualizar pedido';
+	  	});
+ 	};
 
 	$scope.initialize();
 });
