@@ -21,10 +21,8 @@
             </li>
           </ul>
       </div>
-        <!-- Esse é o nome, troquei para funcionar a autenticação certa. Autenticar com o login e não com o nome -->
-        <div class="grid-item"> <span><b>{{user.login}}</b></span></div>
-        <!-- Esse é o login, troquei para funcionar a autenticação certa. Autenticar com o login e não com o nome -->
         <div class="grid-item"> <span >{{user.name}}</span> </div>
+        <div class="grid-item"> <span><b>{{user.login}}</b></span></div>
         <div class="grid-item last-item"><div class="label label-default label-role" ng-repeat-start="role in user.roles" ng-repeat-end> {{role.key}}</div></div>
     </div>
   </div>
