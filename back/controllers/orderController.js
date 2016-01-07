@@ -6,14 +6,16 @@ module.exports = function(app) {
 
   var get = function(req, res ) {
     Order.findOne({_id: req.params.id}).populate("tables").populate("dishes.dish").populate("drinks.drink").exec(function(err, order){
+      if (err) throw err; 
+      if (order){
+        for(var i =0; i < order.dishes.length; i++){
+          if (order.dishes[i].dish) {
+            order.dishes[i].dish.picture = [];
+          };
+        }
 
-      for(var i =0; i < order.dishes.length; i++){
-        if (order.dishes[i].dish) {
-          order.dishes[i].dish.picture = [];
-        };
+        res.json(order);
       }
-
-      res.json(order);
     });
   };
 
