@@ -48,13 +48,12 @@ angular.module('OrderFinishCtrl', ['OrderService', 'SocketService']).controller(
 		if(order.drinks){
 			var drinks = order.drinks;
 
-			 for(var i =0; i < drinks.length; i++){
-				 	if(drinks[i].quantity > 0){
-		      		$scope.total += drinks[i].drink.price;
-		      }
-	     }
-
-		}
+			for(var i =0; i < drinks.length; i++){
+				for(var ii =0; ii < drinks[i].quantity; ii++){
+					$scope.total += drinks[i].drink.price;
+			      }
+		     	}
+		    }
 	};
 
 	var saveOrder = function(order){
