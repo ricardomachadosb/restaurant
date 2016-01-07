@@ -8,10 +8,10 @@ angular.module('OrderFinishCtrl', ['OrderService', 'SocketService']).controller(
 		$scope.total = 0;
 		$scope.avgTime = 0;
 
-		if(!currentOrder.avgTime){
-			sumDishes(currentOrder);
-			sumDrink(currentOrder);
+		sumDishes(currentOrder);
+		sumDrink(currentOrder);
 
+		if(!currentOrder.avgTime){
 			currentOrder.avgTime = $scope.avgTime;
 		}
 	};
@@ -35,7 +35,7 @@ angular.module('OrderFinishCtrl', ['OrderService', 'SocketService']).controller(
 			 	for(var ii =0; ii < dishes[i].quantity; ii++){
 			 		$scope.total += dishes[i].dish.price;
 			 	}
-			 	
+
 
 		      	if(dishes[i].dish.avgTime > $scope.avgTime){
 		      		$scope.avgTime = dishes[i].dish.avgTime;
