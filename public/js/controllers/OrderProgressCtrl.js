@@ -1,4 +1,4 @@
-angular.module('OrderProgressCtrl', []).controller('OrderProgressController', function($scope, $http, $rootScope){
+angular.module('OrderProgressCtrl', []).controller('OrderProgressController', function($scope, $http, $rootScope, $interval){
 
   $scope.initialize = function(){
     getOrdersInProgress();
@@ -25,9 +25,18 @@ angular.module('OrderProgressCtrl', []).controller('OrderProgressController', fu
       var timeDiff = today.getTime() - start.getTime();
       var percentComplete = (timeDiff / ($scope.orderList[i].avgTime * 60000)) * 100;
       $scope.orderList[i].percentComplete =  percentComplete;
+      console.log(percentComplete);
     }
-  }
+  };
+
+  var schedulerPercentComplete = function(){
+    var intervalPromise =  $interval(populatePercentComplete,  5 * 1000);
+    $scope.$on('$locationChangeStart', function(event) {
+      $interval.cancel(intervalPromise);
+    });
+  };
 
   $scope.initialize();
+  schedulerPercentComplete();
 
 });
