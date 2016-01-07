@@ -21,9 +21,7 @@ angular.module('OrderFinishCtrl', ['OrderService', 'SocketService']).controller(
 	    currentOrder.status = $rootScope.orderStatusCodeInProgress;
 	    saveOrder(currentOrder);
 
-		socketService.emit("new order", currentOrder);
-
-	    $location.path("/pedidos");
+	    socketService.emit("new order", currentOrder);
 	};
 
 	var sumDishes = function(order){
@@ -57,12 +55,17 @@ angular.module('OrderFinishCtrl', ['OrderService', 'SocketService']).controller(
 	};
 
 	var saveOrder = function(order){
-	  	$http.put('/api/order/put/' + order._id, order, {headers: $rootScope.tokenHeader}).success(function(res){}
-	        ).error(function(res){
-	              $scope.messageClass = 'alert-danger';
-	              $scope.message = 'Problemas ao atualizar pedido';
+	  	$http.put('/api/order/put/' + order._id, order, {headers: $rootScope.tokenHeader}).success(function(res){
+	  		returnToOrderList();
+	  	}).error(function(res){
+          $scope.messageClass = 'alert-danger';
+          $scope.message = 'Problemas ao atualizar pedido';
 	  	});
  	};
 
 	$scope.initialize();
+
+	var returnToOrderList = function(){
+		$location.path("/pedidos");
+	}
 });
