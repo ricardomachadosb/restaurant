@@ -1,4 +1,4 @@
-angular.module('OrderFinishCtrl', ['OrderService']).controller('OrderFinishController', function($scope, $http, $rootScope, $location, orderService){
+angular.module('OrderFinishCtrl', ['OrderService', 'SocketService']).controller('OrderFinishController', function($scope, $http, $rootScope, $location, orderService, socketService){
 	var currentOrder;
 
 	$scope.initialize = function(){
@@ -20,6 +20,8 @@ angular.module('OrderFinishCtrl', ['OrderService']).controller('OrderFinishContr
 	    currentOrder = orderService.getCurrentOrder();
 	    currentOrder.status = $rootScope.orderStatusCodeInProgress;
 	    saveOrder(currentOrder);
+
+		socketService.emit("new order", currentOrder);
 
 	    $location.path("/pedidos");
 	};

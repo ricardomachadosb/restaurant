@@ -1,4 +1,4 @@
-angular.module('OrderProgressCtrl', []).controller('OrderProgressController', function($scope, $http, $rootScope, $interval){
+angular.module('OrderProgressCtrl', ['SocketService']).controller('OrderProgressController', function($scope, $http, $rootScope, $interval, socketService){
 
   $scope.initialize = function(){
     getOrdersInProgress();
@@ -25,7 +25,6 @@ angular.module('OrderProgressCtrl', []).controller('OrderProgressController', fu
       var timeDiff = today.getTime() - start.getTime();
       var percentComplete = (timeDiff / ($scope.orderList[i].avgTime * 60000)) * 100;
       $scope.orderList[i].percentComplete =  percentComplete;
-      console.log(percentComplete);
     }
   };
 
@@ -38,5 +37,13 @@ angular.module('OrderProgressCtrl', []).controller('OrderProgressController', fu
 
   $scope.initialize();
   schedulerPercentComplete();
+  
+  socketService.on('new order', function(order){
+    $scope.initialize();
+  });
+
+  socketService.on('delete order', function(order){
+    $scope.initialize();
+  });
 
 });

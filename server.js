@@ -9,6 +9,10 @@ var mongoose       = require('mongoose');
 var fs             = require('fs');
 var router         = express.Router();
 
+//socket dependecies
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 // configuration ===========================================
 
 // config files
@@ -58,9 +62,14 @@ function redirectUnmatched(req, res) {
 
 app.use(redirectUnmatched); 
 
+var socketController = app.back.controllers.socketController;
+io.on('connection', function(socket){
+	socketController.connectResponse(socket, io);
+});
+
 // start app ===============================================
 // startup our app at http://localhost:8080
-app.listen(port);
+http.listen(port);
 
 // shoutout to the user
 console.log('Magic happens on port ' + port);

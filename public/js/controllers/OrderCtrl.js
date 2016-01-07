@@ -1,4 +1,4 @@
-angular.module('OrderCtrl', ['OrderService']).controller('OrderController', function($scope, $http, $rootScope, $location, orderService){
+angular.module('OrderCtrl', ['OrderService', 'SocketService']).controller('OrderController', function($scope, $http, $rootScope, $location, orderService, socketService){
 
   $scope.order = {};
 
@@ -92,6 +92,7 @@ angular.module('OrderCtrl', ['OrderService']).controller('OrderController', func
 
           $scope.messageClass = 'alert-success';
           $scope.message = 'Pedido deletado';
+          socketService.emit("delete order", null);
         }else {
           $scope.messageClass = 'alert-danger';
           $scope.message = res.message ? res.message : 'Problemas ao deletar Pedido';
