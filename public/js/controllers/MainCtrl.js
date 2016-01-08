@@ -50,6 +50,24 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 		$location.path( "/");
 	};
 
+	$rootScope.formatTablesText = function(order){
+		var formatedText = "";
+		if(order && order.tables && order.tables.length > 0){
+			if(order.tables.length > 1){
+				for(var i = 0; i <= order.tables.length - 1; i++){
+					if(i == order.tables.length - 1){
+						formatedText += order.tables[i].code;
+					}else {
+						formatedText += (order.tables[i].code + ", ")
+					}
+				}
+			}else {
+				formatedText = order.tables[0].code;
+			}
+		}
+		return formatedText;
+	};
+
 	$rootScope.allRoles = [{key: 'Cozinheiro', value: 'ROLE_COOK'}, {key: 'Atendente', value:'ROLE_CASHIER'},
 		{key: 'Garçom', value: 'ROLE_WAITER'}, {key: 'Administrador', value: 'ROLE_ADMIN'}];
 });

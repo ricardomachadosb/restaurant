@@ -25,6 +25,14 @@ angular.module('OrderProgressCtrl', ['SocketService']).controller('OrderProgress
       var timeDiff = today.getTime() - start.getTime();
       var percentComplete = (timeDiff / ($scope.orderList[i].avgTime * 60000)) * 100;
       $scope.orderList[i].percentComplete =  percentComplete;
+
+      if($scope.orderList[i].dishes){
+        for(var ii = 0; ii< $scope.orderList[i].dishes.length; ii++){
+          var percentCompleteDish = (timeDiff / ($scope.orderList[i].dishes[ii].dish.avgTime * 60000)) * 100;
+          $scope.orderList[i].dishes[ii].percentComplete = percentCompleteDish;
+        }
+      }
+
     }
   };
 

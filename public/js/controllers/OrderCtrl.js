@@ -40,24 +40,6 @@ angular.module('OrderCtrl', ['OrderService', 'SocketService']).controller('Order
     $location.path("/pedidos/mesas");
   };
 
-  $rootScope.formatTablesText = function(order){
-    var formatedText = "";
-    if(order && order.tables && order.tables.length > 0){
-      if(order.tables.length > 1){
-        for(var i = 0; i <= order.tables.length - 1; i++){
-            if(i == order.tables.length - 1){
-              formatedText += order.tables[i].code;
-            }else {
-              formatedText += (order.tables[i].code + ", ")
-            }
-        }
-      }else {
-        formatedText = order.tables[0].code;
-      }
-    }
-    return formatedText;
-  };
-
   var clearTables = function(orderId){
       $http.get('/api/order/get/' + orderId, {headers: $rootScope.tokenHeader}).success(function(res){
           if(res && res.tables && res.tables.length > 0){

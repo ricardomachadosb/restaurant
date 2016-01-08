@@ -20,7 +20,7 @@ module.exports = function(app) {
   };
 
   var listOrderInProgress = function(req, res){
-     Order.find({status: Constants.orderStatusCodeInProgress}).populate("tables").exec(function(err, orders) {
+     Order.find({status: Constants.orderStatusCodeInProgress}).populate("tables").populate("dishes.dish").exec(function(err, orders) {
       res.json(orders);
     });
   };
