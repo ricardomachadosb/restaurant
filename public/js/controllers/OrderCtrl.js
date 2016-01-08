@@ -14,7 +14,7 @@ angular.module('OrderCtrl', ['OrderService', 'SocketService']).controller('Order
   $scope.generateOrder = function(){
     orderService.clearCurrentOrder();
     orderService.generateOrder();
-    $location.path("/pedidos/mesas");
+    $location.path("/pedidos/mesas")
   };
 
   $scope.getOrderStatusText = function(statusCode){
@@ -36,8 +36,8 @@ angular.module('OrderCtrl', ['OrderService', 'SocketService']).controller('Order
 
   $scope.edit = function(id){
     orderService.clearCurrentOrder();
-    orderService.setCurrentOrder(id);
-    $location.path("/pedidos/mesas");
+    orderService.setCurrentOrder(id, function(){$location.path("/pedidos/mesas")});
+    //$location.path("/pedidos/mesas");
   };
 
   var clearTables = function(orderId){

@@ -7,15 +7,15 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
 
     $http.get('/api/table/listAvaliableTables', {headers: $rootScope.tokenHeader}).success(function(res){
 
-      $scope.$watch("currentOrder", function(newValue, oldValue){
-        if(currentOrder.tables && currentOrder.tables.length > 0){
-          $scope.tableList = res.concat(currentOrder.tables);
-        }else {
-          $scope.tableList = res;
-        }
-      });
-
       currentOrder = orderService.getCurrentOrder();
+
+      if(currentOrder.tables && currentOrder.tables.length > 0){
+        $scope.tableList = res.concat(currentOrder.tables);
+      }else {
+        $scope.tableList = res;
+      }
+
+
 
     }).error(function(res){
       console.log(res);
