@@ -59,8 +59,8 @@
             controller: 'OrderFinishController'
         })
 
-       .when('/pedidos/resumo', {
-            templateUrl: 'views/order/list-finaliza-pedido.html',
+       .when('/pedidos/fechar', {
+            templateUrl: 'views/order/list-close-bill.html',
             controller: 'OrderFinishController'
         })       
 

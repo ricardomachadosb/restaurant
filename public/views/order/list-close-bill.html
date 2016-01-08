@@ -1,0 +1,89 @@
+<div class="container">
+  <h1>Fechamento de pedido</h1>
+
+  <div class="alert" ng-class="messageClass" role="alert">
+    {{message}}
+  </div>
+
+  <table class="table">
+    <thead class="listagem">
+      <tr class="cabecalho-um">
+        <th class="order-list-head">Pedido: {{currentOrder.code}} | {{(currentOrder.tables.length > 1) ?"Mesas": "Mesa"}}: {{formatTablesText(currentOrder)}}</th>
+      </tr>    
+    </thead>
+
+  </table>
+  <div class="order-list">
+    <div style="border: 0 none;">
+      <table class="table">
+    <thead>
+      <tr class="cabecalho-dois">
+        <th scope="row" class="order-resum-mich">ITEM</th>
+        <th scope="row" class="order-resum-price">VALOR UNT</th>
+        <th scope="row" class="order-resum-qnt">QTDE</th>
+        <th scope="row" class="order-obs-item">TOT ITEM</th>
+      </tr>  
+    </thead>        
+        <tbody > 
+          <tr class="" ng-repeat="dishData in currentOrder.dishes" ng-if="dishData.quantity > 0">
+            <td scope="row" class="order-resum-item">
+              <span class="glyphicon glyphicon-cutlery" aria-hidden="true"> </span>  {{dishData.dish.name}}
+            </td>
+            <td scope="row">
+              {{dishData.dish.price | currency:"R$ "}}
+            </td>
+            <td scope="row">
+              {{dishData.quantity}}
+            </td>            
+            <td scope="row" class="order-obs-item">
+              {{dishData.observation}}
+            </td>
+          </tr>
+          <tr><td></td><td></td><td></td></tr>
+          <tr ng-repeat="drinkData in currentOrder.drinks" class="" ng-if="drinkData.quantity > 0">
+              <td scope="row" class="order-resum-item">
+                <span class="glyphicon glyphicon-glass" aria-hidden="true"> </span> {{drinkData.drink.name}}
+              </td>
+              <td scope="row">
+                {{drinkData.drink.price | currency:"R$ "}}
+              </td>
+              <td scope="row">
+                {{drinkData.quantity}}
+              </td>
+              <td scope="row" class="order-tot-item">
+                
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+  <div class="order-price">
+    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+    <span class="txt-closed">Valor do pedido: {{total | currency:"R$ "}}</span>
+  </div>
+
+
+  <a href="/pedidos">
+    <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="" ng-click="new()">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Voltar
+    </button>
+  </a>
+  <a href="#" ng-click="finish()">
+    <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal" >
+     Fechar <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+    </button>
+  </a>
+  <a href="#" ng-click="finish()">
+    <button class="btn btn-small btn-default btn-add" data-toggle="modal" data-target="#order-modal" >
+     Cancelar <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+    </button>
+  </a>
+
+</div>
+<order-modal-directive></order-modal-directive>
+
+
