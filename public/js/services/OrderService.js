@@ -31,9 +31,12 @@ angular.module('OrderService', []).factory('orderService', function($rootScope, 
       currentOrder = {};
     },
 
-    setCurrentOrder: function(id){
+    setCurrentOrder: function(id, callback){
       $http.get('/api/order/get/' + id, {headers: $rootScope.tokenHeader}).success(function(res){
           currentOrder = res;
+          if(callback){
+            callback();
+          }
         }).error(function(res){
           console.log(res);
       });
