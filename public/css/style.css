@@ -414,7 +414,7 @@ a.kitchen:link{
 }
 
 a:hover{
-  background-color: #FFF;
+  background-color: transparent;
 }
 
 .login{
