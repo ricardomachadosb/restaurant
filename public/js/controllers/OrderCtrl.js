@@ -40,6 +40,11 @@ angular.module('OrderCtrl', ['OrderService', 'SocketService']).controller('Order
     //$location.path("/pedidos/mesas");
   };
 
+  $scope.closeBill = function(id){
+    orderService.clearCurrentOrder();
+    orderService.setCurrentOrder(id, function(){$location.path("/pedidos/fechar")});
+  }
+
   var clearTables = function(orderId){
       $http.get('/api/order/get/' + orderId, {headers: $rootScope.tokenHeader}).success(function(res){
           if(res && res.tables && res.tables.length > 0){
