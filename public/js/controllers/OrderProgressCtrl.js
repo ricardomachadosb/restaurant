@@ -30,13 +30,24 @@ angular.module('OrderProgressCtrl', ['OrderService', 'SocketService']).controlle
 
   $scope.putDishToDone = function(orderId, dishId){
     $http.get('/api/order/get/' + orderId, {headers: $rootScope.tokenHeader}).success(function(order){
-
+      var changeStatus = true;
       if(order.dishes){
         for(var i = 0; i < order.dishes.length; i++){
           if(order.dishes[i].dish._id == dishId && order.dishes[i].quantity > 0){
             order.dishes[i].quantityDone += 1;
           }
+
+          if(changeStatus){
+            if(order.dishes[i].quantity > order.dishes[i].quantityDone){
+              changeStatus = false;
+            }
+          }
         }
+
+        if(changeStatus){
+          order.status = $rootScope.orderStatusCodeClosed;
+        }
+
         putDishDone(order);
       }
 
