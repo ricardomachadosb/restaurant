@@ -407,3 +407,12 @@ background-color: #D8D8A8;
   max-width: 100px;
   table-layout:fixed;
 }
+
+a.kitchen:link{
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover{
+  background-color: #FFF;
+}
