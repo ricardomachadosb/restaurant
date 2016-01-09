@@ -9,7 +9,9 @@ module.exports = function(app) {
  app.get('/api/order/get/:id', authController.checkAuth, orderController.get);
  app.get('/api/order/count', authController.checkAuth, orderController.count);
  app.put('/api/order/put/:id', authController.checkAuth, orderController.put);
+ app.put('/api/order/putDishDone/:id', authController.checkAuth, orderController.putDishDone);
  app.get('/api/order/setup', orderController.setup);
+
  //app.get('/api/order/edit/:id', authController.checkAuth, orderController.edit);
  //app.put('/api/order/put/:id', authController.checkAuth, orderController.put);
 };

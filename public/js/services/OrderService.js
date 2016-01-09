@@ -40,6 +40,19 @@ angular.module('OrderService', []).factory('orderService', function($rootScope, 
         }).error(function(res){
           console.log(res);
       });
+    },
+
+    get: function(id, callback){
+      $http.get('/api/order/get/' + id, {headers: $rootScope.tokenHeader}).success(function(res){
+          if(callback){
+            callback();
+          }
+
+          return res;
+
+        }).error(function(res){
+          console.log(res);
+      });
     }
 
   }

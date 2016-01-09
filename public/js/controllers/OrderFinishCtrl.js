@@ -24,21 +24,27 @@ angular.module('OrderFinishCtrl', ['OrderService', 'SocketService']).controller(
 	    socketService.emit("new order", currentOrder);
 	};
 
+	$scope.setPayed = function(){
+		currentOrder = orderService.getCurrentOrder();
+		currentOrder.status = $rootScope.orderStatusCodePayed;
+		saveOrder(currentOrder);
+
+		socketService.emit("delete order", null);
+	};
+
 	var sumDishes = function(order){
 		$scope.avgTime = 0;
 		if(order.dishes){
 			var dishes = order.dishes;
 
-			 for(var i =0; i < dishes.length; i++){
-			 	for(var ii =0; ii < dishes[i].quantity; ii++){
-			 		$scope.total += dishes[i].dish.price;
-			 	}
-
-
-		      	if(dishes[i].dish.avgTime > $scope.avgTime){
-		      		$scope.avgTime = dishes[i].dish.avgTime;
-		      	}
-	      }
+			for(var i =0; i < dishes.length; i++){
+				for(var ii =0; ii < dishes[i].quantity; ii++){
+					$scope.total += dishes[i].dish.price;
+				}
+				if(dishes[i].dish.avgTime > $scope.avgTime){
+					$scope.avgTime = dishes[i].dish.avgTime;
+				}
+			}
 		}
 	};
 

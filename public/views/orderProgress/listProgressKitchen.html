@@ -1,16 +1,16 @@
 <!-- List progress complete, this list, have everything about order  -->
 
-<!-- COPIEI E COLEI O CODIGO VARIAS VEZES, PRA VER COMO FICAVA. 
+<!-- COPIEI E COLEI O CODIGO VARIAS VEZES, PRA VER COMO FICAVA.
 TEM QUE POPULAR AS LINHAS CONFORME A QUANTIDADE DE PEDIDO ADICIONADOS. -->
 
 
 <!-- PEDIDO COM ALTERAÇÃO -->
 <br />
-<div  ng-repeat="order in orderList">
+<div  ng-repeat="order in orderList" ng-if="shouldShowProgressToKitchen(order)">
 	<span class="text-list-progress">Pedido: {{order.code}} | {{(order.tables.length > 1) ?"Mesas": "Mesa"}}: {{formatTablesText(order)}}</span>
 
-	<a href="#" class="kitchen">
-		<div class="container-progress-k" ng-repeat="dishData in order.dishes"  ng-if="dishData.quantity > 0">
+	<div class="container-progress-k" ng-repeat="dishData in order.dishes"  ng-if="(dishData.quantity - dishData.quantityDone) > 0">
+		<a href="#" ng-click="putDishToDone(order._id, dishData.dish._id)" class="kitchen">
 			<div class="table-number-k">
 				<div class="number-txt-k">
 					<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
@@ -22,7 +22,7 @@ TEM QUE POPULAR AS LINHAS CONFORME A QUANTIDADE DE PEDIDO ADICIONADOS. -->
 				<span class="text-list-progress"> {{dishData.dish.name}}</span> <!-- DESCRIÇÃO DO PRATO-->
 			</div>
 			<div class="dish-name">
-				<span class="text-list-progress"> {{dishData.quantity}} {{(dishData.quantity > 1) ?"Unidades": "Unidade"}}</span> <!-- DESCRIÇÃO DO PRATO-->
+				<span class="text-list-progress"> {{dishData.quantity - dishData.quantityDone}} {{((dishData.quantity - dishData.quantityDone) > 1) ?"Unidades": "Unidade"}}</span> <!-- DESCRIÇÃO DO PRATO-->
 			</div>
 
 			<div class="comments-order"> <!-- LISTR AS OBS DO PEDIDO, OU SEJA AS OBSERVAÇÕES-->
@@ -32,12 +32,13 @@ TEM QUE POPULAR AS LINHAS CONFORME A QUANTIDADE DE PEDIDO ADICIONADOS. -->
 
 			<div class="progress-screen">
 				<div class="progress">
-					<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{dishData.percentComplete}}%">
+					<div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:{{dishData.percentComplete}}%">
 					</div>
 				</div>
 			</div>
-		</div>
-	</a>
+		</a>
+	</div>
+
 
 	<br /><br />
 </div>

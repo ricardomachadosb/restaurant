@@ -115,24 +115,12 @@
                 <script src="libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
                 <script src="libs/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"></script>
                 <script src="libs/bootbox.js/bootbox.js"></script>
+                <script src="js/custom/custom.js"></script>
 
              <!-- <script src="libs/bootstrap/js/dropdown.js"></script> -->
         </div>
 
         <script src="/socket.io/socket.io.js"></script>
-        <script type="text/javascript">
-            window.onresize = function (event) {
-            var maxHeight = window.screen.height,
-                maxWidth = window.screen.width,
-                curHeight = window.innerHeight,
-                curWidth = window.innerWidth;
 
-            if (maxWidth == curWidth && maxHeight == curHeight) {
-                $('.navbar').hide();
-            } else {
-                $('.navbar').show();
-            }
-        }
-        </script>
     </body>
 </html>

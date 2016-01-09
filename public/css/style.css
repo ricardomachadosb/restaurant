@@ -416,3 +416,11 @@ a.kitchen:link{
 a:hover{
   background-color: #FFF;
 }
+
+.login{
+  width: 350px;
+  height: 250px;
+  margin-left: -20px;
+  background-color: rgba(255, 255, 255, .6);
+  padding: 50px 50px 50px 50px;
+}

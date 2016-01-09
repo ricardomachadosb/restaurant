@@ -1,4 +1,4 @@
-angular.module('OrderProgressCtrl', ['SocketService']).controller('OrderProgressController', function($scope, $http, $rootScope, $interval, socketService){
+angular.module('OrderProgressCtrl', ['OrderService', 'SocketService']).controller('OrderProgressController', function($scope, $http, $rootScope, $interval, socketService, orderService){
 
   $scope.initialize = function(){
     getOrdersInProgress();
@@ -12,7 +12,48 @@ angular.module('OrderProgressCtrl', ['SocketService']).controller('OrderProgress
     }).error(function(res){
       console.log(res);
     });
+  };
 
+  $scope.shouldShowProgressToKitchen = function(order){
+    var shouldShow = false;
+
+    if(order && order.dishes){
+      for(var i =0; i < order.dishes.length; i++){
+        shouldShow = order.dishes[i].quantity > order.dishes[i].quantityDone;
+        if(shouldShow){
+          break;
+        }
+      }
+    }
+    return shouldShow;
+  };
+
+  $scope.putDishToDone = function(orderId, dishId){
+    $http.get('/api/order/get/' + orderId, {headers: $rootScope.tokenHeader}).success(function(order){
+      var changeStatus = true;
+      if(order.dishes){
+        for(var i = 0; i < order.dishes.length; i++){
+          if(order.dishes[i].dish._id == dishId && order.dishes[i].quantity > 0){
+            order.dishes[i].quantityDone += 1;
+          }
+
+          if(changeStatus){
+            if(order.dishes[i].quantity > order.dishes[i].quantityDone){
+              changeStatus = false;
+            }
+          }
+        }
+
+        if(changeStatus){
+          order.status = $rootScope.orderStatusCodeClosed;
+        }
+
+        putDishDone(order);
+      }
+
+      }).error(function(res){
+        console.log(res);
+    });
   };
 
   var populatePercentComplete = function(){
@@ -43,14 +84,27 @@ angular.module('OrderProgressCtrl', ['SocketService']).controller('OrderProgress
     });
   };
 
+  var putDishDone = function(order){
+    $http.put('/api/order/putDishDone/' + order._id, order, {headers: $rootScope.tokenHeader}).success(function(res){
+      socketService.emit("update order", order);
+    }).error(function(res){
+        $scope.messageClass = 'alert-danger';
+        $scope.message = 'Problemas ao atualizar pedido';
+    });
+  };
+
   $scope.initialize();
   schedulerPercentComplete();
-  
+
   socketService.on('new order', function(order){
     $scope.initialize();
   });
 
   socketService.on('delete order', function(order){
+    $scope.initialize();
+  });
+
+  socketService.on('update order', function(order){
     $scope.initialize();
   });
 

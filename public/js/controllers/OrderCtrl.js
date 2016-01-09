@@ -26,7 +26,7 @@ angular.module('OrderCtrl', ['OrderService', 'SocketService']).controller('Order
         return "Em Andamento";
         break;
       case $rootScope.orderStatusCodeClosed:
-        return "Fechado";
+        return "Entregue";
         break;
       case $rootScope.orderStatusCodePayed:
         return "Pago";
