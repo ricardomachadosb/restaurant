@@ -10,6 +10,7 @@
     "bootbox.js": "bootbox#~4.4.0",
     "bootstrap": "~3.3.5",
     "font-awesome": "~4.4.0",
-    "isteven-angular-multiselect": "angular-multi-select#~4.0.0"
+    "isteven-angular-multiselect": "angular-multi-select#~4.0.0",
+    "bootstrap-datepicker": "~1.5.1"
   }
 }
