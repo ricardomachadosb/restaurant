@@ -6,7 +6,7 @@
   </button>
 
   <div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
-  
+
   <table class="table">
     <thead class="listagem">
       <tr>
@@ -19,7 +19,7 @@
       </tr>
     </thead>
     <tbody >
-      
+
         <tr ng-repeat="order in orderList">
           <td>{{order.code}}</td>
           <td>{{formatTablesText(order)}}</td>
@@ -31,12 +31,12 @@
             <a href="#" class="" ng-click="remove(order._id)" confirmation-needed-order="Confirma exclusão do pedido?"role="button"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
           </td>
           <td>
-            <a href="/pedidos/fechar" class="" data-toggle="modal" data-target="" ng-click="" role="button">
+            <a data-toggle="modal" data-target="" ng-click="closeBill(order._id)" role="button">
                  <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
-            </a>            
-          </td>          
+            </a>
+          </td>
         </tr>
-    </tbody> 
+    </tbody>
   </table>
 
 </div>

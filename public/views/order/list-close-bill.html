@@ -9,7 +9,7 @@
     <thead class="listagem">
       <tr class="cabecalho-um">
         <th class="order-list-head">Pedido: {{currentOrder.code}} | {{(currentOrder.tables.length > 1) ?"Mesas": "Mesa"}}: {{formatTablesText(currentOrder)}}</th>
-      </tr>    
+      </tr>
     </thead>
 
   </table>
@@ -22,9 +22,9 @@
         <th scope="row" class="order-resum-price">VALOR UNT</th>
         <th scope="row" class="order-resum-qnt">QTDE</th>
         <th scope="row" class="order-obs-item">TOT ITEM</th>
-      </tr>  
-    </thead>        
-        <tbody > 
+      </tr>
+    </thead>
+        <tbody >
           <tr class="" ng-repeat="dishData in currentOrder.dishes" ng-if="dishData.quantity > 0">
             <td scope="row" class="order-resum-item">
               <span class="glyphicon glyphicon-cutlery" aria-hidden="true"> </span>  {{dishData.dish.name}}
@@ -34,9 +34,9 @@
             </td>
             <td scope="row">
               {{dishData.quantity}}
-            </td>            
-            <td scope="row" class="order-obs-item">
-              {{dishData.observation}}
+            </td>
+            <td scope="row" class="order-tot-item">
+              {{dishData.drink.price * dishData.quantity}}
             </td>
           </tr>
           <tr><td></td><td></td><td></td></tr>
@@ -51,7 +51,7 @@
                 {{drinkData.quantity}}
               </td>
               <td scope="row" class="order-tot-item">
-                
+                {{drinkData.drink.price * drinkData.quantity}}
               </td>
             </tr>
         </tbody>
