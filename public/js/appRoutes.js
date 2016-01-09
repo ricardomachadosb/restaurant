@@ -68,6 +68,16 @@
             templateUrl: 'views/orderProgress/listProgress.html',
             controller: 'OrderProgressController'
         })
+        
+        .when('/relatorios', {
+            templateUrl: 'views/report/list.html',
+            controller: 'ReportController'
+        })
+        
+        .when('/relatorios/faturamentoGeral', {
+            templateUrl: 'views/report/general-billing.html',
+            controller: 'ReportController'
+        })
 
        .when('/cozinha', {
             templateUrl: 'views/orderProgress/listProgressKitchen.html',

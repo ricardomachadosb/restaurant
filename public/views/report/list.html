@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Tipos de Relatórios</h1>
+
+  <div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
+
+  <table class="table">
+    <thead class="listagem">
+      <tr>
+        <th class="order-list-head0">#</th>
+        <th class="order-list-head1">Relatório</th>
+        <th class="order-list-head1">Gerar Relatório</th>
+      </tr>
+    </thead>
+    <tbody >
+        <tr>
+          <td>1</td>
+          <td>Relatório de faturamento geral</td>
+          <td><a data-toggle="modal" data-target="#order-modal" ng-click="generateGeneralBilling()" role="button">
+                 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+            </a></td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
