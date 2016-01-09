@@ -6,7 +6,7 @@ module.exports = function(app) {
 
   var get = function(req, res ) {
     Order.findOne({_id: req.params.id}).populate("tables").populate("dishes.dish").populate("drinks.drink").exec(function(err, order){
-      if (err) throw err; 
+      if (err) throw err;
       if (order){
         for(var i =0; i < order.dishes.length; i++){
           if (order.dishes[i].dish) {
@@ -69,7 +69,7 @@ module.exports = function(app) {
             console.log('order saved successfully');
             res.json(order);
           });
-      
+
         }else {
           var order = new Order({
             code: "0001",
@@ -117,9 +117,21 @@ module.exports = function(app) {
       order.avgTime = req.body.avgTime;
       order.lastModified = new Date();
       order.save();
-      
+
       res.json({ success: true });
-      
+
+    });
+  };
+
+  var putDishDone = function(req, res) {
+    Order.findOne({_id: req.params.id}, function(err, order) {
+      if (err) throw err;
+      order.status = req.body.status;
+      order.dishes =  req.body.dishes;
+      order.save();
+
+      res.json({ success: true });
+
     });
   };
 
@@ -131,6 +143,7 @@ module.exports = function(app) {
     count: count,
     generateOrder: generateOrder,
     put: put,
+    putDishDone: putDishDone,
     get: get
   }
 }
