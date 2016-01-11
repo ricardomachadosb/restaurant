@@ -19,6 +19,7 @@ angular.module('OrderFinishCtrl', ['OrderService', 'SocketService']).controller(
 	$scope.finish = function(){
 	    currentOrder = orderService.getCurrentOrder();
 	    currentOrder.status = $rootScope.orderStatusCodeInProgress;
+
 	    saveOrder(currentOrder);
 
 	    socketService.emit("new order", currentOrder);
@@ -26,7 +27,12 @@ angular.module('OrderFinishCtrl', ['OrderService', 'SocketService']).controller(
 
 	$scope.setPayed = function(){
 		currentOrder = orderService.getCurrentOrder();
+		currentOrder.totalPrice = 0;
+		orderService.addDishValueToTotal(currentOrder);
+	    orderService.addDrinkValueToTotal(currentOrder);
+	   	console.log(currentOrder.totalPrice);
 		currentOrder.status = $rootScope.orderStatusCodePayed;
+
 		saveOrder(currentOrder);
 
 		socketService.emit("delete order", null);

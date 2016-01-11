@@ -116,6 +116,7 @@ module.exports = function(app) {
       order.tables =  req.body.tables;
       order.avgTime = req.body.avgTime;
       order.lastModified = new Date();
+      order.totalPrice = req.body.totalPrice;
       order.save();
 
       res.json({ success: true });

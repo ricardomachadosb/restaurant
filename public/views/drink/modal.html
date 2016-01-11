@@ -48,7 +48,7 @@
             </div>
             <div class="form-group">
               <label for="picture">Imagem</label><br />
-              <img class="imageConfigs" ng-src="{{drink.picture[0]}}" /><br />
+              <img class="imageConfigs" ng-show="drink.picture[0]" ng-src="{{drink.picture[0]}}" /><br />
               <input type="file" name="picture" ng-model='drink.picture' ng-file-select="onFileSelect($files)" >
             </div>
           </form>

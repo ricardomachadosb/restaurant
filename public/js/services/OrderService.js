@@ -23,6 +23,22 @@ angular.module('OrderService', []).factory('orderService', function($rootScope, 
       });
     },
 
+    addDishValueToTotal: function(order){
+      if(order && order.dishes){
+        for(var i =0; i < order.dishes.length; i++){
+          order.totalPrice += order.dishes[0].dish.price;
+        }
+      }
+    },
+
+    addDrinkValueToTotal: function(order){
+      if(order && order.drinks){
+        for(var i =0; i < order.drinks.length; i++){
+          order.totalPrice += order.drinks[0].drink.price;
+        }
+      }
+    },
+
     getCurrentOrder: function(){
       return currentOrder;
     },

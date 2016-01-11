@@ -14,6 +14,7 @@ module.exports = function(app){
       code : {type : String},
       status: {type: Number},
       avgTime : {type : Number},
+      totalPrice: {type: Number, default: 0},
       tables: [{type : mongoose.Schema.ObjectId, ref : 'Table'}],
       lastModified: {type: Date},
       dishes: [OrderDishSchema],
