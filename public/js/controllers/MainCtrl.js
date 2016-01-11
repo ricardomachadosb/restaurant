@@ -25,7 +25,9 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 		}else {
 			$rootScope.bodyClass = "body-not-authenticated";
 		}
-		$rootScope.userRoles = JSON.parse($cookies.get('userRoles'));
+		if($cookies.get('userRoles')){
+			$rootScope.userRoles = JSON.parse($cookies.get('userRoles'));
+		}
 	};
 
 	checkAuth();
@@ -68,6 +70,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 		$rootScope.authenticated = false;
 		$cookies.put('token', '');
 		$cookies.put('authenticated', false);
+		$cookies.put('userRoles', '');
 		$rootScope.bodyClass = "body-not-authenticated";
 		$location.path( "/");
 	};
