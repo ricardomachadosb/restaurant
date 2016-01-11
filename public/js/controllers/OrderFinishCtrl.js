@@ -30,9 +30,8 @@ angular.module('OrderFinishCtrl', ['OrderService', 'SocketService']).controller(
 		currentOrder.totalPrice = 0;
 		orderService.addDishValueToTotal(currentOrder);
 	    orderService.addDrinkValueToTotal(currentOrder);
-	   	console.log(currentOrder.totalPrice);
 		currentOrder.status = $rootScope.orderStatusCodePayed;
-
+		setTablesToAvailable(currentOrder);
 		saveOrder(currentOrder);
 
 		socketService.emit("delete order", null);
@@ -73,6 +72,17 @@ angular.module('OrderFinishCtrl', ['OrderService', 'SocketService']).controller(
           $scope.messageClass = 'alert-danger';
           $scope.message = 'Problemas ao atualizar pedido';
 	  	});
+ 	};
+
+ 	var setTablesToAvailable = function(order){
+ 		if(order && order.tables){
+	 		for(var i = 0; i < order.tables.length; i++){
+	 			order.tables[0].status = false;
+	 		}
+ 		}
+
+		$http.post('/api/table/saveAll', order.tables, {headers: $rootScope.tokenHeader})
+			.success(function(res){});
  	};
 
 	$scope.initialize();

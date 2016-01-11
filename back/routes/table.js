@@ -8,4 +8,5 @@ module.exports = function(app) {
   app.get('/api/table/get/:id', authController.checkAuth, tableController.get);
   app.put('/api/table/put/:id', authController.checkAuth, tableController.put);
   app.get('/api/table/listAvaliableTables', authController.checkAuth, tableController.listAvaliableTables);
+  app.post('/api/table/saveAll', authController.checkAuth, tableController.saveAll);
 };

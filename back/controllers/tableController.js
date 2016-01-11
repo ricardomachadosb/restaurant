@@ -53,6 +53,21 @@ module.exports = function(app) {
         table.save();
         res.json({ success: true });
       });
+    },
+
+    saveAll: function(req, res){
+      
+      for(var i = 0; i < req.body.length; i++){
+        var reqTable = req.body[0];
+        Table.findOne({_id: reqTable._id}, function(err, table) {
+          if (err) throw err;
+          table.code = reqTable.code;
+          table.status = reqTable.status
+
+          table.save();
+          res.json({ success: true });
+        });
+      }
     }
   }
 
