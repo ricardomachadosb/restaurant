@@ -10,13 +10,21 @@ angular.module('OrderSelectTableCtrl', ['OrderService']).controller('OrderSelect
       currentOrder = orderService.getCurrentOrder();
 
       if(currentOrder.tables && currentOrder.tables.length > 0){
-        $scope.tableList = res.concat(currentOrder.tables);
-      }else {
-        $scope.tableList = res;
+        
+        for(var i =0; i < currentOrder.tables.length; i++){
+          var contains = false;
+          for(var ii = 0; ii < res.length; ii++){
+            if(res[ii]._id == currentOrder.tables[i]._id){
+              contains = true;
+            }
+          }
+          if(!contains){
+            res = res.concat([currentOrder.tables[i]]);
+          }
+        }
       }
-
-
-
+      
+      $scope.tableList = res;
     }).error(function(res){
       console.log(res);
     });
