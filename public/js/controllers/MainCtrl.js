@@ -34,10 +34,12 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 
 	$scope.isAdmin = function(){
 		var isAdmin = false;
-		for(var i = 0; i < $rootScope.userRoles.length; i++){
-			if($rootScope.userRoles[i].value == $rootScope.roleAdmin.value){
-				isAdmin = true;
-				break;
+		if($rootScope.userRoles){
+			for(var i = 0; i < $rootScope.userRoles.length; i++){
+				if($rootScope.userRoles[i].value == $rootScope.roleAdmin.value){
+					isAdmin = true;
+					break;
+				}
 			}
 		}
 		return isAdmin;
