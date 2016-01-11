@@ -8,6 +8,14 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 
   	$rootScope.numberOnlyPattern= "^[0-9]{1,3}$";
 
+  	$rootScope.roleCook = {key: 'Cozinheiro', value: 'ROLE_COOK'};
+  	$rootScope.roleCashier = {key: 'Atendente', value:'ROLE_CASHIER'};
+  	$rootScope.roleWaiter = {key: 'Garçom', value: 'ROLE_WAITER'};
+  	$rootScope.roleAdmin = {key: 'Administrador', value: 'ROLE_ADMIN'};
+
+  	$rootScope.allRoles = [$rootScope.roleCook, $rootScope.roleCashier,
+		$rootScope.roleWaiter, $rootScope.roleAdmin];
+
 	var checkAuth = function(){
 		$rootScope.token = $cookies.get('token');
 		$rootScope.authenticated = ($cookies.get('authenticated') == 'true');
@@ -17,9 +25,21 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 		}else {
 			$rootScope.bodyClass = "body-not-authenticated";
 		}
+		$rootScope.userRoles = JSON.parse($cookies.get('userRoles'));
 	};
 
 	checkAuth();
+
+	$scope.isAdmin = function(){
+		var isAdmin = false;
+		for(var i = 0; i < $rootScope.userRoles.length; i++){
+			if($rootScope.userRoles[i].value == $rootScope.roleAdmin.value){
+				isAdmin = true;
+				break;
+			}
+		}
+		return isAdmin;
+	}
 
 	$scope.auth = function(){
 		$http.post('/api/authenticate', $scope.login).success(function(res){
@@ -29,7 +49,9 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 				$rootScope.tokenHeader =  {'x-access-token': res.token};
 				$rootScope.authenticated = true;
 				$rootScope.authError = false;
+				$rootScope.userRoles = res.userRoles;
 				$cookies.put('token', res.token);
+				$cookies.put('userRoles', JSON.stringify(res.userRoles));
 				$cookies.put('authenticated', true);
 				$scope.login.password="";
 				$scope.login.name="";
@@ -67,7 +89,4 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, $ht
 		}
 		return formatedText;
 	};
-
-	$rootScope.allRoles = [{key: 'Cozinheiro', value: 'ROLE_COOK'}, {key: 'Atendente', value:'ROLE_CASHIER'},
-		{key: 'Garçom', value: 'ROLE_WAITER'}, {key: 'Administrador', value: 'ROLE_ADMIN'}];
 });
