@@ -1,6 +1,8 @@
 module.exports = function(app) {
     var User = app.back.models.user;
 
+    var authController = app.back.controllers.authController;
+
     var UserController = {
 
        setup: function(req, res) {
@@ -57,12 +59,17 @@ module.exports = function(app) {
         put: function(req, res) {
           User.findOne({_id: req.params.id}, function(err, user) {
               if (err) throw err;
-              user.name = req.body.name,
-              user.password = req.body.password,
-              user.login = req.body.login,
-              user.isLoginAble = req.body.isLoginAble,
+
+              user.name = req.body.name;
+              user.password = req.body.password;
+              user.login = req.body.login;
               user.picture = req.body.picture;
               user.roles = req.body.roles
+
+              //User can't disable himself
+              if(req.currentUser._id != user._id){
+                user.isLoginAble = req.body.isLoginAble;
+              }
 
               user.save();
               res.json({ success: true });
