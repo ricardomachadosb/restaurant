@@ -9,6 +9,7 @@ angular.module('OrderProgressCtrl', ['OrderService', 'SocketService']).controlle
   var getOrdersInProgress = function(){
 
     $http.get('/api/order/listOrderInProgress', {headers: $rootScope.tokenHeader}).success(function(res){
+      $scope.orderList = [];
       for(var i = 0; i < res.length; i++){
         if(res[i].dishes && res[i].dishes.length > 0){
           for(var ii = 0; ii < res[i].dishes.length; ii++){
