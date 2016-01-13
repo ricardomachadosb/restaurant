@@ -19,7 +19,9 @@ module.exports = function(app) {
                 // check if password matches
                 if (user.password != req.body.password) {
                   res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-                } else {
+                } else if(!user.isLoginAble){
+                  res.json({ success: false, message: 'This user is not able to access the system anymore' });
+                }else {
 
                   // if user is found and password is right
                   // create a token
