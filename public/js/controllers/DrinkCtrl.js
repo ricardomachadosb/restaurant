@@ -17,12 +17,17 @@ angular.module('DrinkCtrl', ['ImageService']).controller('DrinkController', func
   $scope.add = function(){
     $http.post('/api/drink/create', $scope.drink, {headers: $rootScope.tokenHeader}).success(
       function(res){
-        $scope.drink = "";
-        $scope.currentPage = 0;
-        $scope.list();
+        if(res.success){
+          $scope.drink = "";
+          $scope.currentPage = 0;
+          $scope.list();
 
-        $scope.messageClass = 'alert-success';
-        $scope.message = 'Bebida cadastrada';
+          $scope.messageClass = 'alert-success';
+          $scope.message = 'Bebida cadastrada';
+        }else {
+           $scope.messageClass = 'alert-danger';
+           $scope.message = res.message;
+        }
       }
     ).error(function(res){
       $scope.messageClass = 'alert-danger';
