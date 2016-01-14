@@ -33,6 +33,8 @@ module.exports = function(app) {
         Dish.findOne({code: req.body.code}, function(err, dish){
           if(!dish){
             createDish(req, res);
+          }else {
+            res.json({ success: false, message: 'Já existe produto cadastrado com este código' });
           }
         });
       },
