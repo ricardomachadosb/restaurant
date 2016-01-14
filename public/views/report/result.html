@@ -1,8 +1,16 @@
 <div class="container">
     <div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
-    <h1>Data inicial: {{startDate}}</h1>
-    <h1>Data final: {{endDate}}</h1>
-    <h1>Bebidas: {{result.totalDrinks}}</h1>
-    <h1>Pratos: {{result.totalDishes}}</h1>
-    <h1>Valor: R$ {{result.totalPayment}}</h1>
+    <h1>Resultado</h1>
+    <div class="row row-grid">
+        <div class="col-md-4">
+            <div><h4>Data inicial: </h4><span>{{startDate}}</span></div>
+            <div><h4>Data final: </h4><span>{{endDate}}</span></div>
+            <div><h4>Itens vendidos: </h4><span>{{result.totalSales}}</span></div>
+            <div><h4>Total faturado: </h4><span>R$ {{result.totalPayment}}</span></div>
+        </div>
+        <div class="col-md-8">
+            <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels">
+            </canvas>
+        </div>
+    </div>
 </div>
