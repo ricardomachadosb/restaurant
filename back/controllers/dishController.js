@@ -2,15 +2,7 @@ module.exports = function(app) {
 
     var Dish = app.back.models.dish;
 
-    var DishController = {
-
-      list: function(req, res) {
-        Dish.find().exec(function(err, dishes) {
-          res.json(dishes);
-        });
-      },
-
-      create: function(req, res) {
+    var createDish = function(req, res){
         var dish = new Dish({
           code: req.body.code,
           price: req.body.price,
@@ -26,6 +18,22 @@ module.exports = function(app) {
 
           console.log('Dish saved successfully');
           res.json({ success: true });
+        });
+    };
+
+    var DishController = {
+
+      list: function(req, res) {
+        Dish.find().exec(function(err, dishes) {
+          res.json(dishes);
+        });
+      },
+
+      create: function(req, res) {
+        Dish.findOne({code: req.body.code}, function(err, dish){
+          if(!dish){
+            createDish(req, res);
+          }
         });
       },
 
