@@ -87,10 +87,12 @@ background-color: #D8D8A8;
 
 .btn-grid{
     width: 60px;
+    text-decoration:none; 
 }
 
 .btn-add{
   margin-bottom: 10px;
+  text-decoration:none; 
 }
 
 .col-md-2 {
@@ -111,11 +113,13 @@ background-color: #D8D8A8;
 
 .btn-load-more{
 	width: 136.5%;
+    text-decoration:none; 
 }
 
 .btn-load-more-group{
   margin-left: 27.33333333% !important;
   margin-bottom: 25px;
+    text-decoration:none; 
 }
 
 .navbar-brand{
@@ -278,6 +282,7 @@ background-color: #D8D8A8;
   margin-top: -5px;
   width: 50px; 
   background-color: transparent;
+    text-decoration:none; 
 }
 
 .order-code-item{
@@ -423,4 +428,8 @@ a:hover{
   margin-left: -20px;
   background-color: rgba(255, 255, 255, .6);
   padding: 50px 50px 50px 50px;
+}
+
+.filter{
+  font-size: 25px;
 }
