@@ -2,6 +2,20 @@ module.exports = function(app) {
 
   var Table = app.back.models.table;
 
+  var createTable = function(req, res){
+      var table = new Table({
+        code: req.body.code,
+        status: req.body.status
+      });
+
+      table.save(function(err) {
+        if (err) throw err;
+
+        console.log('table saved successfully');
+        res.json({ success: true });
+      });
+    };
+
   var tableController = {
 
     list: function(req, res) {
@@ -17,20 +31,16 @@ module.exports = function(app) {
     },
 
     create: function(req, res) {
-      var table = new Table({
-        code: req.body.code,
-        status: req.body.status
-      });
-
-      table.save(function(err) {
-        if (err) throw err;
-
-        console.log('table saved successfully');
-        res.json({ success: true });
-      });
+        Table.findOne({code: req.body.code}, function(err, table){
+          if(!table){
+            createTable(req, res);
+          }else {
+            res.json({ success: false, message: 'Já existe mesa cadastrada com este código' });
+          }
+        });
     },
 
-    remove: function(req, res) {
+      remove: function(req, res) {
       Table.remove({_id: req.params.id}, function(err) {
         if (err) throw err;
         console.log('Table deleted successfully');

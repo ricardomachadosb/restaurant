@@ -16,12 +16,17 @@ angular.module('TableCtrl', []).controller('TableController', function($scope, $
   $scope.add = function(){
     $http.post('/api/table/create', $scope.table, {headers: $rootScope.tokenHeader}).success(
       function(res){
-        $scope.table = "";
-        $scope.currentPage = 0;
-        $scope.list();
+        if(res.success){
+          $scope.table = "";
+          $scope.currentPage = 0;
+          $scope.list();
 
-        $scope.messageClass = 'alert-success';
-        $scope.message = 'Mesa cadastrada';
+          $scope.messageClass = 'alert-success';
+          $scope.message = 'Mesa cadastrada';
+        }else {
+          $scope.messageClass = 'alert-danger';
+          $scope.message = res.message;
+        }
       }
       ).error(function(res){
         $scope.messageClass = 'alert-danger';
