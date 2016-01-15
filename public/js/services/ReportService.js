@@ -1,28 +1,42 @@
-angular.module('ReportService', []).factory('filters', ['$http', function($http) {
-    
+angular.module('ReportService', []).factory('filters', function ($http, $rootScope) {
+
     var startDate = "";
     var endDate = "";
-    
-    var setStartDate = function(value){
+    var result = {};
+
+    var setStartDate = function (value) {
         startDate = value;
     }
-    
-    var getStartDate = function(){
+
+    var getStartDate = function () {
         return startDate;
     }
-    var setEndDate = function(value){
+    var setEndDate = function (value) {
         endDate = value;
     }
-    
-    var getEndDate = function(){
+
+    var getEndDate = function () {
         return endDate;
     }
-    
+
+    var reports = {
+        generateGeneralBilling: function () {
+            if(getStartDate() == undefined || getStartDate() == "" || getEndDate() == undefined || getEndDate() == ""){
+                setStartDate(new Date());
+                setEndDate(new Date());
+            }
+            return $http.post('/api/report/generalBilling/', 
+            { start: getStartDate(), end: getEndDate() }, 
+            { headers: $rootScope.tokenHeader });
+        }
+    }
+
     return {
         setStartDate: setStartDate,
         getStartDate: getStartDate,
         setEndDate: setEndDate,
-        getEndDate: getEndDate
-    }
+        getEndDate: getEndDate,
+        reports
+    };
 
-}]);
+});

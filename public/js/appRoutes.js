@@ -81,7 +81,7 @@
         
         .when('/relatorios/resultado', {
             templateUrl: 'views/report/result.html',
-            controller: 'ReportController'
+            controller: 'ReportResultController'
         })
 
        .when('/cozinha', {

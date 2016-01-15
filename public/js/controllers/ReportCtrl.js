@@ -1,13 +1,6 @@
 angular.module('ReportCtrl', []).controller('ReportController', function ($scope, $location, $http, $rootScope, filters) {
-    $scope.startDate = filters.getStartDate();
-    $scope.endDate = filters.getEndDate();
 
     $scope.generateGeneralBilling = function () {
-        $http.post('/api/report/generalBilling/', {start: $scope.startDate, end: $scope.endDate}, { headers: $rootScope.tokenHeader }).success(function (res) {
-            console.log(res);
-        }).error(function (res) {
-            console.log(res);
-        });
         $location.path("/relatorios/faturamentoGeral")
     };
 
