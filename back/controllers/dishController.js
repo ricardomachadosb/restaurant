@@ -29,6 +29,12 @@ module.exports = function(app) {
         });
       },
 
+      listAvailableDishes: function(req, res) {
+        Dish.find({isVisible: true}).exec(function(err, dishes) {
+          res.json(dishes);
+        });
+      },
+
       create: function(req, res) {
         Dish.findOne({code: req.body.code}, function(err, dish){
           if(!dish){
