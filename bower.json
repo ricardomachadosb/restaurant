@@ -11,6 +11,8 @@
     "bootstrap": "~3.3.5",
     "font-awesome": "~4.4.0",
     "isteven-angular-multiselect": "angular-multi-select#~4.0.0",
-    "bootstrap-datepicker": "~1.5.1"
+    "bootstrap-datepicker": "~1.5.1",
+    "Chart.js": "~1.0.2",
+    "angular-chart.js": "~0.8.8"
   }
 }
