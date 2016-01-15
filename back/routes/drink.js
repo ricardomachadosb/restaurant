@@ -6,6 +6,7 @@ module.exports = function(app) {
   app.delete('/api/drink/remove/:id',authController.checkAuth,  drinkController.remove);
   app.get('/api/drink/list/:id', authController.checkAuth, drinkController.list);
   app.get('/api/drink/list', authController.checkAuth, drinkController.list);
+  app.get('/api/drink/listAvailableDrinks', authController.checkAuth, drinkController.listAvailableDrinks);
   app.get('/api/drink/edit/:id', authController.checkAuth, drinkController.edit);
   app.put('/api/drink/put/:id', authController.checkAuth, drinkController.put);
 };

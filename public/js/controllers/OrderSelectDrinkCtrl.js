@@ -4,7 +4,7 @@ angular.module('OrderSelectDrinkCtrl', ['OrderService']).controller('OrderSelect
   var currentOrder;
 
   $scope.listOrderDrink = function(){
-    $http.get('/api/drink/list', {headers: $rootScope.tokenHeader}).success(function(res){
+    $http.get('/api/drink/listAvailableDrinks', {headers: $rootScope.tokenHeader}).success(function(res){
       
       currentOrder = orderService.getCurrentOrder();
 
