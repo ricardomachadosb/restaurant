@@ -78,6 +78,11 @@
             templateUrl: 'views/report/general-billing.html',
             controller: 'ReportController'
         })
+        
+        .when('/relatorios/resultado', {
+            templateUrl: 'views/report/result.html',
+            controller: 'ReportController'
+        })
 
        .when('/cozinha', {
             templateUrl: 'views/orderProgress/listProgressKitchen.html',
