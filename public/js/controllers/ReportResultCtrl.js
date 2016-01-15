@@ -1,8 +1,14 @@
-angular.module('ReportResultCtrl', []).controller('ReportResultController', function ($scope, $location, $http, $rootScope, filters) {
+angular.module('ReportResultCtrl', ['chart.js']).controller('ReportResultController', function ($scope, $location, $http, $rootScope, filters) {
     $scope.startDate = filters.getStartDate();
     $scope.endDate = filters.getEndDate();
     $scope.result = {};
+
+
+
     filters.reports.generateGeneralBilling().then(function (res) {
         $scope.result = res.data;
+        $scope.labels = ['Comidas', 'Bebidas'];
+        $scope.data = [res.data.totalDishes, res.data.totalDrinks];
+        console.log(res.data.totalDishes);
     });
 });

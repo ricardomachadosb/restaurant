@@ -13,7 +13,7 @@ module.exports = function (app) {
         generalBilling: function (req, res) {
             var drinks = [], dishes = [];
             var totalDishes = 0, totalDrinks = 0, totalPayment = 0;
-            console.log(req.body.start);
+            console.log(formatDate(req.body.start));
             Order.find({ "status": 4, "lastModified": { $gte: dateFormat(formatDate(req.body.start), 'isoDateTime'), $lt: dateFormat(formatDate(req.body.end), 'isoDateTime') } }).exec(function (err, orders) {
                 orders.forEach(function (order) {
                     drinks.push(order.drinks);
@@ -32,7 +32,7 @@ module.exports = function (app) {
                         totalDishes += dish[i].quantity;
                     }
                 });
-                res.json({ totalPayment: totalPayment, totalDishes: totalDishes, totalDrinks: totalDrinks });
+                res.json({ totalPayment: totalPayment, totalDishes: totalDishes, totalDrinks: totalDrinks, totalSales: totalDishes + totalDrinks });
             });
 
         }
