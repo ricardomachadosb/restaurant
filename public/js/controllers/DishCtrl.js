@@ -16,13 +16,18 @@ angular.module('DishCtrl', ['ImageService']).controller('DishController', functi
 
   $scope.add = function(){
     $http.post('/api/dish/create', $scope.dish, {headers: $rootScope.tokenHeader}).success(
- 
-      function(res){
-        $scope.dish = "";
-        $scope.list();
 
-        $scope.messageClass = 'alert-success';
-        $scope.message = 'Prato cadastrado';
+      function(res){
+        if(res.success){
+          $scope.dish = "";
+          $scope.list();
+
+          $scope.messageClass = 'alert-success';
+          $scope.message = 'Prato cadastrado';
+        }else {
+           $scope.messageClass = 'alert-danger';
+           $scope.message = res.message;
+        }
       }
     ).error(function(res){
       $scope.messageClass = 'alert-danger';

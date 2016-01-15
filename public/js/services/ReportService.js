@@ -25,8 +25,8 @@ angular.module('ReportService', []).factory('filters', function ($http, $rootSco
                 setStartDate(new Date());
                 setEndDate(new Date());
             }
-            return $http.post('/api/report/generalBilling/', 
-            { start: getStartDate(), end: getEndDate() }, 
+            return $http.post('/api/report/generalBilling/',
+            { start: getStartDate(), end: getEndDate() },
             { headers: $rootScope.tokenHeader });
         }
     }
@@ -36,7 +36,7 @@ angular.module('ReportService', []).factory('filters', function ($http, $rootSco
         getStartDate: getStartDate,
         setEndDate: setEndDate,
         getEndDate: getEndDate,
-        reports
+        reports: reports
     };
 
 });
