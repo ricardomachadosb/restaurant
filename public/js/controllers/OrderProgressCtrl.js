@@ -1,5 +1,7 @@
 angular.module('OrderProgressCtrl', ['OrderService', 'SocketService']).controller('OrderProgressController', function($scope, $http, $rootScope, $interval, socketService, orderService){
 
+  $scope.orderList = [];
+
   $scope.initialize = function(){
     getOrdersInProgress();
   };
@@ -7,8 +9,18 @@ angular.module('OrderProgressCtrl', ['OrderService', 'SocketService']).controlle
   var getOrdersInProgress = function(){
 
     $http.get('/api/order/listOrderInProgress', {headers: $rootScope.tokenHeader}).success(function(res){
-       $scope.orderList = res;
-       populatePercentComplete();
+      $scope.orderList = [];
+      for(var i = 0; i < res.length; i++){
+        if(res[i].dishes && res[i].dishes.length > 0){
+          for(var ii = 0; ii < res[i].dishes.length; ii++){
+            if(res[i].dishes[ii].quantity > 0){
+              $scope.orderList.push(res[i]);
+              break;
+            }
+          }
+        }
+      }
+      populatePercentComplete();
     }).error(function(res){
       console.log(res);
     });

@@ -19,12 +19,19 @@ module.exports = function(app) {
                 // check if password matches
                 if (user.password != req.body.password) {
                   res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-                } else {
+                } else if(!user.isLoginAble){
+                  res.json({ success: false, message: 'This user is not able to access the system anymore' });
+                }else {
 
                   // if user is found and password is right
                   // create a token
+                  
+                  //emptying the picture from user to not over size the generated token
+                  user.picture  = [];
+
+                  console.log(user);
                   var token = jwt.sign(user, app.get('superSecret'), {
-                    expiresInMinutes: 1440 // expires in 24 hours
+                    expiresIn: 1440 * 60// expires in 24 hours
                   });
 
                   // return the information including token as JSON
@@ -52,7 +59,7 @@ module.exports = function(app) {
                 return res.json({ success: false, message: 'Failed to authenticate token.' });    
               } else {
                 // if everything is good, save to request for use in other routes
-                req.decoded = decoded;    
+                req.currentUser = decoded;    
                 next();
               }
             });

@@ -46,7 +46,7 @@ angular.module('OrderFinishCtrl', ['OrderService', 'SocketService']).controller(
 				for(var ii =0; ii < dishes[i].quantity; ii++){
 					$scope.total += dishes[i].dish.price;
 				}
-				if(dishes[i].dish.avgTime > $scope.avgTime){
+				if((dishes[i].quantity > 0) && (dishes[i].dish.avgTime > $scope.avgTime)){
 					$scope.avgTime = dishes[i].dish.avgTime;
 				}
 			}
