@@ -79,6 +79,11 @@
             controller: 'ReportController'
         })
         
+        .when('/relatorios/vendaPorProduto', {
+            templateUrl: 'views/report/itens-sales.html',
+            controller: 'ReportController'
+        })
+        
         .when('/relatorios/resultado', {
             templateUrl: 'views/report/result.html',
             controller: 'ReportResultController'
