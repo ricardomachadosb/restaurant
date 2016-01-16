@@ -14,10 +14,17 @@ angular.module('ReportResultCtrl', ['chart.js']).controller('ReportResultControl
             });
             break;
         case 'itensSales':
-            $scope.labels = ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"];
-            $scope.data = [[65, 59, 90, 81, 56, 55, 40], [28, 48, 40, 19, 96, 27, 100]];
+            $scope.labels = [];
+            $scope.data = [];
             filters.reports.generateItensSales().then(function (res) {
-                console.log(res);
+                var quantity = [], total = [];
+                $.each(res.data.dishes, function (k, v) {
+                    $scope.labels.push(v.dish);
+                    quantity.push(v.quantity);
+                    total.push(v.total);
+                });
+                $scope.data.push(total);
+                $scope.data.push(quantity);
             });
             break;
 
