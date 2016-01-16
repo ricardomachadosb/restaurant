@@ -87,12 +87,12 @@ background-color: #D8D8A8;
 
 .btn-grid{
     width: 60px;
-    text-decoration:none; 
+    text-decoration:none;
 }
 
 .btn-add{
   margin-bottom: 10px;
-  text-decoration:none; 
+  text-decoration:none;
 }
 
 .col-md-2 {
@@ -113,17 +113,17 @@ background-color: #D8D8A8;
 
 .btn-load-more{
 	width: 136.5%;
-    text-decoration:none; 
+    text-decoration:none;
 }
 
 .btn-load-more-group{
   margin-left: 27.33333333% !important;
   margin-bottom: 25px;
-    text-decoration:none; 
+    text-decoration:none;
 }
 
 .navbar-brand{
- padding: 5px 15px;   
+ padding: 5px 15px;
 }
 
 .imageConfigs {
@@ -190,8 +190,8 @@ background-color: #D8D8A8;
 .glyphicon-log-out{
   font-size: 17px;
 }
-.inner-addon { 
-    position: relative; 
+.inner-addon {
+    position: relative;
 }
 
 /* style icon */
@@ -218,6 +218,11 @@ background-color: #D8D8A8;
 
 .glyphicon-time{
   margin-top: 10px;
+}
+
+.a{
+  color: #000000;
+  font-color:#000000;
 }
 
 .avarage-time-stepper{
@@ -256,7 +261,7 @@ background-color: #D8D8A8;
   background-color: transparent;
   box-shadow: 5px 3px 3px #BBC1DA;
 }
-  
+
 .order-form {
   margin-top: -5px;
   box-shadow: 5px 3px 3px #BBC1DA;
@@ -280,9 +285,9 @@ background-color: #D8D8A8;
 
 .btn-qnt{
   margin-top: -5px;
-  width: 50px; 
+  width: 50px;
   background-color: transparent;
-    text-decoration:none; 
+    text-decoration:none;
 }
 
 .order-code-item{
@@ -335,6 +340,7 @@ background-color: #D8D8A8;
   height: 120px;
   margin-bottom: 10px;
   box-shadow: 3px 2px 2px #BBC1DA;
+  color: #00000;
 }
 
 .table-number-k{
@@ -351,6 +357,7 @@ background-color: #D8D8A8;
 .glyphicon-time
 {
   font-size:18px;
+  color: #000000;
 }
 
 .glyphicon-warning-sign
@@ -367,6 +374,7 @@ background-color: #D8D8A8;
 .number-table-prog{
   font-size: 25px;
   font-weight: bold;
+  color: #000000;
 }
 .progress-screen{
   width: 950px;
@@ -381,6 +389,7 @@ background-color: #D8D8A8;
 .text-list-progress{
   font-size: 16px;
   font-weight: bold;
+  color: #000000;
 }
 
 .cabecalho-dois{

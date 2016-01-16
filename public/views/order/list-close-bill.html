@@ -36,7 +36,7 @@
               {{dishData.quantity}}
             </td>
             <td scope="row" class="order-tot-item">
-              {{dishData.dish.price * dishData.quantity}}
+              {{dishData.dish.price * dishData.quantity | currency:"R$ "}}
             </td>
           </tr>
           <tr><td></td><td></td><td></td></tr>
@@ -51,7 +51,7 @@
                 {{drinkData.quantity}}
               </td>
               <td scope="row" class="order-tot-item">
-                {{drinkData.drink.price * drinkData.quantity}}
+                {{drinkData.drink.price * drinkData.quantity | currency:"R$ "}}
               </td>
             </tr>
         </tbody>
