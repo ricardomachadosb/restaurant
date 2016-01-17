@@ -33,7 +33,7 @@ angular.module('ReportResultCtrl', ['chart.js']).controller('ReportResultControl
                     drinksTotal.push(v.total);
                 });
                 $scope.dishesData.push(dishesTotal);
-                $scope.dishesData.push(dishesTotal);
+                $scope.dishesData.push(dishesQuantity);
                 $scope.drinksData.push(drinksTotal);   
                 $scope.drinksData.push(drinksQuantity);                             
             });
