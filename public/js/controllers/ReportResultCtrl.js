@@ -14,17 +14,28 @@ angular.module('ReportResultCtrl', ['chart.js']).controller('ReportResultControl
             });
             break;
         case 'itensSales':
-            $scope.labels = [];
-            $scope.data = [];
+            $scope.dishesLabels = [];
+            $scope.dishesData = [];
+            $scope.drinksLabels = [];
+            $scope.drinksData = [];            
+            
             filters.reports.generateItensSales().then(function (res) {
-                var quantity = [], total = [];
+                var dishesQuantity = [], dishesTotal = [], drinksQuantity = [], drinksTotal = [];
                 $.each(res.data.dishes, function (k, v) {
-                    $scope.labels.push(v.dish);
-                    quantity.push(v.quantity);
-                    total.push(v.total);
+                    $scope.dishesLabels.push(v.dish);
+                    dishesQuantity.push(v.quantity);
+                    dishesTotal.push(v.total);
                 });
-                $scope.data.push(total);
-                $scope.data.push(quantity);
+                
+                $.each(res.data.drinks, function (k, v) {
+                    $scope.drinksLabels.push(v.drink);
+                    drinksQuantity.push(v.quantity);
+                    drinksTotal.push(v.total);
+                });
+                $scope.dishesData.push(dishesTotal);
+                $scope.dishesData.push(dishesTotal);
+                $scope.drinksData.push(drinksTotal);   
+                $scope.drinksData.push(drinksQuantity);                             
             });
             break;
 

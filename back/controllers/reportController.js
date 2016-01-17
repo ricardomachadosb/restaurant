@@ -80,7 +80,7 @@ module.exports = function (app) {
         
         itensSales: function(req, res) {
             var drinks = [], dishes = [];
-            Order.find( {"status": 4}).populate("dishes.dish").populate("drinks.drink").exec(function(err, orders) {
+            Order.find( {"status": 4, "lastModified": { $gte: dateFormat(formatDate(req.body.start), 'isoDateTime'), $lt: dateFormat(formatDate(req.body.end), 'isoDateTime') } }).populate("dishes.dish").populate("drinks.drink").exec(function(err, orders) {
                 if (err) throw err;
                 orders.forEach(function (order) {
                     drinks = drinks.concat(order.drinks);
@@ -90,6 +90,8 @@ module.exports = function (app) {
                 drinksItarator(drinks, 0);
                 dishesItarator(dishes, 0);
                 res.json({ dishes: dishesMap, drinks: drinksMap});
+                dishesMap = {};
+                drinksMap = {};
             });
         }
     }

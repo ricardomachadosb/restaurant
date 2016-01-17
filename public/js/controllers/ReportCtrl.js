@@ -15,8 +15,6 @@ angular.module('ReportCtrl', []).controller('ReportController', function ($scope
         filters.setEndDate($("input[name=end]").val());
     }
     
-    
-
     $('#datepicker').datepicker({
         format: "dd/mm/yyyy",
         todayBtn: "linked",

@@ -1,32 +1,51 @@
 <div class="container">
-    <div class="alert" ng-class="messageClass" role="alert">{{message}}</div>
     <div ng-switch="reportType">
         <div class="row row-grid" ng-switch-when="generalBilling">
-            <div class="col-md-4">
-                <div>
-                    <h4>Data inicial: </h4><span>{{startDate}}</span></div>
-                <div>
-                    <h4>Data final: </h4><span>{{endDate}}</span></div>
-                <div>
-                    <h4>Itens vendidos: </h4><span>{{result.totalSales}}</span></div>
-                <div>
-                    <h4>Total faturado: </h4><span>R$ {{result.totalPayment}}</span></div>
-            </div>
-            <div class="col-md-8">
-                <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels">
-                </canvas>
+            <h1>Faturamento Geral</h1>
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <div>
+                        <h4>Data inicial: </h4>
+                        <h5>{{startDate}}</h5>
+                    </div>
+                    <div>
+                        <h4>Data final: </h4>
+                        <h5>{{endDate}}</h5>
+                    </div>
+                    <div>
+                        <h4>Itens vendidos: </h4>
+                        <h5>{{result.totalSales}}</h5>
+                    </div>
+                    <div>
+                        <h4>Total faturado: </h4>
+                        <h5>R$ {{result.totalPayment}}</h5>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <canvas id="doughnut" class="chart chart-doughnut" chart-data="data" chart-labels="labels">
+                    </canvas>
+                </div>
             </div>
         </div>
         <div class="row row-grid" ng-switch-when="itensSales">
-            <div class="col-md-4">
-                <div>
-                    <h4>Data inicial: </h4><span>{{startDate}}</span></div>
-                <div>
-                    <h4>Data final: </h4><span>{{endDate}}</span></div>
-            </div>
-            <div class="col-md-8">
-                <canvas id="radar" class="chart chart-radar" chart-data="data" chart-labels="labels"></canvas>
+            <h1>Venda por tipo de produto</h1>
+            <div class="col-md-12">
+
+                <div class="col-md-6">
+                    <h5>Pratos</h5>
+                    <canvas id="radar" class="chart chart-radar" chart-data="dishesData" chart-labels="dishesLabels"></canvas>
+                </div>
+                <div class="col-md-6">
+                    <h5>Bebidas</h5>
+                    <canvas id="radar" class="chart chart-radar" chart-data="drinksData" chart-labels="drinksLabels"></canvas>
+                </div>
+                <h4>Data inicial:<h4>
+                <h5>{{startDate}}</h5>
+                <h4>Data final:</h4>
+                <h5>{{endDate}}</h5>
+                <h4>Legenda:</h4>
+                <h5>Azul forte: valor.</h5>
+                <h5>Azul fraco: quantidade.</h5>
             </div>
         </div>
     </div>
-</div>

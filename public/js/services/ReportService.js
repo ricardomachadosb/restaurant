@@ -33,15 +33,11 @@ angular.module('ReportService', []).factory('filters', function ($http, $rootSco
 
         generateItensSales: function () {
             return $http.post('/api/report/itensSales', 
-            {},
+            { start: getStartDate(), end: getEndDate() },
             {headers: $rootScope.tokenHeader});
         },
 
         generateGeneralBilling: function () {
-            if (getStartDate() == undefined || getStartDate() == "" || getEndDate() == undefined || getEndDate() == "") {
-                setStartDate(new Date());
-                setEndDate(new Date());
-            }
             return $http.post('/api/report/generalBilling/',
                 { start: getStartDate(), end: getEndDate() },
                 { headers: $rootScope.tokenHeader });
